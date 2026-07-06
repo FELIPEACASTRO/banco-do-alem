@@ -455,8 +455,10 @@
   #carta-ov .ctoast{font-size:.9rem;color:var(--vida-profundo);font-weight:600;text-align:center;min-height:1.4em;margin:.6rem 0 0;opacity:0;transition:opacity .3s}
   #carta-ov .ctoast.show{opacity:1}
   /* ---- destinatário opcional (pré-preenchimento discreto) ---- */
-  #carta-ov .cdest{margin:0 0 1.1rem;padding:1.1rem 1.2rem;border:1px solid var(--linha);border-radius:var(--rb);background:rgba(252,250,245,.6)}
-  #carta-ov .cdest .clab{margin-bottom:.4rem}
+  #carta-ov .cdest{margin:0 0 1.1rem;padding:1rem 1.15rem;border:1px solid #BEE6CE;border-radius:var(--rb);background:var(--vida-fundo)}
+  #carta-ov .cdest-note{display:flex;gap:.6rem;align-items:flex-start;margin:0;font-size:.9rem;line-height:1.5;color:var(--tinta)}
+  #carta-ov .cdest-note svg{flex:0 0 auto;margin-top:1px}
+  #carta-ov .cdest-note strong{font-weight:600}
   /* ---- botões de envio (empilhados, toque 48px) ---- */
   #carta-ov .csend{display:flex;flex-direction:column;gap:.75rem;margin:0 0 1rem}
   #carta-ov .csend .btn{width:100%;min-height:48px}
@@ -1524,11 +1526,7 @@
       +'</div></div>'
       +'<h2 class="ctitle sr-only" id="carta-title">Entregar sua declaração</h2>'
       +'<div class="cdest">'
-      +'<label class="clab" for="c-wa-num">WhatsApp de '+benef+' <span style="font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>'
-      +'<input class="cin" id="c-wa-num" type="tel" inputmode="tel" placeholder="(DDD) 9 0000-0000" autocomplete="off">'
-      +'<label class="clab" for="c-mail-to" style="margin-top:1rem">E-mail de '+benef+' <span style="font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>'
-      +'<input class="cin" id="c-mail-to" type="email" inputmode="email" placeholder="nome@exemplo.com" autocomplete="off">'
-      +'<p class="chint" style="margin-bottom:0">Se preencher, já abrimos na conversa certa — é só revisar e enviar. Nada disso sai do seu aparelho.</p>'
+      +'<p class="cdest-note"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#127A48" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="9.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg><span>A gente <strong>n&atilde;o pede o n&uacute;mero nem o e-mail de ningu&eacute;m.</strong> Voc&ecirc; toca no bot&atilde;o, o seu WhatsApp (ou e-mail) abre com a carta j&aacute; escrita, e voc&ecirc; escolhe a pessoa ali dentro. A mensagem vai <strong>de voc&ecirc;, direto</strong> &mdash; sem passar por n&oacute;s, sem base de dados, sem guardar nada.</span></p>'
       +'</div>'
       +'<div class="csend">'
       +'<button class="btn btn-vida" id="c-wa" type="button" aria-label="Enviar pelo WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.2-4.6-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.3c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.4.1.2.1.9-.1 1.6Z"/></svg>Enviar pelo WhatsApp</button>'
@@ -1541,25 +1539,14 @@
     mount(s);
     cAnnounce('Sua declaração está pronta para entregar.');
     var toast=s.querySelector('#c-toast');
-    var waNumEl=s.querySelector('#c-wa-num'),mailToEl=s.querySelector('#c-mail-to');
     function markSent(){cState.sent=true;}
-    /* normaliza número BR: só dígitos; 10/11 dígitos (DDD sem país) recebem 55 */
-    function waNumber(raw){
-      var d=(raw||'').replace(/\D/g,'');
-      if(!d)return '';
-      if(d.length===10||d.length===11)return '55'+d;
-      return d;
-    }
     s.querySelector('#c-wa').addEventListener('click',function(){
       markSent();
-      var num=waNumber(waNumEl?waNumEl.value:'');
-      var base=num?('https://wa.me/'+num+'?text='):'https://wa.me/?text=';
-      window.open(base+encodeURIComponent(letterForSend()),'_blank','noopener');
+      window.open('https://wa.me/?text='+encodeURIComponent(letterForSend()),'_blank','noopener');
     });
     s.querySelector('#c-mail').addEventListener('click',function(){
       markSent();
-      var to=(mailToEl?mailToEl.value:'').trim();
-      window.location.href='mailto:'+to+'?subject='+encodeURIComponent('Uma coisa que eu precisava te dizer')+'&body='+encodeURIComponent(letterForSend());
+      window.location.href='mailto:?subject='+encodeURIComponent('Uma coisa que eu precisava te dizer')+'&body='+encodeURIComponent(letterForSend());
     });
     s.querySelector('#c-copy').addEventListener('click',function(){
       copyText(letterForSend(),function(ok){
