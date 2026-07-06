@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A filosofia do Banco do Além — o que dez tradições da humanidade dizem, em uma só voz, sobre o dinheiro e a morte.">
+<meta name="theme-color" content="#0A0705">
+<title>Banco do Além — A Filosofia</title>
+<style>
+  :root{
+    --ebano-1000:#0A0705;--ebano-950:#0E0B08;--ebano-900:#141009;--ebano-850:#1B160D;--ebano-800:#241E12;
+    --ouro-600:#6E5A2E;--ouro-500:#8C7238;--ouro-400:#B8985A;--ouro-300:#D4B778;--ouro-200:#E8D5A2;
+    --marfim-100:#F2ECDE;--marfim-200:#D9D1BF;--marfim-300:#A79E88;--marfim-400:#6F6959;
+    --verde-500:#3E6B4F;--verde-400:#5E9873;--verde-300:#86BC9C;
+    --bg:var(--ebano-950);--sacro:var(--ebano-1000);--surf:var(--ebano-900);
+    --tx:var(--marfim-100);--tx2:var(--marfim-200);--mut:var(--marfim-300);
+    --gold:var(--ouro-400);--eternal:var(--verde-400);--line:rgba(184,152,90,.22);
+    --serif:"Didot","Bodoni 72","Bodoni MT","Playfair Display","Hoefler Text",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Optima","Avenir Next",system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+       background-image:radial-gradient(ellipse 90% 55% at 50% -8%,rgba(184,152,90,.07),transparent 70%);background-attachment:fixed;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.015em;margin:0;text-wrap:balance}
+  p{margin:0 0 1rem}
+  a{color:var(--gold);text-decoration:none}
+  .wrap{max-width:62rem;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+  .read{max-width:42rem}
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ouro-500);font-weight:600}
+  :focus-visible{outline:2px solid var(--ouro-300);outline-offset:3px}
+  nav{position:sticky;top:0;z-index:40;background:rgba(10,7,5,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--ebano-800)}
+  nav .wrap{display:flex;align-items:center;gap:1.4rem;height:58px}
+  nav .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:1.08rem;color:var(--ouro-200);margin-right:auto}
+  nav .logo svg{width:20px;height:20px}
+  nav a.lnk{color:var(--mut);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
+  nav a.lnk:hover{color:var(--ouro-200)}
+  header.hero{padding:5rem 0 3rem;border-bottom:1px solid var(--ebano-800)}
+  header.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);color:var(--marfim-100)}
+  header.hero .sub{font-family:var(--serif);font-style:italic;color:var(--ouro-200);font-size:clamp(1.1rem,2.4vw,1.5rem);margin-top:1.2rem;max-width:36ch}
+  section{padding:4rem 0;border-bottom:1px solid var(--ebano-800)}
+  .part{font-family:var(--serif);font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ouro-600);margin-bottom:.5rem}
+  h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--marfim-100);margin-bottom:1rem}
+  .lede{font-size:1.18rem;color:var(--tx2);max-width:52ch}
+  /* extrato device */
+  .extrato{display:grid;grid-template-columns:1fr 1px 1fr;margin:2.2rem 0;border:1px solid var(--ouro-600);border-radius:4px;overflow:hidden;background:var(--sacro);max-width:40rem}
+  .extrato .col{padding:1.4rem 1.6rem}
+  .extrato .divider{background:linear-gradient(180deg,transparent,var(--ouro-600),transparent)}
+  .extrato h4{margin:0 0 .8rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .extrato .left h4{color:var(--mut)} .extrato .right h4{color:var(--eternal)}
+  .extrato .row{padding:.4rem 0;border-bottom:1px solid rgba(51,41,26,.5);font-size:.95rem}
+  .extrato .row:last-child{border-bottom:0}
+  .extrato .right .row{color:var(--verde-300)}
+  @media(max-width:600px){.extrato{grid-template-columns:1fr}.extrato .divider{height:1px;background:linear-gradient(90deg,transparent,var(--ouro-600),transparent)}}
+  /* mosaico grid */
+  .mosaico{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1rem;margin-top:2.4rem}
+  .trad{background:var(--surf);border:1px solid var(--ebano-800);border-radius:3px;padding:1.4rem;transition:border-color .25s,transform .25s}
+  .trad:hover{border-color:var(--ouro-600);transform:translateY(-2px)}
+  .trad .name{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.6rem}
+  .trad .say{font-family:var(--serif);font-size:1.12rem;color:var(--marfim-100);line-height:1.32;margin:0 0 .6rem}
+  .trad .who{font-size:.78rem;color:var(--mut)}
+  blockquote{font-family:var(--serif);font-size:clamp(1.4rem,3.5vw,2rem);color:var(--ouro-200);line-height:1.28;margin:2rem 0;padding-left:1.3rem;border-left:2px solid var(--gold);text-wrap:balance}
+  blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-top:.8rem}
+  .sci{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-top:2rem}
+  .scard{background:var(--surf);border:1px solid var(--ebano-800);border-radius:3px;padding:1.3rem}
+  .scard b{font-family:var(--serif);color:var(--ouro-200);font-size:1.05rem;font-weight:400}
+  .scard p{font-size:.88rem;color:var(--tx2);margin:.5rem 0 0}
+  .scard .src{font-size:.72rem;color:var(--mut);margin-top:.6rem}
+  .frases{columns:2;column-gap:2.2rem;margin-top:1.6rem}
+  .frases p{break-inside:avoid;font-family:var(--serif);font-size:1.05rem;color:var(--tx);padding-left:1rem;border-left:1px solid var(--ouro-600);margin-bottom:1.1rem;line-height:1.34}
+  @media(max-width:640px){.frases{columns:1}}
+  .backcta{text-align:center;padding:4rem 0}
+  .btn{display:inline-flex;background:linear-gradient(180deg,var(--ouro-400),var(--ouro-600));color:#1a1408;font-weight:600;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;border-radius:2px;padding:.9rem 1.8rem}
+  footer{padding:3rem 0 4.5rem;text-align:center}
+  footer .disc{font-size:.76rem;color:var(--mut);max-width:44rem;margin:0 auto;line-height:1.6}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.trad:hover{transform:none}}
+</style>
+</head>
+<body>
+  <nav><div class="wrap">
+    <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#E8D5A2" stroke-width="1.3"><path d="M12 2 3 7v2h18V7L12 2z"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18"/></svg>Banco do Além</span>
+    <a class="lnk" href="index.html">A experiência</a>
+    <a class="lnk" href="transparencia.html">Transparência</a>
+  </div></nav>
+
+  <header class="hero"><div class="wrap read">
+    <p class="eyebrow reveal">A filosofia por trás da obra</p>
+    <h1 class="reveal">Dez povos.<br>Uma só verdade.</h1>
+    <p class="sub reveal">Ao longo de três mil anos, culturas que nunca se falaram chegaram à mesma conclusão sobre o dinheiro e a morte. Isto não é opinião. É uma constante da experiência humana.</p>
+  </div></header>
+
+  <section><div class="wrap read">
+    <p class="part reveal">A tese</p>
+    <h2 class="reveal">Não é que o dinheiro não importe</h2>
+    <p class="lede reveal">O dinheiro é importantíssimo — para proteger a vida. Mas é pequeno demais para ser o <em>sentido</em> dela. Quando o dinheiro vira deus, alguém sempre vira sacrifício: o pobre, o esquecido, o irmão na rua que o olho já nem vê. A tese cabe em quatro distinções.</p>
+    <div class="extrato reveal" aria-label="As quatro distinções">
+      <div class="col left"><h4>O que o mundo confunde</h4>
+        <div class="row">TER</div><div class="row">CASA</div><div class="row">PREÇO</div><div class="row">DINHEIRO-SENHOR</div></div>
+      <div class="divider"></div>
+      <div class="col right"><h4>O que atravessa</h4>
+        <div class="row">SER</div><div class="row">LAR</div><div class="row">VALOR &amp; dignidade</div><div class="row">DINHEIRO-SERVO</div></div>
+    </div>
+    <blockquote class="reveal">O dinheiro é a coisa mais importante entre as menos importantes.</blockquote>
+  </div></section>
+
+  <section><div class="wrap">
+    <p class="part reveal">O mosaico</p>
+    <h2 class="reveal">O que cada tradição diz</h2>
+    <p class="lede reveal">Cada uma na sua língua. Todas apontando para o mesmo lugar.</p>
+    <div class="mosaico">
+      <div class="trad reveal"><div class="name">Budismo</div><p class="say">"Do desejo nasce a tristeza; do desejo nasce o medo."</p><p class="who">Dhammapada 216 — a sede (tanha) que nunca sacia bebendo</p></div>
+      <div class="trad reveal"><div class="name">Cristianismo</div><p class="say">"Não podeis servir a Deus e a Mamon."</p><p class="who">Mateus 6:24 — a viúva deu duas moedas; Judas vendeu por trinta</p></div>
+      <div class="trad reveal"><div class="name">Espiritismo</div><p class="say">"O homem é apenas o depositário da fortuna, da qual prestará contas."</p><p class="who">Allan Kardec, O Evangelho segundo o Espiritismo</p></div>
+      <div class="trad reveal"><div class="name">Matriz africana</div><p class="say">"O caráter é a beleza." <em>(Ìwà l'ẹwà)</em></p><p class="who">Sabedoria iorubá — e o axé, que só vive quando circula</p></div>
+      <div class="trad reveal"><div class="name">Cultura nórdica</div><p class="say">"O gado morre, os parentes morrem — mas o bom nome nunca morre."</p><p class="who">Hávamál, os Ditos de Odin</p></div>
+      <div class="trad reveal"><div class="name">Grécia antiga</div><p class="say">"A ninguém chame feliz antes de morrer."</p><p class="who">Sólon a Creso, o homem mais rico do mundo — que perdeu tudo</p></div>
+      <div class="trad reveal"><div class="name">Povos indígenas</div><p class="say">"Eles são o povo da mercadoria. O ouro os enlouquece."</p><p class="who">Davi Kopenawa, xamã yanomami, A Queda do Céu</p></div>
+      <div class="trad reveal"><div class="name">México</div><p class="say">"Nem que seja jade, se parte; nem que seja ouro, se rompe."</p><p class="who">Nezahualcóyotl, o rei-poeta asteca — e La Catrina</p></div>
+      <div class="trad reveal"><div class="name">Hinduísmo</div><p class="say">"Você tem direito à ação, nunca aos seus frutos."</p><p class="who">Bhagavad Gita 2.47 — a riqueza (artha) é serva do sentido</p></div>
+      <div class="trad reveal"><div class="name">Filosofia</div><p class="say">"Sai da frente do meu sol."</p><p class="who">Diógenes ao imperador Alexandre — o homem sem nada, mais livre</p></div>
+      <div class="trad reveal"><div class="name">Estoicismo</div><p class="say">"Não é pobre quem tem pouco, mas quem deseja mais."</p><p class="who">Sêneca, Cartas a Lucílio</p></div>
+      <div class="trad reveal"><div class="name">Rap / a rua</div><p class="say">"Em São Paulo, Deus é uma nota de cem."</p><p class="who">Racionais MC's — o diagnóstico dito de dentro da ferida</p></div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <p class="part reveal">A ciência</p>
+    <h2 class="reveal">E o laboratório confirmou</h2>
+    <p class="lede reveal">O que os sábios intuíram, a neurociência mediu.</p>
+    <div class="sci">
+      <div class="scard reveal"><b>A sede nunca sacia</b><p>A dopamina governa o <em>querer</em>, não o <em>gostar</em> — ela persegue, não goza. Chegar na meta prevista gera sinal zero no cérebro.</p><p class="src">Berridge; Schultz, <em>Science</em></p></div>
+      <div class="scard reveal"><b>Sempre há alguém acima</b><p>O centro de recompensa responde ao ganho comparado ao do outro, não ao valor em si. Não há teto — a satisfação é impossível por design.</p><p class="src">Fliessbach et al., <em>Science</em> 2007</p></div>
+      <div class="scard reveal"><b>A cegueira é literal</b><p>Diante de um morador de rua, o córtex que processa "outra pessoa" muitas vezes não acende. O cérebro o vê como objeto, não gente.</p><p class="src">Harris &amp; Fiske, Princeton</p></div>
+      <div class="scard reveal"><b>Mas dá para religar</b><p>Apenas 14 dias de treino de compaixão quase dobraram a generosidade — com mudança neural real. O cérebro que o dinheiro adormeceu, o gesto reacende.</p><p class="src">Weng &amp; Davidson, 2013</p></div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <p class="part reveal">Para levar (não no caixão)</p>
+    <h2 class="reveal">As frases que atravessam</h2>
+    <div class="frases reveal">
+      <p>"O essencial é invisível aos olhos." — Saint-Exupéry</p>
+      <p>"Bons relacionamentos nos mantêm mais felizes e saudáveis. Ponto final." — Estudo de Harvard, 85 anos</p>
+      <p>"Nenhum caixão tem gaveta."</p>
+      <p>"Contentamento é a maior riqueza." — Buda, Dhammapada 204</p>
+      <p>"Quem tem casas possui paredes; quem tem lar possui vínculos."</p>
+      <p>"Todo boleto que você paga é para esta vida. Nenhum é para a próxima."</p>
+    </div>
+  </div></section>
+
+  <div class="backcta">
+    <p style="font-family:var(--serif);font-style:italic;color:var(--ouro-200);font-size:1.2rem;margin-bottom:1.5rem">Agora que você sabe — abra sua conta.</p>
+    <a class="btn" href="index.html">Voltar à experiência</a>
+  </div>
+
+  <footer><div class="wrap">
+    <p class="disc"><strong>Banco do Além</strong> é uma obra de arte conceitual e reflexão, sem fins lucrativos. Não é uma instituição financeira. Todas as citações são verificadas em fonte primária.</p>
+  </div></footer>
+
+  <script>
+  (function(){var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e)});})();
+  </script>
+</body>
+</html>
