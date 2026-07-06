@@ -1479,6 +1479,15 @@
     }
   };
 
+  /* Nunca deixa CPF nem telefone entrarem no texto, no envio ou na IA
+     (dados únicos, ao contrário do nome). Idade/ano/hora — números curtos — passam intactos. */
+  function redactSensitive(t){
+    if(!t)return t;
+    return String(t)
+      .replace(/\b\d{3}\.\d{3}\.\d{3}-?\d{2}\b/g,'[removido]')
+      .replace(/(\+?55[\s]?)?\(?\d{2}\)?[\s.-]?9?\d{4}[\s.-]?\d{4}/g,'[removido]')
+      .replace(/\d{10,}/g,'[removido]');
+  }
   function buildLetterText(bare){
     var a=cState.answers;
     var parts=[];
@@ -1493,20 +1502,20 @@
     }
     if(bare){
       /* "palavras exatas": só respostas + fecho + assinatura, sem timbre/conectores/vocativo */
-      if(a.cena)parts.push(a.cena);
-      if(a.divida)parts.push(a.divida);
-      if(a.espelho)parts.push(a.espelho);
-      if(a.frase)parts.push(a.frase);
+      if(a.cena)parts.push(redactSensitive(a.cena));
+      if(a.divida)parts.push(redactSensitive(a.divida));
+      if(a.espelho)parts.push(redactSensitive(a.espelho));
+      if(a.frase)parts.push(redactSensitive(a.frase));
       parts.push(FECHO_FIXO);
       parts.push(signatureBlock());
       return parts.join('\n\n');
     }
     parts.push(vocative()+',');
     parts.push(isDistante()?pick(BANKS.aberturaD,1):pick(BANKS.aberturaP,2));
-    if(a.cena)parts.push(joinAfterColon(pick(BANKS.cena,3),a.cena));
-    if(a.divida)parts.push(joinAfterColon(pick(BANKS.divida,4),a.divida));
-    if(a.espelho)parts.push(joinAfterColon(pick(BANKS.espelho,5),a.espelho));
-    if(a.frase)parts.push(joinAfterColon(pick(BANKS.fecho,6),a.frase));
+    if(a.cena)parts.push(joinAfterColon(pick(BANKS.cena,3),redactSensitive(a.cena)));
+    if(a.divida)parts.push(joinAfterColon(pick(BANKS.divida,4),redactSensitive(a.divida)));
+    if(a.espelho)parts.push(joinAfterColon(pick(BANKS.espelho,5),redactSensitive(a.espelho)));
+    if(a.frase)parts.push(joinAfterColon(pick(BANKS.fecho,6),redactSensitive(a.frase)));
     parts.push(FECHO_FIXO);
     parts.push(signatureBlock());
     return parts.join('\n\n');
@@ -1518,7 +1527,7 @@
   /* Texto para envio: timbre + corpo (o timbre vive no documento, não na jornada) */
   function letterForSend(){
     var head='Declaração de Bens Sentimentais\n— o que não cabe em nenhuma conta —\n\n';
-    var body=(cLetterEl?cLetterEl.value:buildLetterText(false));
+    var body=redactSensitive(cLetterEl?cLetterEl.value:buildLetterText(false));
     return head+body;
   }
 
@@ -1553,7 +1562,7 @@
       aiBtn.addEventListener('click',function(){
         var old=aiBtn.textContent;aiBtn.disabled=true;aiBtn.textContent='Escrevendo…';
         var sys='Você é um escritor sensível. Reescreva a carta a seguir em português do Brasil, tornando-a mais fluida, calorosa e única, mantendo TODOS os fatos, nomes e lembranças que a pessoa trouxe, sem inventar nada novo, sem clichê de cartão, sem exagero. Preserve o fecho e a assinatura. Devolva só a carta.';
-        alemAI.write(sys,buildLetterText(cBareMode)).then(function(txt){
+        alemAI.write(sys,redactSensitive(cLetterEl.value)).then(function(txt){
           cLetterEl.value=txt;cLetterEl.dataset.touched='1';autoGrow(cLetterEl);aiBtn.textContent='Reescrever de novo';aiBtn.disabled=false;
         }).catch(function(){aiBtn.textContent=old;aiBtn.disabled=false;cAnnounce('Não consegui falar com a IA agora — sua carta continua aqui, intacta.');});
       });
