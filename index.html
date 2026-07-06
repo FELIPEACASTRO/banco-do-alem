@@ -243,6 +243,13 @@
   /* Cards de plano (mobile) */
   .pcards{display:none}
 
+  /* ---------- FAIXA-MANIFESTO (pausa filosófica antes dos planos) ---------- */
+  .manifesto{background:var(--luz-2);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:clamp(3.5rem,9vw,6.5rem) 0;position:relative;z-index:2;overflow:hidden}
+  .manifesto::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:56px;height:3px;background:var(--sol-forte);border-radius:99px;opacity:.85}
+  .manifesto .wrap{max-width:52rem;text-align:center}
+  .manifesto .mf-frase{font-family:var(--serif);font-weight:400;font-style:italic;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.14;letter-spacing:-.015em;color:var(--tinta);text-wrap:balance;margin:0}
+  .manifesto .mf-sub{font-size:clamp(.92rem,2.4vw,1.04rem);line-height:1.5;color:var(--suave);text-wrap:balance;margin:clamp(1.2rem,3vw,1.8rem) auto 0;max-width:44ch}
+
   /* VII · SIMULADOR */
   #transferir{background:var(--vida-fundo)}
   .sim{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow-v);padding:clamp(1.6rem,4vw,2.4rem);max-width:38rem;margin:0 auto;border:1px solid #D3EEDD}
@@ -466,6 +473,41 @@
   /* ---- tela de saída ---- */
   #carta-ov .cexit{text-align:left}
   #carta-ov .cexit .ctitle{margin-bottom:.6rem}
+
+  /* ---- EXTRATO DE AFETOS ---- */
+  #carta-ov .cextrato{text-align:left}
+  #carta-ov .cextrato .ctitle{margin-bottom:.2rem}
+  /* Cartão de saldo (comprovante/cartão premium) */
+  .csaldo{background:var(--vida-fundo);border:1px solid #BEE6CE;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-v);margin:1.1rem 0 1.6rem;background-image:repeating-linear-gradient(-.3deg,rgba(190,230,206,.35) 0,rgba(190,230,206,.35) 1px,transparent 1px,transparent 28px)}
+  .csaldo .stop{height:4px;background:var(--vida)}
+  .csaldo .sin{padding:1.3rem 1.5rem}
+  .csaldo .slbl{font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--vida-profundo);margin:0 0 1rem}
+  .csaldo .srow{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.4rem 0;border-bottom:1px dotted #BEE6CE}
+  .csaldo .srow .sk{color:var(--corpo);font-size:.94rem}
+  .csaldo .srow .sv{font-family:var(--serif);font-weight:500;color:var(--tinta);font-size:1.15rem;text-align:right;font-variant-numeric:tabular-nums}
+  .csaldo .srow.hi .sv{font-style:italic;color:var(--vida-profundo)}
+  .csaldo .sfrase{font-family:var(--serif);font-style:italic;color:var(--tinta);font-size:1.04rem;line-height:1.45;margin:1rem 0 0;padding-top:1rem;border-top:1px solid #BEE6CE}
+  /* Lista do extrato */
+  .cxlist{display:flex;flex-direction:column;margin:.4rem 0 1.4rem}
+  .cxitem{padding:.9rem 0;border-bottom:1px solid var(--linha)}
+  .cxitem:first-child{border-top:1px solid var(--linha)}
+  .cxhead{display:flex;align-items:baseline;gap:.5rem 1rem;flex-wrap:wrap}
+  .cxhead .cxd{font-variant-numeric:tabular-nums;font-size:.82rem;color:var(--suave);flex:0 0 auto}
+  .cxhead .cxp{font-size:.96rem;color:var(--tinta);font-weight:500;flex:1 1 auto;min-width:0}
+  .cxhead .cxp .cxrel{color:var(--suave);font-weight:400}
+  .cxhead .cxs{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;flex:0 0 auto}
+  .cxhead .cxs.entregue{color:var(--vida-profundo);background:var(--vida-fundo)}
+  .cxhead .cxs.guardada{color:var(--sol-forte);background:var(--sol-luz)}
+  .cxacts{display:flex;gap:1.1rem;margin-top:.5rem}
+  .cxacts button{background:none;border:0;cursor:pointer;color:var(--corpo);font-family:var(--sans);font-size:.82rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:.2rem 0;min-height:32px}
+  .cxacts button:hover{color:var(--tinta)}
+  .cxtexto{display:none;margin:.6rem 0 0;padding:.9rem 1rem;background:var(--sup);border:1px solid var(--linha);border-radius:var(--rb);font-family:var(--serif);font-size:.94rem;line-height:1.55;color:var(--tinta);white-space:pre-wrap}
+  .cxtexto.open{display:block}
+  /* Estado vazio */
+  .cxempty{padding:1.4rem 0;text-align:left}
+  .cxempty .cxe-title{font-family:var(--serif);font-style:italic;font-size:clamp(1.14rem,4vw,1.4rem);color:var(--vida-profundo);line-height:1.3;margin:0 0 1rem}
+  /* Eco do slogan no rodapé da tela */
+  #carta-ov .cxecho{font-family:var(--serif);font-style:italic;color:var(--suave);font-size:.98rem;line-height:1.4;text-align:center;margin:1.2rem 0 0;padding-top:1.2rem;border-top:1px solid var(--linha)}
 
   @media(prefers-reduced-motion:reduce){
     .cstep,.cstep .fade-seq{transition:none;opacity:1;transform:none}
@@ -717,6 +759,14 @@
     </div>
   </div></section>
 
+  <!-- Faixa-manifesto · pausa filosófica antes da vitrine dos planos -->
+  <aside class="manifesto sr" aria-label="Manifesto">
+    <div class="wrap">
+      <p class="mf-frase">A felicidade não tá na vitrine — tá em não precisar dela.</p>
+      <p class="mf-sub">O dinheiro é a coisa mais importante entre as menos importantes.</p>
+    </div>
+  </aside>
+
   <!-- VI · PLANOS -->
   <section id="planos"><div class="wrap sr">
     <div class="folio"><span class="n">VI</span><span class="t">Planos</span></div>
@@ -886,6 +936,7 @@
         <a href="#planos">Ouvidoria do Além</a>
         <a href="tel:188">CVV — 188</a>
         <a href="transparencia.html">Cofre de Vidro</a>
+        <a href="#" id="footer-extrato">Meu extrato de afetos</a>
       </div>
     </div>
     <p class="disc"><b>Banco do Além</b> cuida do que realmente atravessa a vida, desde 1917. · Este é um projeto independente, sem fins lucrativos. Não é uma instituição financeira autorizada pelo Banco Central, não capta recursos, não realiza operações financeiras e não transfere valores a terceiros. Nenhum dado digitado sai do seu aparelho. · <em>O dinheiro é a coisa mais importante entre as menos importantes.</em></p>
@@ -1259,6 +1310,20 @@
     cOv.focus();
     renderOpening();
   }
+  /* Abre o overlay direto no Extrato de Afetos (espelha openCarta na parte de
+     abrir/inertizar/foco/scroll-lock; só muda o estado inicial exibido). */
+  function openExtrato(opts){
+    opts=opts||{};
+    cReduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    cLastFocus=opts.trigEl||document.activeElement;
+    cState={trigger:'B',answers:{},nome:'',rel:'',relOther:'',assinou:'',sent:false,_deposited:false,seed:Math.floor(Math.random()*1e9)};
+    cOv.classList.add('on');cOv.scrollTop=0;
+    document.body.style.overflow='hidden';
+    setBgInert(true);
+    document.addEventListener('keydown',cKey);
+    cOv.focus();
+    renderExtrato();
+  }
   function closeCarta(){
     cOv.classList.remove('on');
     document.body.style.overflow='';
@@ -1488,6 +1553,79 @@
       .replace(/(\+?55[\s]?)?\(?\d{2}\)?[\s.-]?9?\d{4}[\s.-]?\d{4}/g,'[removido]')
       .replace(/\d{10,}/g,'[removido]');
   }
+
+  /* ============================================================
+     EXTRATO DE AFETOS — patrimônio sentimental, 100% no aparelho.
+     localStorage privado, sempre em try/catch (modo privado pode
+     bloquear). O texto guardado passa SEMPRE por redactSensitive.
+     ============================================================ */
+  var EXTRATO_KEY='alem_extrato_v1', EXTRATO_MAX=60;
+  function extratoLoad(){
+    try{
+      var raw=localStorage.getItem(EXTRATO_KEY);
+      if(!raw)return [];
+      var arr=JSON.parse(raw);
+      return Array.isArray(arr)?arr:[];
+    }catch(e){return [];}
+  }
+  function extratoSave(entry){
+    try{
+      var arr=extratoLoad();
+      arr.unshift(entry);
+      if(arr.length>EXTRATO_MAX)arr=arr.slice(0,EXTRATO_MAX);
+      localStorage.setItem(EXTRATO_KEY,JSON.stringify(arr));
+    }catch(e){/* modo privado / cota — silencioso, o app não depende disto */}
+  }
+  /* Salva o depósito atual UMA vez por sessão. status: 'entregue' | 'guardada'. */
+  function saveDeposit(status){
+    if(cState._deposited)return;
+    cState._deposited=true;
+    extratoSave({
+      para:(cState.nome||'alguém que você ama'),
+      rel:(cState.rel==='__outra'?(cState.relOther||''):(cState.rel||cState.relOther||'')),
+      data:Date.now(),
+      status:status,
+      texto:redactSensitive(buildLetterText(false))
+    });
+  }
+  /* Frase de saldo — calorosa, personalizada, valor≠preço. Nunca um número. */
+  function saldoFrase(entries){
+    entries=entries||[];
+    var n=entries.length;
+    /* nomes únicos, preservando a ordem (mais recentes primeiro) */
+    var seen={}, nomes=[];
+    entries.forEach(function(e){
+      var p=(e&&e.para?String(e.para):'').trim();
+      if(!p)return;
+      var k=p.toLocaleLowerCase('pt-BR');
+      if(!seen[k]){seen[k]=true;nomes.push(p);}
+    });
+    var abre;
+    if(n<=0){
+      abre='Seu extrato ainda está em branco — mas o primeiro depósito é sempre o mais corajoso.';
+    }else if(nomes.length===1){
+      abre=nomes[0]+' já ouviu o que estava preso no seu peito.';
+    }else if(nomes.length===2){
+      abre=nomes[0]+' e '+nomes[1]+' já souberam o que você sente.';
+    }else if(nomes.length>=3){
+      abre=nomes.length+' pessoas que você ama já ouviram o que quase ficou sem ser dito.';
+    }else{
+      /* depósitos sem nome (usaram o fallback) — conta por quantidade */
+      abre=(n===1)
+        ? 'Uma pessoa que você ama já ouviu o que estava preso no seu peito.'
+        : n+' pessoas que você ama já ouviram o que quase ficou sem ser dito.';
+    }
+    /* fecho valor≠preço, com leve variação semeada na sessão */
+    var fechos=[
+      'Em preço, seu saldo é R$ 0,00. Em valor, é incontável — porque mensagem tem valor, não preço.',
+      'Em preço, isto vale R$ 0,00. Em valor, é impossível de somar — mensagem tem valor, não preço.',
+      'Nenhum banco consegue precificar este saldo: em reais, é R$ 0,00; em valor, é incontável — porque mensagem tem valor, não preço.'
+    ];
+    var salt=((cState&&cState.seed)||0);
+    var fecho=fechos[((salt%fechos.length)+fechos.length)%fechos.length];
+    return abre+' '+fecho;
+  }
+
   function buildLetterText(bare){
     var a=cState.answers;
     var parts=[];
@@ -1609,11 +1747,12 @@
       +'</div>'
       +'<div class="cpriv"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Nada do que você escreveu passou pela gente. A carta foi montada aqui no seu aparelho e sai direto pra pessoa — o banco nunca vê, nunca guarda, nunca lê.</span></div>'
       +'<p class="ctoast" id="c-toast" role="status"></p>'
-      +'<div class="cactions"><div class="csecondary"><button class="clink" id="c-back" type="button">&larr; Voltar pra carta</button><button class="clink quiet" id="c-exit" type="button">Guardar comigo</button></div></div>';
+      +'<div class="cactions"><div class="csecondary"><button class="clink" id="c-back" type="button">&larr; Voltar pra carta</button><button class="clink quiet" id="c-exit" type="button">Guardar comigo</button></div>'
+      +'<div class="csecondary" style="margin-top:.2rem"><button class="clink quiet" id="c-extrato" type="button">Ver meu extrato de afetos</button></div></div>';
     mount(s);
     cAnnounce('Sua declaração está pronta para entregar.');
     var toast=s.querySelector('#c-toast');
-    function markSent(){cState.sent=true;}
+    function markSent(){cState.sent=true;saveDeposit('entregue');}
     s.querySelector('#c-wa').addEventListener('click',function(){
       markSent();
       window.open('https://wa.me/?text='+encodeURIComponent(letterForSend()),'_blank','noopener');
@@ -1631,6 +1770,7 @@
     });
     s.querySelector('#c-back').addEventListener('click',renderLetter);
     s.querySelector('#c-exit').addEventListener('click',gotoExit);
+    s.querySelector('#c-extrato').addEventListener('click',renderExtrato);
   }
 
   /* copiar com fallback execCommand */
@@ -1650,24 +1790,116 @@
   }
 
   /* ---------------- [8] SAÍDA SEM CULPA ---------------- */
+  function hasAnyAnswer(){var a=(cState&&cState.answers)||{};return !!(a.cena||a.divida||a.espelho||a.frase);}
   function gotoExit(){
     clearT();
+    /* Se a pessoa escreveu algo e não chegou a enviar, o depósito fica guardado
+       no extrato (uma vez por sessão; se já foi 'entregue', saveDeposit não repete). */
+    if(!cState.sent && hasAnyAnswer()){saveDeposit('guardada');}
     var s=el('div','cstep cexit');
+    var extratoLink='<div class="csecondary" style="margin-top:.4rem"><button class="clink quiet" id="c-extrato" type="button">Ver meu extrato de afetos</button></div>';
     if(cState.sent){
       s.innerHTML='<h2 class="ctitle" id="carta-title">Entregue.</h2>'
         +'<p class="clead">Pronto. Você disse. O que ela faz com isso é dela — o seu trabalho, o mais difícil, você já fez.</p>'
-        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div></div>';
+        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div>'+extratoLink+'</div>';
     }else{
       s.innerHTML='<h2 class="ctitle" id="carta-title">Sua declaração está guardada com você.</h2>'
         +'<p class="clead">Não tem prazo. Não tem cobrança. Esse saldo não expira — é o único que não expira mesmo. Quando você sentir que é a hora, ele vai estar aqui, do mesmo jeito.</p>'
         +'<p class="csmall">Coisa importante não tem pressa. Só não pode ser esquecida.</p>'
-        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div></div>';
+        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div>'+extratoLink+'</div>';
     }
     mount(s,'carta-title');
     cAnnounce(cState.sent?'Entregue.':'Sua declaração está guardada com você.');
     s.querySelector('#c-return').addEventListener('click',closeCarta);
+    s.querySelector('#c-extrato').addEventListener('click',renderExtrato);
   }
   function returnLabel(){return cState.trigger==='C'?'Voltar':'Voltar pro meu plano';}
+
+  /* ---------------- [9] EXTRATO DE AFETOS ---------------- */
+  var SLOGAN='A felicidade não tá na vitrine — tá em não precisar dela.';
+  function fmtDataBR(ts){try{return new Date(ts).toLocaleDateString('pt-BR');}catch(e){return '';}}
+  function renderExtrato(){
+    var entries=extratoLoad();
+    var s=el('div','cstep cextrato');
+    var html='<h2 class="ctitle" id="carta-title">Meu Extrato de Afetos</h2>'
+      +'<p class="csmall" style="margin:.2rem 0 0">O único banco que guarda o que não tem preço. Este é o seu patrimônio sentimental — só seu, só neste aparelho.</p>';
+    /* Cartão de saldo */
+    html+='<div class="csaldo"><div class="stop"></div><div class="sin">'
+      +'<p class="slbl">Saldo da sua conta de afetos</p>'
+      +'<div class="srow"><span class="sk">Saldo em preço</span><span class="sv tnum">R$ 0,00</span></div>'
+      +'<div class="srow hi"><span class="sk">Saldo em valor</span><span class="sv">incontável</span></div>'
+      +'<p class="sfrase">'+esc(saldoFrase(entries))+'</p>'
+      +'</div></div>';
+    if(!entries.length){
+      /* estado vazio */
+      html+='<div class="cxempty">'
+        +'<p class="cxe-title">Você ainda não guardou nenhum depósito. O primeiro é o mais corajoso.</p>'
+        +'<div class="cactions" style="padding-top:0"><div class="row"><button class="btn btn-sol" id="cx-first" type="button">Fazer meu primeiro depósito</button></div></div>'
+        +'</div>';
+    }else{
+      html+='<div class="cxlist">';
+      entries.forEach(function(e,i){
+        var rel=(e&&e.rel?String(e.rel):'').trim();
+        var para=esc((e&&e.para?String(e.para):'alguém que você ama'));
+        var relTxt=rel?' <span class="cxrel">('+esc(rel)+')</span>':'';
+        var status=(e&&e.status==='entregue')?'entregue':'guardada';
+        html+='<div class="cxitem">'
+          +'<div class="cxhead">'
+          +'<span class="cxd tnum">'+esc(fmtDataBR(e&&e.data))+'</span>'
+          +'<span class="cxp">Para '+para+relTxt+'</span>'
+          +'<span class="cxs '+status+'">'+status+'</span>'
+          +'</div>'
+          +'<div class="cxacts">'
+          +'<button type="button" class="cx-reler" data-i="'+i+'" aria-expanded="false">reler</button>'
+          +'<button type="button" class="cx-reenviar" data-i="'+i+'">reenviar</button>'
+          +'</div>'
+          +'<div class="cxtexto" id="cx-txt-'+i+'">'+esc((e&&e.texto)||'')+'</div>'
+          +'</div>';
+      });
+      html+='</div>';
+    }
+    /* ações e eco do slogan */
+    html+='<div class="cactions"><div class="row">'
+      +'<button class="btn btn-sol" id="cx-more" type="button">Escrever para mais alguém</button>'
+      +'<button class="btn btn-ghost" id="cx-close" type="button">Fechar</button>'
+      +'</div></div>'
+      +'<p class="cxecho">'+esc(SLOGAN)+'</p>';
+    s.innerHTML=html;
+    mount(s,'carta-title');
+    cAnnounce('Meu Extrato de Afetos. '+saldoFrase(entries));
+    /* estado vazio: leva a começar uma declaração */
+    var first=s.querySelector('#cx-first');
+    if(first){first.addEventListener('click',restartDeclaration);}
+    /* reler: mostra/oculta o texto guardado */
+    Array.prototype.forEach.call(s.querySelectorAll('.cx-reler'),function(b){
+      b.addEventListener('click',function(){
+        var box=s.querySelector('#cx-txt-'+b.getAttribute('data-i'));
+        if(!box)return;
+        var open=box.classList.toggle('open');
+        b.setAttribute('aria-expanded',open?'true':'false');
+        b.textContent=open?'ocultar':'reler';
+      });
+    });
+    /* reenviar: abre o WhatsApp com o texto guardado (já redigido) */
+    Array.prototype.forEach.call(s.querySelectorAll('.cx-reenviar'),function(b){
+      b.addEventListener('click',function(){
+        var e=entries[parseInt(b.getAttribute('data-i'),10)];
+        var txt=(e&&e.texto)||'';
+        if(!txt)return;
+        window.open('https://wa.me/?text='+encodeURIComponent(redactSensitive(txt)),'_blank','noopener');
+      });
+    });
+    var more=s.querySelector('#cx-more');
+    if(more){more.addEventListener('click',restartDeclaration);}
+    var close=s.querySelector('#cx-close');
+    if(close){close.addEventListener('click',closeCarta);}
+  }
+  /* Reinicia uma nova declaração mantendo o overlay aberto */
+  function restartDeclaration(){
+    cState.answers={};cState.nome='';cState.rel='';cState.relOther='';cState.assinou='';cState.sent=false;cState._deposited=false;
+    cLetterEl=null;
+    renderRecipient();
+  }
 
   /* ---------------- GATILHOS ---------------- */
   /* A: "Escolher [plano]" (tabela + cards) e o botão da seção Segurança.
@@ -1696,6 +1928,9 @@
         openCarta(trig,{trigEl:inPanel?burger:b});
       });
     });
+    /* Rodapé: "Meu extrato de afetos" abre o overlay direto no extrato */
+    var footExtrato=document.getElementById('footer-extrato');
+    if(footExtrato){footExtrato.addEventListener('click',function(e){e.preventDefault();openExtrato({trigEl:footExtrato});});}
   }
   wireTriggers();
 
