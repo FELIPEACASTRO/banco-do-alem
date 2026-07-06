@@ -4,395 +4,1049 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Banco do Além — a instituição que cuida do que realmente atravessa a vida. Uma obra de arte, não uma instituição financeira.">
+<meta name="description" content="Banco do Além — patrimônio privado dedicado à sua transferência ao Além. Deposite em vida, receba na eternidade, com o cuidado de quem cuida do que é seu há mais de um século.">
 <meta name="theme-color" content="#FCFAF5">
 <title>Banco do Além</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* Luz / superfícies */
     --luz:#FCFAF5; --luz-2:#F5F0E6; --sup:#FFFFFF; --cinza-lixao:#E7E4DB;
+    /* Tinta / texto */
+    --tinta:#26312B; --corpo:#495049; --suave:#5F6A62; --linha:#E9E5DB;
+    /* Sol (marca) */
     --sol:#FFB627; --sol-forte:#F59E0B; --sol-luz:#FFE7B0;
+    /* Vida (verde) */
     --vida:#2FBF71; --vida-profundo:#127A48; --vida-fundo:#E3F6EA;
+    /* Afeto (coral) */
     --afeto:#FF7A66; --afeto-forte:#F2593F; --afeto-luz:#FFE0D8;
-    --tinta:#26312B; --corpo:#495049; --suave:#7C877F; --linha:#E9E5DB;
+    /* Sobre amarelo (contraste AA) */
+    --sobre-sol:#4A3610;
+    /* Rodapé escuro */
+    --rodape-txt:#C9CFC9; --rodape-tit:#8A928A; --rodape-linha:#3A443C;
+    /* Gradiente amanhecer (revelação — uso ÚNICO) */
     --amanhecer:linear-gradient(135deg,#FFE7B0 0%,#FFD08A 30%,#FF9E7D 65%,#FF7A66 100%);
+    /* Fontes */
     --serif:"Fraunces",Georgia,"Times New Roman",serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    /* Raios */
+    --r:22px; --rb:14px; --ri:12px;
+    /* Sombras (coloridas, nunca pretas) */
     --shadow:0 12px 40px rgba(245,158,11,.10),0 2px 8px rgba(38,49,43,.04);
     --shadow-v:0 12px 40px rgba(47,191,113,.12);
-    --r:22px; --rb:14px;
+    --shadow-hi:0 20px 60px rgba(245,158,11,.16),0 4px 12px rgba(38,49,43,.06);
+    /* Motion */
+    --ease-vida:cubic-bezier(0.16,1,0.3,1);
+    /* Espaçamento base-8 fluido */
+    --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.4rem; --s5:2rem; --s6:3rem; --s7:4rem; --s8:6rem;
   }
   *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+  h1,h2,h3,h4{font-family:var(--serif);margin:0;text-wrap:balance}
+  h1,h2,h3{line-height:1.06;letter-spacing:-.02em}
   p{margin:0 0 1rem;color:var(--corpo)}
+  a{color:var(--sol-forte)}
+  img,svg{max-width:100%}
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte)}
+  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin:0}
   .tnum{font-variant-numeric:tabular-nums}
+  .italic{font-style:italic}
   :focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
+  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-  nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
-  nav .wrap{display:flex;align-items:center;gap:1.5rem;height:66px}
-  .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--tinta);margin-right:auto;letter-spacing:-.01em}
-  .logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .logo .mk svg{width:26px;height:30px}
-  .navlinks{display:flex;gap:1.7rem}
-  .navlinks a{color:var(--corpo);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
-  .navlinks a:hover{color:var(--vida-profundo)}
-  .btn{display:inline-flex;align-items:center;gap:.5rem;border:0;border-radius:var(--rb);font-family:var(--sans);font-weight:600;font-size:.95rem;cursor:pointer;text-decoration:none;padding:.75rem 1.4rem;transition:transform .18s,box-shadow .2s,filter .2s}
+  /* ---------- Grão global (§2.6) ---------- */
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.035}
+  .grain svg{width:100%;height:100%}
+
+  /* ---------- Fólio romano (§4) ---------- */
+  .folio{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1.6rem;font-family:var(--serif);color:var(--suave)}
+  .folio .n{font-size:.9rem;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+  .folio .t{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+  .folio::before{content:"";flex:0 0 34px;height:1px;background:var(--sol-forte);opacity:.5;align-self:center}
+
+  /* ---------- Botões ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:var(--rb);font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.01em;cursor:pointer;text-decoration:none;height:52px;padding:0 1.5rem;transition:transform .2s var(--ease-vida),box-shadow .22s var(--ease-vida),filter .2s,border-color .2s,color .2s}
+  .btn-sm{height:auto;padding:.55rem 1rem;font-size:.84rem}
   .btn-p{background:var(--tinta);color:var(--luz)}
-  .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(38,49,43,.18)}
-  .btn-sol{background:var(--sol);color:#4A3610}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(38,49,43,.20);filter:brightness(1.08)}
+  .btn-sol{background:var(--sol);color:var(--sobre-sol)}
   .btn-sol:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 10px 28px rgba(245,158,11,.28)}
   .btn-vida{background:var(--vida);color:#fff}
   .btn-vida:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(47,191,113,.3)}
-  .btn-ghost{background:transparent;color:var(--tinta);border:1.5px solid var(--linha)}
-  .btn-ghost:hover{border-color:var(--sol);color:var(--sol-forte)}
-  @media(max-width:760px){.navlinks{display:none}}
+  .btn-afeto{background:var(--afeto);color:#fff}
+  .btn-afeto:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,122,102,.34)}
+  .btn-ghost{background:transparent;color:var(--tinta);border:1px solid var(--linha)}
+  .btn-ghost:hover{border-color:var(--sol-forte);color:var(--sol-forte);transform:translateY(-2px)}
 
-  .hero{padding:4.5rem 0 3.5rem;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(255,182,39,.14),transparent 62%);pointer-events:none}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;position:relative}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:2rem}}
-  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);color:var(--tinta)}
-  .hero h1 em{font-style:italic;color:var(--vida-profundo)}
-  .hero .lead{font-size:1.2rem;margin-top:1.4rem;max-width:34ch}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
-  .trust{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:2.4rem;align-items:center;color:var(--suave);font-size:.82rem}
-  .trust b{color:var(--vida-profundo)}
-  .acct{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow);padding:1.6rem;border:1px solid var(--linha)}
-  .acct .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
-  .acct .top .who{font-size:.82rem;color:var(--suave)}
-  .acct .top .who b{color:var(--tinta);font-weight:600;display:block;font-size:1rem}
-  .acct .bal{font-size:.78rem;color:var(--suave);letter-spacing:.04em;text-transform:uppercase}
-  .acct .bal-v{font-family:var(--serif);font-size:2.4rem;font-weight:600;color:var(--tinta);line-height:1.1;margin:.2rem 0 .1rem}
-  .acct .bal-sub{font-size:.86rem;color:var(--vida-profundo);font-weight:500}
-  .acct .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.4rem}
-  .acct .qa{background:var(--luz);border-radius:14px;padding:.9rem .6rem;text-align:center;border:1px solid var(--linha)}
-  .acct .qa .ic{width:34px;height:34px;border-radius:10px;background:var(--vida-fundo);display:flex;align-items:center;justify-content:center;margin:0 auto .4rem}
-  .acct .qa .ic.s{background:var(--sol-luz)} .acct .qa .ic.a{background:var(--afeto-luz)}
-  .acct .qa span{font-size:.74rem;color:var(--corpo);font-weight:500}
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+  nav.scrolled{border-bottom-color:var(--linha);box-shadow:0 2px 20px rgba(38,49,43,.04)}
+  nav .wrap{display:flex;align-items:center;gap:1.5rem;height:68px}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--tinta);margin-right:auto;letter-spacing:-.01em}
+  .logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .logo .mk svg{width:26px;height:30px}
+  .logo .mk .spark{transform-origin:24px 9px;animation:twinkle 5.5s var(--ease-vida) infinite}
+  @keyframes twinkle{0%,88%,100%{opacity:1}92%{opacity:.55}}
+  .navlinks{display:flex;gap:1.6rem;align-items:center}
+  .navlinks a{color:var(--corpo);text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;position:relative;padding:.2rem 0}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--sol-forte);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-vida)}
+  .navlinks a:hover::after,.navlinks a:focus-visible::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:1.1rem}
+  .nav-enter{color:var(--corpo);text-decoration:none;font-size:.84rem;font-weight:600}
+  .nav-enter:hover{color:var(--tinta)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:.4rem;color:var(--tinta)}
+  .burger svg{display:block}
 
-  section{padding:4rem 0}
-  .sec-head{max-width:44ch;margin-bottom:2.4rem}
-  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);color:var(--tinta)}
-  .sec-head p{margin-top:.6rem;font-size:1.08rem}
+  /* Painel mobile */
+  .m-panel{position:fixed;inset:0;z-index:60;background:var(--luz);transform:translateX(100%);transition:transform .35s var(--ease-vida);display:flex;flex-direction:column;padding:1.4rem clamp(1.2rem,6vw,2rem)}
+  .m-panel.open{transform:translateX(0)}
+  .m-panel .m-top{display:flex;align-items:center;justify-content:space-between;height:44px}
+  .m-panel a{display:block;font-family:var(--serif);font-size:1.6rem;color:var(--tinta);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--linha)}
+  .m-panel .m-cta{margin-top:auto;padding:1.4rem 0}
+  .m-panel a.btn-p{color:var(--luz);border-bottom:none;text-align:center}
 
-  .prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.1rem}
-  .prod{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.6rem;transition:transform .22s,box-shadow .22s}
-  .prod:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .prod .pic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-  .prod .pic.v{background:var(--vida-fundo)} .prod .pic.s{background:var(--sol-luz)} .prod .pic.a{background:var(--afeto-luz)}
-  .prod h3{font-size:1.25rem;margin-bottom:.4rem}
-  .prod p{font-size:.92rem;margin:0}
+  /* ---------- HERO (I) ---------- */
+  .hero{padding:var(--s7) 0 var(--s6);position:relative;overflow:hidden;z-index:2}
+  .hero::before{content:"";position:absolute;top:-30%;right:-8%;width:52%;height:120%;background:radial-gradient(circle,rgba(255,182,39,.13),transparent 62%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4rem);align-items:center;position:relative}
+  .hero-l{padding-left:clamp(0px,4vw,3.2rem)}
+  .hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:400;line-height:.98;color:var(--tinta);margin-top:1rem}
+  .hero h1 .verdade{display:inline-block;font-style:italic;font-weight:400;color:var(--vida-profundo);position:relative}
+  .hero h1 .verdade::after{content:"";position:absolute;left:0;bottom:.02em;width:100%;height:2px;background:var(--sol-forte);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-vida) .55s}
+  .loaded .hero h1 .verdade::after{transform:scaleX(1)}
+  .hero .lead{font-size:1.2rem;line-height:1.55;margin-top:1.6rem;max-width:38ch;color:var(--corpo)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
 
+  /* Cartão de conta (a prova) */
+  .acct{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow-hi);padding:1.5rem 1.5rem 1.2rem;border:1px solid var(--linha);transform:rotate(-.4deg);position:relative}
+  @media(min-width:861px){.acct{margin-right:-24px}}
+  .acct .a-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.3rem}
+  .acct .a-top .who{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave)}
+  .acct .a-top .who b{display:block;color:var(--tinta);font-weight:600;font-size:.95rem;letter-spacing:0;text-transform:none;margin-top:.15rem}
+  .acct .op{display:flex;align-items:center;gap:.35rem;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--vida-profundo);font-weight:600}
+  .acct .op .dot{width:7px;height:7px;border-radius:50%;background:var(--vida);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(47,191,113,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(47,191,113,0)}}
+  .acct .a-out{margin-top:.35rem;font-size:.68rem;color:var(--suave);text-decoration:none;display:block;text-align:right}
+  .acct .a-out:hover{color:var(--tinta)}
+  .acct .bal-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave)}
+  .acct .bal-v{font-family:var(--serif);font-size:clamp(2rem,3.2vw,2.6rem);font-weight:500;color:var(--tinta);line-height:1;letter-spacing:-.01em;margin:.35rem 0 .15rem;cursor:default}
+  .acct .conta{font-size:.72rem;letter-spacing:.08em;color:var(--suave);font-weight:500}
+  .acct .spark{margin:1rem 0 .3rem}
+  .acct .spark svg{display:block;width:100%;height:44px}
+  .acct .spark .line{fill:none;stroke:var(--sol-forte);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .acct .spark-lbl{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+  .acct .consult{display:inline-block;margin-top:.7rem;font-size:.8rem;font-weight:600;color:var(--sol-forte);text-decoration:none}
+  .acct .consult:hover{text-decoration:underline;text-underline-offset:3px}
+  .acct .chips-row{display:flex;gap:.5rem;margin-top:1.1rem}
+  .acct .qchip{flex:1;display:flex;flex-direction:column;align-items:center;gap:.35rem;background:var(--luz);border:1px solid var(--linha);border-radius:var(--rb);padding:.7rem .3rem;font-size:.68rem;color:var(--corpo);font-weight:500}
+  .acct .qchip svg{stroke:var(--suave)}
+  .acct .ticker{margin:1.1rem -1.5rem -1.2rem;border-top:1px solid var(--linha);overflow:hidden;background:var(--luz)}
+  .acct .ticker span{display:inline-block;white-space:nowrap;font-size:.7rem;letter-spacing:.04em;color:var(--suave);padding:.6rem 0;animation:tick 22s linear infinite}
+  @keyframes tick{from{transform:translateX(6%)}to{transform:translateX(-100%)}}
+
+  /* Faixa de solidez */
+  .solidez{border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);margin-top:var(--s6)}
+  .solidez .wrap{display:flex;flex-wrap:wrap;align-items:center}
+  .solidez .cell{flex:1 1 auto;padding:1.1rem 1.4rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);font-weight:600;position:relative;text-align:center}
+  .solidez .cell + .cell{border-left:1px solid var(--linha)}
+  .solidez .cell b{color:var(--tinta);font-weight:700}
+
+  /* ---------- Seções ---------- */
+  section{padding:var(--s8) 0;position:relative;z-index:2}
+  .sec-head{max-width:46ch;margin-bottom:var(--s5)}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;color:var(--tinta)}
+  .sec-head p{margin-top:.7rem;font-size:1.08rem}
+
+  /* II · CARTA */
+  .carta{background:var(--luz)}
+  .carta .col{max-width:36rem;margin-left:clamp(0px,6vw,4rem)}
+  .carta .body{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.42;color:var(--tinta);font-weight:400;letter-spacing:-.01em}
+  .carta .body .cap{float:left;font-family:var(--serif);font-size:4.4rem;line-height:.72;font-weight:400;color:var(--sol-forte);margin:.28rem .55rem 0 0}
+  .carta .body em{font-style:italic;color:var(--vida-profundo)}
+  .carta .sig{margin-top:2rem;display:flex;flex-direction:column;gap:.4rem}
+  .carta .sig svg{width:200px;height:56px}
+  .carta .sig .who{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:600}
+
+  /* III · PRODUTOS (linhas de sumário) */
+  .prod-list{border-top:1px solid var(--linha)}
+  .prod{display:grid;grid-template-columns:auto minmax(11rem,1.1fr) 2fr auto;gap:clamp(1rem,3vw,2.4rem);align-items:baseline;padding:1.8rem 0;border-bottom:1px solid var(--linha);transition:background .25s}
+  .prod:hover{background:linear-gradient(90deg,rgba(255,231,176,.16),transparent 70%)}
+  .prod.afeto{border-bottom:2px solid var(--afeto)}
+  .prod .rn{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--sol-forte);font-variant-numeric:tabular-nums}
+  .prod h3{font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:500;color:var(--tinta)}
+  .prod .desc{font-size:.98rem;color:var(--corpo);margin:0;line-height:1.5}
+  .prod .desc em{font-style:italic;color:var(--vida-profundo)}
+  .prod .more{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sol-forte);text-decoration:none;white-space:nowrap}
+  .prod .more:hover{text-decoration:underline;text-underline-offset:3px}
+
+  /* IV · SEGURANÇA */
+  .seg{background:var(--luz-2)}
+  .seg-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .proofs{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.1rem}
+  .proofs li{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;padding-bottom:1.1rem;border-bottom:1px solid var(--linha)}
+  .proofs li:last-child{border-bottom:0;padding-bottom:0}
+  .proofs .seal{width:34px;height:34px;border:1px solid var(--sol-forte);border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;opacity:.85}
+  .proofs .seal svg{stroke:var(--sol-forte)}
+  .proofs b{display:block;font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--tinta);letter-spacing:-.01em}
+  .proofs span{font-size:.9rem;color:var(--corpo)}
+  .cert{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.8rem;position:relative;box-shadow:var(--shadow);background-image:repeating-linear-gradient(-.3deg,rgba(233,229,219,.5) 0,rgba(233,229,219,.5) 1px,transparent 1px,transparent 26px)}
+  .cert .ct{font-family:var(--serif);font-size:1.15rem;color:var(--tinta);font-weight:500}
+  .cert .cs{font-size:.86rem;color:var(--corpo);margin:.5rem 0 0}
+  .cert .stamp{position:absolute;top:1.4rem;right:1.2rem;transform:rotate(-4deg)}
+  .cert .stamp .box{border:2px solid var(--sol-forte);border-radius:6px;padding:.35rem .7rem;color:var(--sol-forte);font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-align:center;line-height:1.15;opacity:.9}
+  .cert .ponte{margin:1.4rem 0 0;font-size:.86rem;color:var(--suave);font-style:italic}
+
+  /* V · NÚMEROS */
+  .nums{background:var(--luz);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .nums .wrap{padding-top:var(--s7);padding-bottom:var(--s7)}
+  .nums-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.6rem,5vw,3.5rem) clamp(2rem,6vw,5rem)}
+  .metric{display:flex;flex-direction:column}
+  .metric.b{align-self:end}
+  .metric.b .fig{font-size:clamp(1.9rem,4vw,3rem)}
+  .metric .fig{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;color:var(--tinta);line-height:1;letter-spacing:-.02em}
+  .metric .fig .u{color:var(--sol-forte)}
+  .metric .lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:600;margin-top:.6rem}
+
+  /* VI · PLANOS */
   #planos{background:linear-gradient(180deg,var(--luz),var(--luz-2))}
-  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:1.2rem;align-items:stretch}
-  .plan{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.7rem 1.5rem;display:flex;flex-direction:column;position:relative;transition:transform .22s,box-shadow .22s}
-  .plan:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .plan.top{border:2px solid var(--sol);box-shadow:0 16px 44px rgba(245,158,11,.16)}
-  .plan .flag{position:absolute;top:-11px;left:1.5rem;background:var(--sol);color:#4A3610;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px}
-  .plan .tier{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--tinta)}
-  .plan .from{font-size:.86rem;color:var(--suave);margin:.3rem 0 .1rem}
-  .plan .val{font-size:1.5rem;font-weight:700;color:var(--vida-profundo);font-family:var(--serif)}
-  .plan .val small{font-size:.9rem;color:var(--suave);font-weight:400}
-  .plan ul{list-style:none;padding:0;margin:1.1rem 0 1.4rem;display:flex;flex-direction:column;gap:.62rem;flex:1}
-  .plan li{padding-left:1.6rem;position:relative;font-size:.88rem;color:var(--corpo);line-height:1.42}
-  .plan li::before{content:"";position:absolute;left:0;top:.3em;width:15px;height:15px;border-radius:50%;background:var(--vida-fundo);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-6' stroke='%23127A48' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-  .plan .btn{width:100%;justify-content:center}
-  .plan-note{text-align:center;color:var(--suave);font-size:.86rem;margin-top:1.6rem;max-width:48ch;margin-left:auto;margin-right:auto}
+  .ptable{border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;background:var(--sup);box-shadow:var(--shadow)}
+  .ptable .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .pcol{padding:1.7rem 1.4rem;border-left:1px solid var(--linha);display:flex;flex-direction:column;position:relative}
+  .pcol:first-child{border-left:0}
+  .pcol.top{background:linear-gradient(180deg,#fffdf7,#fff);box-shadow:inset 0 0 0 2px var(--sol);z-index:1}
+  .pcol .flag{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--sol);color:var(--sobre-sol);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:0 0 999px 999px}
+  .pcol .tier{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--tinta);margin-top:.3rem}
+  .pcol .from{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);margin:.5rem 0 .1rem}
+  .pcol .price{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:var(--tinta);line-height:1;letter-spacing:-.01em}
+  .pcol .price .cur{font-size:.55em;color:var(--suave);font-weight:500;vertical-align:.35em;margin-right:.1em}
+  .pcol .price .cts{font-size:.55em;color:var(--suave)}
+  .pcol ul{list-style:none;padding:0;margin:1.3rem 0 1.6rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+  .pcol li{display:grid;grid-template-columns:1.1rem 1fr;gap:.55rem;font-size:.86rem;color:var(--corpo);line-height:1.4}
+  .pcol li .mk{font-weight:700;line-height:1.3}
+  .pcol li.yes .mk{color:var(--vida-profundo)}
+  .pcol li.no{color:var(--suave)}
+  .pcol li.no .mk{color:var(--suave)}
+  .pcol li b{color:var(--tinta);font-weight:600}
+  .pcol .btn{width:100%}
+  .plan-note{margin:1.8rem auto 0;max-width:56ch;text-align:center;color:var(--suave);font-size:.82rem;font-style:italic;line-height:1.5}
+  .plan-note .note-ic{vertical-align:-2px;margin-right:.2em;color:var(--suave)}
+  /* Cards de plano (mobile) */
+  .pcards{display:none}
 
+  /* VII · SIMULADOR */
   #transferir{background:var(--vida-fundo)}
-  .sim{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow-v);padding:2rem;max-width:38rem;margin:0 auto;border:1px solid #D3EEDD}
-  .sim .step-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--vida-profundo)}
-  .sim h3{font-size:1.5rem;margin:.3rem 0 .3rem}
+  .sim{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow-v);padding:clamp(1.6rem,4vw,2.4rem);max-width:38rem;margin:0 auto;border:1px solid #D3EEDD}
+  .sim .step-tag{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--vida-profundo);margin:0}
+  .sim h3{font-size:clamp(1.5rem,3vw,1.9rem);font-weight:500;margin:.4rem 0 .4rem}
+  .sim .sub{font-size:.94rem;margin:0;color:var(--corpo)}
   .sim .field{margin-top:1.2rem}
   .sim label{display:block;font-size:.82rem;font-weight:600;color:var(--corpo);margin-bottom:.4rem}
-  .sim input{width:100%;background:var(--luz);border:1.5px solid var(--linha);border-radius:12px;color:var(--tinta);font-family:var(--sans);font-size:1.15rem;font-weight:500;padding:.8rem .9rem;outline:none;transition:border-color .2s}
+  .sim label .opt{font-weight:400;color:var(--suave)}
+  .sim input{width:100%;background:var(--luz);border:1.5px solid var(--linha);border-radius:var(--ri);color:var(--tinta);font-family:var(--sans);font-size:1.12rem;font-weight:500;padding:.85rem .9rem;outline:none;transition:border-color .2s}
   .sim input:focus{border-color:var(--vida)}
   .sim input::placeholder{color:#B4B0A4}
-  .sim .btn{width:100%;justify-content:center;margin-top:1.5rem;font-size:1rem;padding:.95rem}
-  .sim .secure{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--suave);margin-top:1rem}
+  .sim .btn{width:100%;margin-top:1.6rem;font-size:1rem}
+  .sim .secure{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--suave);margin-top:1rem;text-align:center}
 
-  footer{background:var(--tinta);color:#C9CFC9;padding:3.5rem 0 3rem}
-  footer a{color:#C9CFC9}
-  footer .fgrid{display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;margin-bottom:2rem}
-  footer .fbrand{font-family:var(--serif);font-size:1.3rem;color:var(--luz);font-weight:600}
-  footer .fcol h4{font-family:var(--sans);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:#8A928A;margin:0 0 .8rem}
-  footer .fcol a{display:block;font-size:.9rem;text-decoration:none;margin-bottom:.5rem;opacity:.85}
-  footer .fcol a:hover{opacity:1;color:var(--sol-luz)}
-  footer .disc{border-top:1px solid #3A443C;padding-top:1.5rem;font-size:.78rem;color:#8A928A;line-height:1.6}
+  /* ---------- RODAPÉ (XI) ---------- */
+  footer{background:var(--tinta);color:var(--rodape-txt);padding:var(--s7) 0 var(--s5);position:relative;z-index:2}
+  footer a{color:var(--rodape-txt)}
+  .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.4rem}
+  .fbrand{display:flex;align-items:flex-start;gap:1rem}
+  .fbrand .fmk svg{width:32px;height:38px;display:block}
+  .fbrand .ft{font-family:var(--serif);font-size:1.3rem;color:var(--luz);font-weight:600;letter-spacing:-.01em}
+  .fbrand .fs{color:var(--rodape-tit);font-size:.86rem;margin:.4rem 0 0;max-width:26ch;line-height:1.5}
+  .fstamp{display:inline-block;transform:rotate(-6deg);margin-top:1rem;border:1.5px solid var(--rodape-tit);border-radius:5px;padding:.25rem .6rem;color:var(--rodape-tit);font-family:var(--serif);font-size:.62rem;font-weight:600;letter-spacing:.14em;opacity:.7}
+  .fcol h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rodape-tit);margin:0 0 .9rem;font-weight:700}
+  .fcol a{display:block;font-size:.9rem;text-decoration:none;margin-bottom:.55rem;opacity:.85;transition:opacity .2s,color .2s}
+  .fcol a:hover{opacity:1;color:var(--sol-luz)}
+  .disc{border-top:1px solid var(--rodape-linha);padding-top:1.6rem;font-size:.78rem;color:var(--rodape-tit);line-height:1.65;max-width:88ch}
+  .disc b{color:var(--rodape-txt)}
+  .disc em{font-style:italic}
+  .ffolio{margin-top:1.4rem;font-family:var(--serif);font-size:.78rem;letter-spacing:.16em;color:var(--rodape-tit);font-variant-numeric:tabular-nums}
 
-  #reveal{position:fixed;inset:0;z-index:100;display:none;overflow-y:auto;background:var(--luz)}
+  /* ---------- Scroll reveal ---------- */
+  .sr{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-vida),transform .7s var(--ease-vida)}
+  .sr.in{opacity:1;transform:none}
+
+  /* ---------- REVELAÇÃO (VIII–X) ---------- */
+  #reveal{position:fixed;inset:0;z-index:100;display:none;overflow-y:auto;background:var(--tinta);transition:background 2s ease}
   #reveal.on{display:block}
-  #reveal .stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 1.4rem;position:relative}
+  #reveal.lit{background:var(--luz)}
+  #reveal .stage{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 1.4rem;position:relative;gap:1.4rem}
   #reveal .dawn{position:fixed;inset:0;background:var(--amanhecer);opacity:0;transition:opacity 2s ease;pointer-events:none;z-index:-1}
   #reveal.lit .dawn{opacity:.5}
-  .rv{opacity:0;transform:translateY(16px);transition:opacity 1.1s ease,transform 1.1s ease}
+  .rv{opacity:0;transform:translateY(16px);transition:opacity 1.1s ease,transform 1.1s ease;width:100%;max-width:44rem;margin:0 auto}
   .rv.show{opacity:1;transform:none}
-  #reveal .proc{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--suave);font-weight:600}
-  #reveal .big{font-family:var(--serif);font-size:clamp(2.2rem,7vw,4.2rem);color:var(--tinta);font-weight:600}
-  #reveal .whisper{font-family:var(--serif);font-size:clamp(1.2rem,3vw,1.8rem);color:var(--vida-profundo);max-width:26ch;margin:0 auto;font-style:italic}
-  .receipt{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow);max-width:34rem;width:100%;margin:0 auto;text-align:left;overflow:hidden;border:1px solid var(--linha)}
-  .receipt .rh{padding:1.1rem 1.6rem;border-bottom:1px solid var(--linha);display:flex;justify-content:space-between;align-items:center}
-  .receipt .rh b{font-family:var(--serif);color:var(--tinta);font-weight:600}
-  .receipt .rh span{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--vida-profundo);background:var(--vida-fundo);padding:.25rem .6rem;border-radius:999px;font-weight:600}
+  #reveal .proc{display:flex;flex-direction:column;align-items:center;gap:1.2rem;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#B9C0BA;font-weight:600}
+  #reveal .arc{width:34px;height:34px;border:2px solid rgba(201,207,201,.28);border-top-color:#C9CFC9;border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #reveal .big{font-family:var(--serif);font-size:clamp(2.4rem,7vw,4.6rem);font-weight:400;line-height:1;letter-spacing:-.02em;color:var(--luz)}
+  #reveal.lit .big{color:var(--tinta)}
+  #reveal .whisper{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:500;line-height:1.3;color:var(--vida-profundo);max-width:26ch;margin:0 auto}
+  #reveal .skip{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:112;background:rgba(255,255,255,.9);border:1px solid var(--linha);color:var(--suave);border-radius:999px;padding:.4rem 1rem;font-size:.76rem;font-weight:600;cursor:pointer;font-family:var(--sans);display:none}
+  #reveal.on .skip{display:block}
+  #reveal .skip:hover{color:var(--tinta)}
+
+  /* Comprovante */
+  .receipt{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow);max-width:36rem;width:100%;margin:0 auto;text-align:left;overflow:hidden;border:1px solid var(--linha);background-image:repeating-linear-gradient(-.3deg,rgba(233,229,219,.35) 0,rgba(233,229,219,.35) 1px,transparent 1px,transparent 28px)}
+  .receipt .rh{padding:1.1rem 1.6rem;border-bottom:1px solid var(--linha);display:flex;justify-content:space-between;align-items:center;background:var(--sup)}
+  .receipt .rh b{font-family:var(--serif);color:var(--tinta);font-weight:500;font-size:1.05rem}
+  .receipt .rh .badge{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--vida-profundo);background:var(--vida-fundo);padding:.28rem .7rem;border-radius:999px;font-weight:700}
   .receipt .rb{padding:1.2rem 1.6rem}
-  .receipt .rr{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;font-size:.95rem;border-bottom:1px solid var(--linha)}
+  .receipt .rr{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;font-size:.95rem;border-bottom:1px dotted var(--linha)}
   .receipt .rr:last-child{border-bottom:0}
-  .receipt .rr .v{font-variant-numeric:tabular-nums;color:var(--suave);font-weight:500}
+  .receipt .rr .k{color:var(--corpo)}
+  .receipt .rr .v{font-variant-numeric:tabular-nums;color:var(--suave);font-weight:500;text-align:right}
   .receipt .rr.zero .v{color:var(--tinta);font-weight:700}
-  .receipt .rr.keep{color:var(--vida-profundo)} .receipt .rr.keep .v{color:var(--vida-profundo);font-weight:600}
+  .receipt .rr.keep .k{color:var(--vida-profundo)}
+  .receipt .rr.keep .v{color:var(--vida-profundo);font-weight:600;font-style:italic;font-family:var(--serif)}
+  /* Extrato de afetos */
+  .afx{padding:1rem 1.6rem;border-top:1px solid var(--linha);background:rgba(252,250,245,.6)}
+  .afx .ah{display:flex;justify-content:space-between;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:700;padding-bottom:.5rem;border-bottom:1px solid var(--linha)}
+  .afx .al{display:flex;justify-content:space-between;gap:1rem;font-size:.86rem;padding:.45rem 0;border-bottom:1px dotted var(--linha)}
+  .afx .al .d{color:var(--suave);font-variant-numeric:tabular-nums;flex:0 0 auto;width:3.4rem}
+  .afx .al .h{color:var(--corpo);flex:1}
+  .afx .al .v{font-family:var(--serif);color:var(--vida-profundo);font-weight:600;font-variant-numeric:tabular-nums;text-align:right;flex:0 0 auto}
+  .afx .al.sum{border-bottom:0;padding-top:.7rem;font-weight:600}
+  .afx .al.sum .h{color:var(--tinta);font-weight:700;letter-spacing:.02em;text-transform:uppercase;font-size:.72rem;align-self:center}
+  .afx .al.sum .v{font-style:italic;font-size:1.05rem}
+  .receipt .stampbox{display:flex;justify-content:flex-end;padding:.4rem 1.6rem 0}
+  .receipt .restamp{display:inline-block;position:relative;transform:rotate(-4deg);border:2px solid var(--afeto-forte);color:var(--afeto-forte);border-radius:6px;padding:.3rem .8rem;font-family:var(--serif);font-weight:600;letter-spacing:.14em;font-size:.8rem}
+  .receipt .restamp.pop{animation:pop .5s var(--ease-vida)}
+  @keyframes pop{0%{transform:rotate(-4deg) scale(1.15);opacity:0}60%{transform:rotate(-4deg) scale(1.05)}100%{transform:rotate(-4deg) scale(1);opacity:1}}
   .receipt .rf{padding:1rem 1.6rem;background:var(--vida-fundo);font-family:var(--serif);font-style:italic;color:var(--vida-profundo);font-size:.94rem}
-  .domingos{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin:1rem auto 0;max-width:28rem}
-  .dgd{width:6px;height:6px;border-radius:50%;background:var(--sol)}
-  .dgd.spent{background:var(--cinza-lixao)}
-  #reveal .ask input{width:100%;max-width:28rem;background:var(--sup);border:1.5px solid var(--linha);border-radius:12px;color:var(--tinta);font-family:var(--serif);font-size:1.3rem;text-align:center;padding:.7rem;outline:none}
+
+  /* Domingos */
+  .dom h3{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:500;color:var(--vida-profundo);letter-spacing:-.01em}
+  .domingos{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin:1.2rem auto 0;max-width:30rem}
+  .dgd{width:7px;height:7px;border-radius:50%;background:var(--sol);opacity:0;transform:scale(.5);transition:opacity .5s var(--ease-vida),transform .5s var(--ease-vida)}
+  .dgd.lit{opacity:1;transform:scale(1)}
+  .dgd.spent{background:var(--cinza-lixao);opacity:1;transform:scale(1);transition:none}
+
+  /* Pergunta / ações */
+  #reveal .ask .q{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3.4vw,2.1rem);font-weight:500;line-height:1.25;color:var(--tinta)}
+  #reveal .ask label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin:1.8rem 0 .6rem}
+  #reveal .ask input{width:100%;max-width:28rem;background:var(--sup);border:1.5px solid var(--linha);border-radius:var(--ri);color:var(--tinta);font-family:var(--serif);font-size:1.3rem;text-align:center;padding:.75rem;outline:none}
   #reveal .ask input:focus{border-color:var(--afeto)}
-  .acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem;max-width:44rem;margin:0 auto;width:100%}
-  .ac{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.3rem;text-align:left}
+  .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:46rem;margin:0 auto;width:100%}
+  .ac{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.4rem;text-align:left;display:flex;flex-direction:column}
   .ac.love{border-color:var(--afeto-luz);background:linear-gradient(180deg,#fff,var(--afeto-luz))}
-  .ac h4{font-family:var(--serif);font-size:1.15rem;color:var(--tinta);margin:0 0 .4rem;font-weight:600}
-  .ac p{font-size:.86rem;margin:0 0 .9rem}
-  .ac .btn{font-size:.82rem;padding:.6rem 1rem}
-  .donate{max-width:34rem;margin:0 auto;text-align:center}
-  .chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.1rem 0}
-  .chip{background:var(--sup);border:1.5px solid var(--linha);color:var(--tinta);border-radius:999px;padding:.55rem 1.1rem;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .2s}
+  .ac h4{font-family:var(--serif);font-size:1.2rem;color:var(--tinta);margin:0 0 .5rem;font-weight:500}
+  .ac p{font-size:.88rem;margin:0 0 1.1rem;flex:1}
+  .ac .btn{font-size:.82rem;height:auto;padding:.6rem 1rem}
+
+  /* Fechamento / doação */
+  .donate{max-width:36rem;margin:0 auto;text-align:center}
+  .donate .rule{width:44px;height:3px;background:var(--afeto);border-radius:99px;margin:0 auto 1.6rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.2rem 0}
+  .chip{background:var(--sup);border:1.5px solid var(--linha);color:var(--tinta);border-radius:999px;padding:.55rem 1.1rem;font-weight:600;font-size:.92rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
   .chip:hover,.chip.sel{background:var(--afeto);color:#fff;border-color:var(--afeto)}
-  .leave{background:none;border:0;color:var(--suave);font-family:var(--sans);font-size:.92rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-weight:500}
+  .exit-row{display:flex;gap:1.4rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:1.6rem}
+  .leave{background:none;border:0;color:var(--corpo);font-family:var(--sans);font-size:.92rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;height:52px;padding:0 1.2rem}
   .leave:hover{color:var(--tinta)}
-  .exit-row{display:flex;gap:1.5rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:1.6rem}
-  .snd{position:fixed;top:16px;right:16px;z-index:110;background:var(--sup);border:1px solid var(--linha);color:var(--vida-profundo);border-radius:50%;width:40px;height:40px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+  .fine{color:var(--suave);font-size:.76rem;margin-top:1.4rem}
+
+  /* Botão de som */
+  .snd{position:fixed;top:16px;right:16px;z-index:110;background:var(--sup);border:1px solid var(--linha);color:var(--vida-profundo);border-radius:50%;width:44px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:1.1rem}
   #reveal.on ~ .snd{display:flex}
 
-  @media(prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.btn:hover,.prod:hover,.plan:hover{transform:none}#reveal .dawn{transition:none}nav{backdrop-filter:none}}
+  /* ---------- Responsivo ---------- */
+  @media(max-width:860px){
+    .navlinks,.nav-enter{display:none}
+    .burger{display:block}
+    .hero-grid{grid-template-columns:1fr;gap:2.2rem}
+    .hero-l{padding-left:0}
+    .acct{transform:none;margin-right:0}
+    .seg-grid{grid-template-columns:1fr;gap:2rem}
+    .nums-grid{grid-template-columns:repeat(2,1fr)}
+    .metric.b{align-self:auto}
+    .prod{grid-template-columns:auto 1fr;gap:.5rem 1rem}
+    .prod .desc{grid-column:1 / -1}
+    .prod .more{grid-column:1 / -1;justify-self:start}
+    .acts{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr 1fr;gap:2rem}
+    .fbrand{grid-column:1 / -1}
+    /* Tabela de planos → cards já em tablet (evita a tabela espremida) */
+    .ptable{display:none}
+    .pcards{display:flex;flex-direction:column;gap:1.1rem}
+    .pcard{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow)}
+    .pcard.top{border:2px solid var(--sol)}
+    .pcard .ptier{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--tinta)}
+    .pcard .pflag{display:inline-block;background:var(--sol);color:var(--sobre-sol);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .7rem;border-radius:999px;margin-bottom:.6rem}
+    .pcard .pprice{font-family:var(--serif);font-size:1.9rem;font-weight:500;color:var(--tinta);margin:.4rem 0}
+    .pcard .pprice .cur{font-size:.6em;color:var(--suave);vertical-align:.3em;margin-right:.1em}
+    .pcard ul{list-style:none;padding:0;margin:1rem 0 1.3rem;display:flex;flex-direction:column;gap:.6rem}
+    .pcard li{display:grid;grid-template-columns:1.1rem 1fr;gap:.5rem;font-size:.88rem;color:var(--corpo);line-height:1.4}
+    .pcard li.yes .mk{color:var(--vida-profundo);font-weight:700}
+    .pcard li.no{color:var(--suave)}
+    .pcard li.no .mk{color:var(--suave)}
+    .pcard li b{color:var(--tinta)}
+    .pcard .btn{width:100%}
+  }
+  @media(max-width:640px){
+    section{padding:var(--s7) 0}
+    .nums-grid{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .sr{transition:none;opacity:1;transform:none}
+    .rv{transition:none;opacity:1;transform:none}
+    .btn:hover,.prod:hover{transform:none}
+    #reveal,#reveal .dawn{transition:none}
+    .acct .ticker span,.acct .op .dot,.logo .mk .spark,#reveal .arc{animation:none}
+    .hero h1 .verdade::after{transition:none;transform:scaleX(1)}
+    nav{backdrop-filter:none;-webkit-backdrop-filter:none}
+    .dgd{transition:none;opacity:1;transform:none}
+  }
 </style>
 </head>
 <body id="top">
-  <nav><div class="wrap">
-    <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
-    <div class="navlinks"><a href="#produtos">Produtos</a><a href="#planos">Planos</a><a href="#transferir">Transferências</a><a href="filosofia.html">Sobre nós</a></div>
-    <a href="#transferir" class="btn btn-sol">Área do cliente</a>
+
+  <!-- Grão global (§2.6) -->
+  <div class="grain" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg"><filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav"><div class="wrap">
+    <a class="logo" href="#top" aria-label="Banco do Além — início">
+      <span class="mk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path class="spark" d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>
+      Banco do Além
+    </a>
+    <div class="navlinks">
+      <a href="#produtos">Produtos</a>
+      <a href="#planos">Planos</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="filosofia.html">Instituição</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-enter" href="#transferir">Entrar</a>
+      <a href="#transferir" class="btn btn-p btn-sm">Abrir conta</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mpanel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div></nav>
 
+  <!-- Painel mobile -->
+  <div class="m-panel" id="mpanel" aria-hidden="true">
+    <div class="m-top">
+      <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
+      <button class="burger" id="mclose" aria-label="Fechar menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <a href="#produtos" class="m-link">Produtos</a>
+    <a href="#planos" class="m-link">Planos</a>
+    <a href="#seguranca" class="m-link">Segurança</a>
+    <a href="filosofia.html" class="m-link">Instituição</a>
+    <div class="m-cta"><a href="#transferir" class="btn btn-p" style="width:100%">Abrir conta</a></div>
+  </div>
+
+  <!-- I · HERO -->
   <header class="hero"><div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Preservação patrimonial · desde 1917</p>
-      <h1>Cuidamos do que você leva <em>de verdade.</em></h1>
-      <p class="lead">O primeiro banco dedicado a transferir o seu patrimônio para o Além. Deposite em vida, receba na eternidade — com o cuidado de quem cuida do que é seu há mais de um século.</p>
+    <div class="hero-l">
+      <p class="eyebrow">Patrimônio privado · desde 1917</p>
+      <h1>Cuidamos do que você leva<br><span class="verdade">de verdade.</span></h1>
+      <p class="lead">O primeiro banco privado dedicado à transferência do seu patrimônio para o Além. Deposite em vida, receba na eternidade — com o cuidado de quem cuida do que é seu há mais de um século.</p>
       <div class="hero-cta">
-        <a href="#transferir" class="btn btn-vida">Abrir minha conta</a>
-        <a href="#planos" class="btn btn-ghost">Ver os planos</a>
-      </div>
-      <div class="trust">
-        <span>🔒 Ambiente <b>100% seguro</b> nas 47 dimensões</span>
-        <span><b>12.847.394</b> clientes atendidos</span>
+        <a href="#transferir" class="btn btn-p">Abrir minha conta</a>
+        <a href="#planos" class="btn btn-ghost">Consultar planos</a>
       </div>
     </div>
+
     <div class="acct" aria-label="Resumo da conta">
-      <div class="top"><div class="who">Bem-vindo(a) de volta,<b>Correntista</b></div><span class="btn btn-ghost" style="padding:.4rem .8rem;font-size:.8rem">Sair</span></div>
-      <div class="bal">Saldo transferível ao Além</div>
-      <div class="bal-v tnum">R$ ——,——</div>
-      <div class="bal-sub">Faça uma simulação para consultar</div>
-      <div class="acts">
-        <div class="qa"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#127A48" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div><span>Transferir</span></div>
-        <div class="qa"><div class="ic s"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div><span>Extrato</span></div>
-        <div class="qa"><div class="ic a"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F2593F" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/></svg></div><span>Beneficiários</span></div>
+      <div class="a-top">
+        <div class="who">Titular<b>Correntista</b></div>
+        <div style="text-align:right">
+          <span class="op"><span class="dot" aria-hidden="true"></span>Operacional</span>
+          <a class="a-out" href="#transferir">Sair</a>
+        </div>
       </div>
+      <div class="bal-lbl">Saldo transferível ao Além</div>
+      <div class="bal-v tnum" id="bal-v" title="Faça uma simulação para consultar">R$ ——,——</div>
+      <div class="conta tnum">CONTA 0000 1917 ····</div>
+      <div class="spark" aria-hidden="true">
+        <svg viewBox="0 0 260 44" preserveAspectRatio="none">
+          <defs><linearGradient id="sparkfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".55"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></linearGradient></defs>
+          <path id="sparkarea" fill="url(#sparkfill)" d="M0,34 L18,30 L38,32 L58,24 L80,27 L104,17 L128,21 L150,12 L176,16 L200,9 L224,13 L248,6 L260,8 L260,44 L0,44 Z"/>
+          <path id="sparkline" class="line" d="M0,34 L18,30 L38,32 L58,24 L80,27 L104,17 L128,21 L150,12 L176,16 L200,9 L224,13 L248,6 L260,8"/>
+          <circle id="sparkdot" cx="260" cy="8" r="3" fill="#F59E0B"/>
+        </svg>
+      </div>
+      <div class="spark-lbl">Fluxo de transferências · 24h</div>
+      <a class="consult" href="#transferir">Faça uma simulação para consultar &rarr;</a>
+      <div class="chips-row">
+        <span class="qchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Transferir</span>
+        <span class="qchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>Extrato</span>
+        <span class="qchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/></svg>Beneficiários</span>
+      </div>
+      <div class="ticker" aria-hidden="true"><span>CDB 102% CDI &nbsp;•&nbsp; Tesouro IPCA+ 6,1% &nbsp;•&nbsp; Câmbio USD 5,12 &nbsp;+0,3% &nbsp;•&nbsp; Poupança 0,62% a.m. &nbsp;•&nbsp; CDB 102% CDI &nbsp;•&nbsp; Tesouro IPCA+ 6,1% &nbsp;•&nbsp; Câmbio USD 5,12 &nbsp;+0,3% &nbsp;•&nbsp; Poupança 0,62% a.m. &nbsp;•&nbsp;</span></div>
     </div>
   </div></header>
 
-  <section id="produtos"><div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Nossos serviços</p>
-      <h2>Tudo o que você precisa para a grande transferência</h2>
-      <p>Um banco completo, para esta vida e a próxima.</p>
-    </div>
-    <div class="prods">
-      <div class="prod"><div class="pic v"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#127A48" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div><h3>Transferência ao Além</h3><p>Envie qualquer valor do seu patrimônio para o seu destino final. Entrega garantida em até 72h após a transição.</p></div>
-      <div class="prod"><div class="pic s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Consultoria patrimonial</h3><p>Nossos consultores no Além acompanham sua trajetória e o recebem pessoalmente na chegada ao destino.</p></div>
-      <div class="prod"><div class="pic a"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2593F" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/></svg></div><h3>Herança afetiva</h3><p>Registre os beneficiários do que o dinheiro nunca comprou. O único ativo que atravessa a morte de verdade.</p></div>
+  <!-- Faixa de solidez -->
+  <div class="solidez"><div class="wrap">
+    <div class="cell"><b>Desde 1917</b></div>
+    <div class="cell tnum"><b>12,8 milhões</b> de titulares · dez/2025</div>
+    <div class="cell"><b>Patrimônio</b> sob custódia</div>
+    <div class="cell">Ambiente <b>100% seguro</b></div>
+  </div></div>
+
+  <!-- II · CARTA DA PRESIDÊNCIA -->
+  <section class="carta" id="carta"><div class="wrap sr">
+    <div class="col">
+      <div class="folio"><span class="n">II</span><span class="t">Da Presidência</span></div>
+      <p class="body"><span class="cap">H</span>á mais de um século, custodiamos aquilo que os homens julgam mais precioso. Aprendemos, no caminho, o que de fato atravessa — e o que apenas nos foi <em>emprestado</em> enquanto durássemos.</p>
+      <div class="sig">
+        <svg viewBox="0 0 200 56" fill="none" aria-hidden="true">
+          <path d="M6 40 C14 18 20 46 28 30 C34 18 38 44 46 32 C52 22 56 40 64 28 C72 16 78 42 88 30 C96 20 102 38 112 26 C120 16 128 40 140 30 C150 22 158 34 168 26 C176 20 184 30 194 22" stroke="#26312B" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M150 44 C160 40 176 42 190 40" stroke="#26312B" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".7"/>
+        </svg>
+        <span class="who">Joaquim Bernardes · Presidente</span>
+      </div>
     </div>
   </div></section>
 
-  <section id="planos"><div class="wrap">
+  <!-- III · PRODUTOS -->
+  <section id="produtos"><div class="wrap sr">
+    <div class="folio"><span class="n">III</span><span class="t">Serviços</span></div>
+    <div class="sec-head">
+      <p class="eyebrow">Nossos serviços</p>
+      <h2>Tudo o que você precisa para a grande transferência</h2>
+    </div>
+    <div class="prod-list">
+      <article class="prod">
+        <span class="rn">i</span>
+        <h3>Transferência ao Além</h3>
+        <p class="desc">Envie qualquer valor do seu patrimônio para o seu destino final. Entrega garantida em até 72h após a transição.</p>
+        <a class="more" href="#transferir">Saiba mais &rarr;</a>
+      </article>
+      <article class="prod">
+        <span class="rn">ii</span>
+        <h3>Consultoria patrimonial</h3>
+        <p class="desc">Nossos consultores no Além acompanham sua trajetória e o recebem pessoalmente na chegada ao destino.</p>
+        <a class="more" href="#planos">Saiba mais &rarr;</a>
+      </article>
+      <article class="prod afeto">
+        <span class="rn">iii</span>
+        <h3>Herança afetiva</h3>
+        <p class="desc">Registre os beneficiários do que o dinheiro nunca comprou. O único ativo que atravessa a morte <em>de verdade.</em></p>
+        <a class="more" href="#transferir">Saiba mais &rarr;</a>
+      </article>
+    </div>
+  </div></section>
+
+  <!-- IV · SEGURANÇA -->
+  <section class="seg" id="seguranca"><div class="wrap sr">
+    <div class="folio"><span class="n">IV</span><span class="t">Confiança</span></div>
+    <div class="sec-head">
+      <p class="eyebrow">Segurança e custódia</p>
+      <h2>Seu patrimônio, protegido através das eras.</h2>
+    </div>
+    <div class="seg-grid">
+      <ul class="proofs">
+        <li>
+          <span class="seal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+          <div><b>Criptografia ponta a ponta nas 47 dimensões</b><span>Cada instrução viaja cifrada, do plano físico ao seu destino.</span></div>
+        </li>
+        <li>
+          <span class="seal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <div><b>Custódia monitorada 24h — horário do Além</b><span>Vigilância ininterrupta, sem feriados, sem fusos, sem fim.</span></div>
+        </li>
+        <li>
+          <span class="seal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg></span>
+          <div><b>Titularidade eterna, registrada</b><span>Seu nome inscrito em livro que nenhuma era apaga.</span></div>
+        </li>
+      </ul>
+      <div class="cert" aria-label="Certificado de titularidade">
+        <div class="stamp" aria-hidden="true"><div class="box">TITULARIDADE<br>ETERNA</div></div>
+        <div class="ct">Certificado de custódia</div>
+        <p class="cs">Registramos, por este instrumento, a titularidade perpétua sobre o patrimônio confiado à instituição — válida em todas as dimensões, sem termo.</p>
+        <p class="ponte">Nada que você digita sai do seu aparelho.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- V · NÚMEROS -->
+  <section class="nums" id="numeros"><div class="wrap sr">
+    <div class="folio"><span class="n">V</span><span class="t">Em números</span></div>
+    <div class="nums-grid">
+      <div class="metric"><span class="fig tnum" data-count="1917" data-from="1900">1917</span><span class="lbl">Ano de fundação</span></div>
+      <div class="metric"><span class="fig tnum" data-count="12,8" data-suffix="M">12,8M</span><span class="lbl">Titulares atendidos</span></div>
+      <div class="metric b"><span class="fig tnum" data-count="47">47</span><span class="lbl">Dimensões custodiadas</span></div>
+      <div class="metric b"><span class="fig tnum" data-count="100" data-suffix="%">100%</span><span class="lbl">Do que importa, preservado</span></div>
+    </div>
+  </div></section>
+
+  <!-- VI · PLANOS -->
+  <section id="planos"><div class="wrap sr">
+    <div class="folio"><span class="n">VI</span><span class="t">Planos</span></div>
     <div class="sec-head">
       <p class="eyebrow">Nossos planos</p>
       <h2>Do primeiro centavo a R$ 1,99. A diferença são os benefícios.</h2>
-      <p>A adesão é simbólica — de tão barata que é impossível levar a sério. Você transfere ao Além o valor que quiser; o plano só define quantas mordomias o aguardam do outro lado. Porque, no fim, o preço nunca foi o ponto.</p>
+      <p><span class="italic">A adesão é simbólica — de tão barata que é impossível levar a sério. Você transfere ao Além o valor que quiser; o plano só define quantas mordomias o aguardam do outro lado. Porque, no fim, o preço nunca foi o ponto.</span></p>
     </div>
-    <div class="plans">
-      <div class="plan">
+
+    <!-- Tabela (desktop/tablet) -->
+    <div class="ptable"><div class="grid">
+      <div class="pcol">
         <div class="tier">Essencial</div>
-        <div class="from">adesão simbólica</div><div class="val">R$ 0,01</div>
+        <div class="from">Adesão simbólica</div>
+        <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,01</span></div>
         <ul>
-          <li>Transfira qualquer valor ao Além</li>
-          <li>Comprovante digital de transferência</li>
-          <li>Certificado de titularidade eterna</li>
-          <li>Atendimento pós-vida: fila comum</li>
-          <li>Ouvidoria disponível a partir da sua transição</li>
+          <li class="yes"><span class="mk">✓</span><span>Transfira qualquer valor ao Além</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Comprovante digital de transferência</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Certificado de titularidade eterna</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Atendimento pós-vida: fila comum</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Ouvidoria disponível a partir da sua transição</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Essencial</a>
       </div>
-      <div class="plan">
+      <div class="pcol">
         <div class="tier">Preferencial</div>
-        <div class="from">adesão simbólica</div><div class="val">R$ 0,50</div>
+        <div class="from">Adesão simbólica</div>
+        <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,50</span></div>
         <ul>
-          <li>Tudo do Essencial</li>
-          <li>Consultor no Além compartilhado</li>
-          <li>Prioridade Prata na chegada ao destino</li>
-          <li>Extrato anual do que ficou para trás</li>
-          <li>Sala de espera climatizada no Além</li>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Essencial</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Consultor no Além compartilhado</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Prioridade Prata na chegada ao destino</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Extrato anual do que ficou para trás</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Sala de espera climatizada no Além</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Preferencial</a>
       </div>
-      <div class="plan top">
+      <div class="pcol top">
         <span class="flag">Mais escolhido</span>
         <div class="tier">Prime</div>
-        <div class="from">adesão simbólica</div><div class="val">R$ 0,99</div>
+        <div class="from">Adesão simbólica</div>
+        <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,99</span></div>
         <ul>
-          <li>Tudo do Preferencial</li>
-          <li>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</li>
-          <li>Prioridade Ouro e traslado expresso</li>
-          <li>Sala VIP e um sussurro póstumo aos vivos</li>
-          <li>Nome inscrito no Grande Livro dos Iluminados</li>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Preferencial</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Prioridade Ouro e traslado expresso</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
         </ul>
         <a href="#transferir" class="btn btn-sol">Escolher Prime</a>
       </div>
-      <div class="plan">
+      <div class="pcol">
         <div class="tier">Eterno</div>
-        <div class="from">adesão simbólica</div><div class="val">R$ 1,99</div>
+        <div class="from">Adesão simbólica</div>
+        <div class="price tnum"><span class="cur">R$</span>1<span class="cts">,99</span></div>
         <ul>
-          <li>Tudo do Prime</li>
-          <li>Comitê de consultores no Além, 24h (horário do Além)</li>
-          <li>Transferência instantânea no momento da transição</li>
-          <li>Suíte perpétua com vista para a eternidade</li>
-          <li>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</li>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Prime</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Transferência instantânea no momento da transição</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Suíte perpétua com vista para a eternidade</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
+        </ul>
+        <a href="#transferir" class="btn btn-ghost">Escolher Eterno</a>
+      </div>
+    </div></div>
+
+    <!-- Cards empilhados (mobile) -->
+    <div class="pcards">
+      <div class="pcard">
+        <div class="ptier">Essencial</div>
+        <div class="pprice tnum"><span class="cur">R$</span>0,01</div>
+        <ul>
+          <li class="yes"><span class="mk">✓</span><span>Transfira qualquer valor ao Além</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Comprovante digital de transferência</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Certificado de titularidade eterna</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Atendimento pós-vida: fila comum</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Ouvidoria disponível a partir da sua transição</span></li>
+        </ul>
+        <a href="#transferir" class="btn btn-ghost">Escolher Essencial</a>
+      </div>
+      <div class="pcard">
+        <div class="ptier">Preferencial</div>
+        <div class="pprice tnum"><span class="cur">R$</span>0,50</div>
+        <ul>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Essencial</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Consultor no Além compartilhado</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Prioridade Prata na chegada ao destino</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Extrato anual do que ficou para trás</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Sala de espera climatizada no Além</span></li>
+        </ul>
+        <a href="#transferir" class="btn btn-ghost">Escolher Preferencial</a>
+      </div>
+      <div class="pcard top">
+        <span class="pflag">Mais escolhido</span>
+        <div class="ptier">Prime</div>
+        <div class="pprice tnum"><span class="cur">R$</span>0,99</div>
+        <ul>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Preferencial</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Prioridade Ouro e traslado expresso</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
+        </ul>
+        <a href="#transferir" class="btn btn-sol">Escolher Prime</a>
+      </div>
+      <div class="pcard">
+        <div class="ptier">Eterno</div>
+        <div class="pprice tnum"><span class="cur">R$</span>1,99</div>
+        <ul>
+          <li class="yes"><span class="mk">✓</span><span>Tudo do Prime</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Transferência instantânea no momento da transição</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Suíte perpétua com vista para a eternidade</span></li>
+          <li class="yes"><span class="mk">✓</span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Eterno</a>
       </div>
     </div>
-    <p class="plan-note">⚠️ Importante: por questões operacionais, <b>somente clientes que já realizaram a transição podem registrar reclamações</b> sobre os serviços prestados no Além.</p>
+
+    <p class="plan-note"><svg class="note-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4"/><path d="M12 17.5v.01"/></svg> Importante: por questões operacionais, somente clientes que já realizaram a transição podem registrar reclamações sobre os serviços prestados no Além.</p>
   </div></section>
 
-  <section id="transferir"><div class="wrap">
+  <!-- VII · SIMULADOR -->
+  <section id="transferir"><div class="wrap sr">
     <div class="sim">
-      <p class="step-tag">Transferência ao Além · Etapa 1 de 1</p>
-      <h3>Simule sua transferência</h3>
-      <p style="font-size:.94rem;margin:0">Preencha os dados abaixo. Você descobrirá, em segundos, quanto do seu patrimônio realmente segue com você.</p>
-      <div class="field"><label for="pat">Valor a transferir ao Além (R$)</label><input id="pat" type="text" inputmode="numeric" placeholder="Ex.: 500.000" autocomplete="off"></div>
-      <div class="field"><label for="idade">Sua idade hoje</label><input id="idade" type="text" inputmode="numeric" placeholder="Ex.: 42" autocomplete="off"></div>
-      <div class="field"><label for="nome">Nome de quem você mais ama <span style="font-weight:400;color:var(--suave)">(opcional)</span></label><input id="nome" type="text" placeholder="…" autocomplete="off"></div>
+      <p class="step-tag">Transferência ao Além</p>
+      <h3>Simule sua transferência.</h3>
+      <p class="sub">Preencha os dados abaixo. Você descobrirá, em segundos, quanto do seu patrimônio realmente segue com você.</p>
+      <div class="field">
+        <label for="pat">Valor a transferir ao Além (R$)</label>
+        <input id="pat" type="text" inputmode="numeric" placeholder="Ex.: 500.000" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="idade">Sua idade hoje</label>
+        <input id="idade" type="text" inputmode="numeric" placeholder="Ex.: 42" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="nome">Nome de quem você mais ama <span class="opt">(opcional)</span></label>
+        <input id="nome" type="text" placeholder="Nome de quem você ama" autocomplete="off">
+      </div>
       <button class="btn btn-vida" id="go">Confirmar transferência</button>
-      <div class="secure">🔒 Ambiente seguro · nada que você digita sai do seu aparelho</div>
+      <div class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Ambiente seguro · nada que você digita sai do seu aparelho.</div>
     </div>
   </div></section>
 
+  <!-- XI · RODAPÉ -->
   <footer><div class="wrap">
     <div class="fgrid">
-      <div style="max-width:22rem">
-        <div class="fbrand">Banco do Além</div>
-        <p style="color:#8A928A;font-size:.9rem;margin-top:.6rem">Cuidando do que realmente atravessa a vida, desde 1917. Uma obra de arte — não uma instituição financeira.</p>
+      <div class="fbrand">
+        <span class="fmk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#FCFAF5" fill-rule="evenodd"/></svg></span>
+        <div>
+          <div class="ft">Banco do Além</div>
+          <p class="fs">Cuidando do que realmente atravessa a vida, desde 1917.</p>
+        </div>
       </div>
-      <div class="fcol"><h4>Serviços</h4><a href="#produtos">Transferência ao Além</a><a href="#produtos">Consultoria patrimonial</a><a href="#produtos">Herança afetiva</a></div>
-      <div class="fcol"><h4>Institucional</h4><a href="filosofia.html">Sobre nós</a><a href="transparencia.html">Transparência</a><a href="#planos">Planos</a></div>
-      <div class="fcol"><h4>Ajuda</h4><a href="#planos">Ouvidoria do Além</a><a href="tel:188">CVV — 188</a><a href="transparencia.html">Cofre de Vidro</a></div>
+      <div class="fcol"><h4>Serviços</h4>
+        <a href="#produtos">Transferência ao Além</a>
+        <a href="#produtos">Consultoria patrimonial</a>
+        <a href="#produtos">Herança afetiva</a>
+      </div>
+      <div class="fcol"><h4>Institucional</h4>
+        <a href="filosofia.html">Sobre nós</a>
+        <a href="transparencia.html">Transparência</a>
+        <a href="#planos">Planos</a>
+      </div>
+      <div class="fcol"><h4>Ajuda</h4>
+        <a href="#planos">Ouvidoria do Além</a>
+        <a href="tel:188">CVV — 188</a>
+        <a href="transparencia.html">Cofre de Vidro</a>
+      </div>
     </div>
-    <p class="disc"><strong style="color:#C9CFC9">Banco do Além</strong> é uma obra de arte conceitual e reflexão, sem fins lucrativos. Não é uma instituição financeira, não capta recursos e não presta serviço bancário. Nenhum valor é ou pode ser transferido para “o Além”. Nenhum dado seu sai deste aparelho. · <em>O dinheiro é a coisa mais importante entre as menos importantes.</em></p>
+    <p class="disc"><b>Banco do Além</b> cuida do que realmente atravessa a vida, desde 1917. · Este é um projeto independente, sem fins lucrativos. Não é uma instituição financeira autorizada pelo Banco Central, não capta recursos, não realiza operações financeiras e não transfere valores a terceiros. Nenhum dado digitado sai do seu aparelho. · <em>O dinheiro é a coisa mais importante entre as menos importantes.</em></p>
+    <div class="ffolio tnum">MCMXVII — MMXXVI</div>
   </div></footer>
 
-  <div id="reveal" aria-live="polite" role="dialog" aria-label="A revelação"><span class="dawn"></span><div class="stage" id="stage"></div></div>
-  <button class="snd" id="snd" aria-label="Som">♪</button>
+  <!-- VIII–X · REVELAÇÃO -->
+  <div id="reveal" role="dialog" aria-modal="true" aria-label="A revelação" tabindex="-1">
+    <span class="dawn" aria-hidden="true"></span>
+    <div class="stage" id="stage"></div>
+    <p id="rv-live" class="sr-only" aria-live="polite"></p>
+    <button class="skip" id="skip" type="button">Avançar &rarr;</button>
+  </div>
+  <button class="snd" id="snd" type="button" aria-label="Ativar som" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9l4 6M21 9l-4 6"/></svg></button>
 
 <script>
 (function(){
+  "use strict";
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches, soundOn=false, actx=null;
+
+  /* ---------- Helpers (preservados verbatim) ---------- */
   function fmt(n){return Math.round(n).toLocaleString('pt-BR');}
   function parseNum(s){return parseInt((s||'').replace(/[^\d]/g,''),10);}
   function esc(s){return (s||'').replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-  var patEl=document.getElementById('pat'),ageEl=document.getElementById('idade'),nameEl=document.getElementById('nome');
-  patEl.addEventListener('input',function(){var n=parseNum(patEl.value);patEl.value=isNaN(n)?'':fmt(n);});
-  function bell(){if(!soundOn)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();var t=actx.currentTime;[1,2.02,3.01,4.3].forEach(function(m,i){var o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=294*m;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.1/(i+1),t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+3);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+3.1);});}catch(e){}}
-  document.getElementById('snd').addEventListener('click',function(){soundOn=!soundOn;this.textContent=soundOn?'♪':'♪̸';if(soundOn)bell();});
-  var reveal=document.getElementById('reveal'),stage=document.getElementById('stage');
+  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  function show(e){requestAnimationFrame(function(){e.classList.add('show');});}
   var timers=[];function clearT(){timers.forEach(clearTimeout);timers=[];}
   function at(ms,fn){timers.push(setTimeout(fn,reduce?Math.min(ms,140):ms));}
-  function show(el){requestAnimationFrame(function(){el.classList.add('show');});}
-  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  var liveEl=document.getElementById('rv-live');
+  function announce(msg){if(liveEl){liveEl.textContent='';setTimeout(function(){liveEl.textContent=msg;},60);}}
+
+  /* ---------- NAV scroll + mobile ---------- */
+  var nav=document.getElementById('nav');
+  function onScroll(){if(window.scrollY>8)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mpanel=document.getElementById('mpanel'),mclose=document.getElementById('mclose');
+  var mBg=[document.getElementById('nav'),document.querySelector('.hero'),document.querySelector('footer'),document.querySelector('.solidez')];
+  Array.prototype.push.apply(mBg,Array.prototype.slice.call(document.querySelectorAll('section')));
+  function setBgInert(on){mBg.forEach(function(n){if(!n)return;if(on){n.setAttribute('aria-hidden','true');try{n.inert=true;}catch(e){}}else{n.removeAttribute('aria-hidden');try{n.inert=false;}catch(e){}}});}
+  function mFocusables(){return Array.prototype.filter.call(mpanel.querySelectorAll('a[href],button:not([disabled])'),function(x){return x.offsetParent!==null;});}
+  function mTrap(e){
+    if(e.key==='Escape'){e.preventDefault();closeM();return;}
+    if(e.key!=='Tab')return;
+    var f=mFocusables();if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+  function openM(){
+    mpanel.classList.add('open');mpanel.setAttribute('aria-hidden','false');burger.setAttribute('aria-expanded','true');
+    setBgInert(true);document.addEventListener('keydown',mTrap);
+    var f=mFocusables();if(f.length)f[0].focus();
+  }
+  function closeM(){
+    mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');
+    setBgInert(false);document.removeEventListener('keydown',mTrap);
+    if(burger&&burger.focus)burger.focus();
+  }
+  burger.addEventListener('click',openM);mclose.addEventListener('click',closeM);
+  Array.prototype.forEach.call(mpanel.querySelectorAll('a'),function(a){a.addEventListener('click',closeM);});
+
+  /* ---------- Load-in do hero ---------- */
+  function markLoaded(){document.body.classList.add('loaded');}
+  requestAnimationFrame(markLoaded);
+  window.addEventListener('load',markLoaded);
+
+  /* ---------- Scroll reveal das seções ---------- */
+  var srs=document.querySelectorAll('.sr');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    srs.forEach(function(s){io.observe(s);});
+  }else{srs.forEach(function(s){s.classList.add('in');});}
+
+  /* ---------- Count-up dos números (§V) ---------- */
+  function animMetric(node){
+    var raw=node.getAttribute('data-count'),from=parseFloat(node.getAttribute('data-from')||'0');
+    var suffix=node.getAttribute('data-suffix')||'';
+    var dec=raw.indexOf(',')>=0, target=parseFloat(raw.replace('.','').replace(',','.'));
+    if(reduce){node.textContent=raw+suffix;return;}
+    var s=performance.now(),d=1400,e=function(t){return 1-Math.pow(1-t,3);};
+    function f(n){var p=Math.min(1,(n-s)/d),val=from+(target-from)*e(p);
+      node.textContent=(dec?val.toFixed(1).replace('.',','):Math.round(val).toLocaleString('pt-BR'))+suffix;
+      if(p<1)requestAnimationFrame(f);}
+    requestAnimationFrame(f);
+  }
+  var metrics=document.querySelectorAll('.fig[data-count]');
+  if('IntersectionObserver' in window && !reduce){
+    var mio=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){animMetric(e.target);mio.unobserve(e.target);}});
+    },{threshold:.5});
+    metrics.forEach(function(m){mio.observe(m);});
+  }
+
+  /* ---------- Pré-eco: hover no saldo troca por "incontável" ---------- */
+  var balV=document.getElementById('bal-v');
+  if(balV && !reduce){
+    balV.addEventListener('mouseenter',function(){
+      if(balV.dataset.busy)return;balV.dataset.busy='1';
+      var orig=balV.textContent;balV.textContent='incontável';
+      setTimeout(function(){balV.textContent=orig;balV.dataset.busy='';},500);
+    });
+  }
+
+  /* ---------- Máscara de milhar no #pat (preservado) ---------- */
+  var patEl=document.getElementById('pat'),ageEl=document.getElementById('idade'),nameEl=document.getElementById('nome');
+  patEl.addEventListener('input',function(){var n=parseNum(patEl.value);patEl.value=isNaN(n)?'':fmt(n);});
+
+  /* ---------- Sino Web Audio (preservado) ---------- */
+  function bell(){if(!soundOn)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();var t=actx.currentTime;[1,2.02,3.01,4.3].forEach(function(m,i){var o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=294*m;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.1/(i+1),t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+3);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+3.1);});}catch(e){}}
+  var sndBtn=document.getElementById('snd');
+  var ICON_ON='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M18.8 6a8 8 0 0 1 0 12"/></svg>';
+  var ICON_OFF='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>';
+  sndBtn.addEventListener('click',function(){soundOn=!soundOn;this.innerHTML=soundOn?ICON_ON:ICON_OFF;this.setAttribute('aria-pressed',soundOn?'true':'false');this.setAttribute('aria-label',soundOn?'Silenciar som':'Ativar som');if(soundOn)bell();});
+
+  /* ---------- Overlay / foco / Esc (a11y melhorado) ---------- */
+  var reveal=document.getElementById('reveal'),stage=document.getElementById('stage'),skipBtn=document.getElementById('skip');
+  var lastFocus=null;
+  function trapFocus(e){
+    if(e.key!=='Tab')return;
+    var f=reveal.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])');
+    f=Array.prototype.filter.call(f,function(x){return x.offsetParent!==null||x===reveal;});
+    if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+  function onKey(e){if(e.key==='Escape'){leave();}else{trapFocus(e);}}
+
+  /* ---------- Validação + disparo (preservado) ---------- */
   document.getElementById('go').addEventListener('click',function(){
     var pat=parseNum(patEl.value),age=parseNum(ageEl.value);
     if(isNaN(pat)||pat<=0){patEl.focus();patEl.style.borderColor='#F2593F';return;}
     if(isNaN(age)||age<1||age>119){ageEl.focus();ageEl.style.borderColor='#F2593F';return;}
     launch(pat,age,nameEl.value.trim());
   });
+
+  /* ---------- Sequência da revelação ---------- */
   function launch(pat,age,name){
-    reveal.classList.add('on');reveal.scrollTop=0;document.body.style.overflow='hidden';stage.innerHTML='';clearT();reveal.classList.remove('lit');
-    var proc=el('div','rv proc','Processando sua transferência…');stage.appendChild(proc);show(proc);
+    lastFocus=document.activeElement;
+    reveal.classList.add('on');reveal.scrollTop=0;document.body.style.overflow='hidden';
+    stage.innerHTML='';clearT();reveal.classList.remove('lit');
+    document.addEventListener('keydown',onKey);
+    reveal.focus();
+    var proc=el('div','rv proc','<div class="arc" aria-hidden="true"></div>Processando sua transferência…');
+    stage.appendChild(proc);show(proc);
     at(2000,function(){proc.classList.remove('show');});
-    at(3200,function(){stage.innerHTML='';var big=el('h2','rv big','Você não pode levar nada.');stage.appendChild(big);show(big);
+    at(3200,function(){
+      stage.innerHTML='';
+      var big=el('h2','rv big','Você não pode levar nada.');stage.appendChild(big);show(big);
+      announce('Você não pode levar nada. E está tudo bem.');
       at(1400,function(){reveal.classList.add('lit');bell();});
       at(2000,function(){var w=el('p','rv whisper','E está tudo bem. Veja o que fica.');stage.appendChild(w);show(w);});
     });
     at(6800,function(){buildReceipt(pat,age,name);});
   }
+
   function buildReceipt(pat,age,name){
-    stage.innerHTML='';var life=80,left=Math.max(0,(life-age))*52,lived=Math.min(age*52,life*52);
-    var b=el('div','rv');b.style.width='100%';
-    b.innerHTML='<div class="receipt"><div class="rh"><b>Comprovante de transferência</b><span>Concluída</span></div><div class="rb">'
-      +'<div class="rr"><span>Valor enviado ao Além</span><span class="v" id="ct">R$ '+fmt(pat)+'</span></div>'
-      +'<div class="rr zero"><span>Efetivamente recebido lá</span><span class="v">R$ 0,00</span></div>'
-      +'<div class="rr keep"><span>O que de fato atravessou</span><span class="v">tudo que você fez pelos outros</span></div>'
-      +'</div><div class="rf">Nenhum caixão tem gaveta — mas todo amor tem raiz.</div></div>';
+    stage.innerHTML='';
+    var life=80,left=Math.max(0,(life-age))*52,lived=Math.min(age*52,life*52);
+    var b=el('div','rv');b.setAttribute('data-keep','1');
+    b.innerHTML='<div class="receipt">'
+      +'<div class="rh"><b>Comprovante de transferência</b><span class="badge">Concluída</span></div>'
+      +'<div class="rb">'
+        +'<div class="rr"><span class="k">Valor enviado ao Além</span><span class="v" id="ct">R$ '+fmt(pat)+'</span></div>'
+        +'<div class="rr zero"><span class="k">Efetivamente recebido lá</span><span class="v">R$ 0,00</span></div>'
+        +'<div class="rr keep"><span class="k">O que de fato atravessou</span><span class="v">tudo que você fez pelos outros</span></div>'
+      +'</div>'
+      +'<div class="afx">'
+        +'<div class="ah"><span>Data</span><span>Histórico</span><span>Valor</span></div>'
+        +'<div class="al"><span class="d">há anos</span><span class="h">café com o irmão na calçada</span><span class="v">+ ∞</span></div>'
+        +'<div class="al"><span class="d">domingo</span><span class="h">colo pra criança que chorava</span><span class="v">+ ∞</span></div>'
+        +'<div class="al"><span class="d">um dia</span><span class="h">perdão que você não devia</span><span class="v">+ ∞</span></div>'
+        +'<div class="al sum"><span class="d"></span><span class="h">Saldo de vida</span><span class="v">incontável</span></div>'
+      +'</div>'
+      +'<div class="stampbox"><span class="restamp" id="restamp">SEM VALOR</span></div>'
+      +'<div class="rf">Nenhum caixão tem gaveta — mas todo amor tem raiz.</div>'
+      +'</div>';
     stage.appendChild(b);show(b);
     at(900,function(){countTo(document.getElementById('ct'),0,pat);});
+    at(2600,function(){var rs=document.getElementById('restamp');if(rs){rs.textContent='TODO VALOR';rs.classList.add('pop');}});
     at(3300,function(){buildDom(left,lived,life);});
   }
-  function countTo(node,target,from){if(reduce){node.textContent='R$ '+fmt(target);return;}var s=performance.now(),d=1600,e=function(t){return 1-Math.pow(1-t,3);};function f(n){var p=Math.min(1,(n-s)/d);node.textContent='R$ '+fmt(from+(target-from)*e(p));if(p<1)requestAnimationFrame(f);}requestAnimationFrame(f);}
+
+  /* countTo (preservado — cubic-out 1600ms) */
+  function countTo(node,target,from){
+    if(reduce){node.textContent='R$ '+fmt(target);return;}
+    var s=performance.now(),d=1600,e=function(t){return 1-Math.pow(1-t,3);};
+    function f(n){var p=Math.min(1,(n-s)/d);node.textContent='R$ '+fmt(from+(target-from)*e(p));if(p<1)requestAnimationFrame(f);}
+    requestAnimationFrame(f);
+  }
+
   function buildDom(left,lived,life){
-    var s=el('div','rv');s.style.maxWidth='34rem';s.style.margin='0 auto';s.style.textAlign='center';
-    var dots='',total=lived+left,shown=Math.min(total,life*52),step=4;
-    for(var i=0;i<shown;i+=step){dots+='<span class="dgd'+(i<lived?' spent':'')+'"></span>';}
-    s.innerHTML='<p class="whisper" style="margin-bottom:.3rem">O único saldo que importa:</p>'
-      +'<h3 style="font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);color:var(--vida-profundo)">≈ '+fmt(left)+' domingos</h3>'
-      +'<p style="font-size:.9rem;margin:.2rem 0 0">ainda seus, para viver com quem você ama.</p>'
+    var s=el('div','rv dom');s.style.textAlign='center';
+    var dots='',total=lived+left,shown=Math.min(total,life*52),step=4,idx=0;
+    for(var i=0;i<shown;i+=step){dots+='<span class="dgd'+(i<lived?' spent':'')+'" data-i="'+(idx++)+'"></span>';}
+    s.innerHTML='<p class="whisper" style="margin-bottom:.4rem">O único saldo que importa:</p>'
+      +'<h3>≈ '+fmt(left)+' domingos</h3>'
+      +'<p style="font-size:.92rem;margin:.3rem 0 0">ainda seus, para viver com quem você ama.</p>'
       +'<div class="domingos" aria-hidden="true">'+dots+'</div>'
       +'<p style="color:var(--suave);font-size:.8rem;margin-top:1rem">Os dourados ainda não foram vividos. Vá vivê-los.</p>';
     stage.appendChild(s);show(s);
+    /* cascata dos dourados, stagger irregular */
+    var golden=s.querySelectorAll('.dgd:not(.spent)');
+    if(reduce){Array.prototype.forEach.call(golden,function(g){g.classList.add('lit');});}
+    else{Array.prototype.forEach.call(golden,function(g,k){timers.push(setTimeout(function(){g.classList.add('lit');},k*9+120));});}
     at(3400,function(){buildAsk();});
   }
+
   function buildAsk(){
-    var q=el('div','rv ask');q.style.width='100%';
-    q.innerHTML='<p class="whisper">Você ainda tem tempo.<br>Com quem você quer gastá-lo?</p>'
-      +'<label style="display:block;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin:1.8rem 0 .5rem">Escreva o nome de quem você ama e não fala há tempo demais</label>'
-      +'<input id="bel" type="text" placeholder="…" autocomplete="off">';
-    stage.appendChild(q);show(q);var pre=nameEl.value.trim();if(pre)q.querySelector('#bel').value=pre;
+    var q=el('div','rv ask');
+    q.innerHTML='<p class="q">Você ainda tem tempo.<br>Com quem você quer gastá-lo?</p>'
+      +'<label for="bel">Escreva o nome de quem você ama e não fala há tempo demais</label>'
+      +'<input id="bel" type="text" placeholder="Nome de quem você ama" autocomplete="off">';
+    stage.appendChild(q);show(q);
+    var pre=nameEl.value.trim();if(pre)q.querySelector('#bel').value=pre;
     at(2200,function(){buildActs();});
   }
+
   function buildActs(){
-    var name=(document.getElementById('bel')&&document.getElementById('bel').value.trim())||'quem você ama';
-    var w=el('div','rv');w.style.width='100%';w.style.marginTop='2.4rem';
+    var belEl=document.getElementById('bel');
+    var rawName=(belEl&&belEl.value.trim())||'quem você ama';
+    var safe=esc(rawName);
+    var w=el('div','rv');w.style.marginTop='2.4rem';
     w.innerHTML='<div class="acts">'
-      +'<div class="ac love"><h4>Ligue hoje</h4><p>Pegue o telefone e ligue para '+esc(name)+'. Não precisa de motivo. A vida é agora.</p><a class="btn btn-vida" href="tel:">Ligar agora</a></div>'
-      +'<div class="ac"><h4>Deixe em vida</h4><p>Um gesto, um perdão, um abraço a quem precisa hoje. O depósito que rende para sempre.</p><a class="btn btn-ghost" href="#" onclick="return false">Como fazer</a></div>'
-      +'<div class="ac"><h4>Convide alguém</h4><p>Não para assustar — para caminhar junto. Alguém que você ama merece sentir isto.</p><a class="btn btn-ghost" href="#" onclick="return false">Compartilhar</a></div>'
+      +'<div class="ac love"><h4>Ligue hoje</h4><p>Pegue o telefone e ligue para '+safe+'. Não precisa de motivo. A vida é agora.</p><button class="btn btn-afeto" id="callb" type="button">Ligue para quem você ama</button></div>'
+      +'<div class="ac"><h4>Deixe em vida</h4><p>Um gesto, um perdão, um abraço a quem precisa hoje. O depósito que rende para sempre.</p><a class="btn btn-ghost" href="https://doar.org.br/" target="_blank" rel="noopener">Como fazer</a></div>'
+      +'<div class="ac"><h4>Convide alguém</h4><p>Não para assustar — para caminhar junto. Alguém que você ama merece sentir isto.</p><button class="btn btn-ghost" id="shareb" type="button">Compartilhar</button></div>'
       +'</div>';
     stage.appendChild(w);show(w);
+    /* Ligar: sem discador vazio — reforça o gesto */
+    var callb=w.querySelector('#callb');
+    if(callb){callb.addEventListener('click',function(){callb.textContent='Agora. Não depois.';callb.disabled=true;});}
+    /* Compartilhar: Web Share API com fallback copiar link */
+    var shareb=w.querySelector('#shareb');
+    if(shareb){shareb.addEventListener('click',function(){
+      var url=location.href, data={title:'Banco do Além',text:'Veja isto.',url:url};
+      if(navigator.share){navigator.share(data).catch(function(){});}
+      else if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){shareb.textContent='Link copiado';}).catch(function(){shareb.textContent=url;});}
+      else{shareb.textContent=url;}
+    });}
     at(2200,function(){buildClose();});
   }
+
   function buildClose(){
-    var d=el('div','rv');d.style.width='100%';d.style.marginTop='2.6rem';
-    d.innerHTML='<div class="donate"><div style="width:40px;height:4px;background:var(--afeto);border-radius:99px;margin:0 auto 1.6rem"></div>'
-      +'<p style="font-size:.94rem">Esta obra é gratuita e não guarda nada seu. Custa alguns reais de hospedagem por mês. Se ela te tocou, fica o convite para ajudar a mantê-la viva. Se não, siga em paz — você não nos deve nada.</p>'
-      +'<div class="chips"><button class="chip">R$ 0,01</button><button class="chip">R$ 0,10</button><button class="chip">R$ 1,00</button><button class="chip">R$ 1,99</button><button class="chip">outro</button></div>'
-      +'<div class="exit-row"><a class="btn btn-sol" href="#" onclick="return false">Contribuir</a><button class="leave" id="leave">Seguir em paz →</button></div>'
-      +'<p style="color:var(--suave);font-size:.76rem;margin-top:1.4rem">Prestação de contas pública de cada centavo. Nenhum lucro, para ninguém.</p></div>';
+    var d=el('div','rv');d.style.marginTop='2.6rem';
+    d.innerHTML='<div class="donate"><div class="rule"></div>'
+      +'<p>Esta obra é gratuita e não guarda nada seu. Custa alguns reais de hospedagem por mês. Se ela te tocou, fica o convite para ajudar a mantê-la viva. Se não, siga em paz — você não nos deve nada.</p>'
+      +'<div class="chips"><button class="chip" type="button">R$ 0,01</button><button class="chip" type="button">R$ 0,10</button><button class="chip" type="button">R$ 1,00</button><button class="chip" type="button">R$ 1,99</button><button class="chip" type="button">outro</button></div>'
+      +'<div class="exit-row"><a class="btn btn-afeto" id="contrib" href="#" rel="noopener">Contribuir</a><button class="leave" id="leave" type="button">Seguir em paz &rarr;</button></div>'
+      +'<p class="fine">Prestação de contas pública de cada centavo. Nenhum lucro, para ninguém.</p></div>';
     stage.appendChild(d);show(d);
-    var chips=d.querySelectorAll('.chip');chips.forEach(function(c){c.addEventListener('click',function(){chips.forEach(function(x){x.classList.remove('sel');});c.classList.add('sel');});});
-    d.querySelector('#leave').addEventListener('click',function(){clearT();reveal.classList.remove('on','lit');document.body.style.overflow='';document.getElementById('top').scrollIntoView();});
+    var chips=d.querySelectorAll('.chip');
+    Array.prototype.forEach.call(chips,function(c){c.addEventListener('click',function(){Array.prototype.forEach.call(chips,function(x){x.classList.remove('sel');});c.classList.add('sel');});});
+    /* Hook de pagamento pronto (inerte até o dono ligar o link real) */
+    var contrib=d.querySelector('#contrib');
+    if(contrib){contrib.addEventListener('click',function(e){e.preventDefault();var sel=d.querySelector('.chip.sel');contrib.textContent=sel?('Obrigado — '+sel.textContent):'Obrigado';});}
+    d.querySelector('#leave').addEventListener('click',leave);
   }
+
+  /* ---------- Saída (preservado + a11y) ---------- */
+  function leave(){
+    clearT();
+    reveal.classList.remove('on','lit');
+    document.body.style.overflow='';
+    document.removeEventListener('keydown',onKey);
+    document.getElementById('top').scrollIntoView();
+    if(lastFocus&&lastFocus.focus){lastFocus.focus();}
+  }
+
+  /* Avançar: leva SEMPRE ao próximo ato pendente, em qualquer estágio,
+     encadeando o restante da sequência de forma imediata (nunca prende). */
+  skipBtn.addEventListener('click',function(){
+    reduce=true;                 /* colapsa os delays de at() no que vier a seguir */
+    clearT();                    /* cancela timers pendentes do estágio atual */
+    reveal.classList.add('lit'); /* garante o "amanhecer" caso ainda não tenha ocorrido */
+    var pat=parseNum(patEl.value)||0,age=parseNum(ageEl.value)||40,nm=nameEl.value.trim();
+    if(!document.querySelector('.receipt')){
+      buildReceipt(pat,age,nm);
+    }else if(!document.querySelector('.dom')){
+      var life=80,left=Math.max(0,(life-age))*52,lived=Math.min(age*52,life*52);
+      buildDom(left,lived,life);
+    }else if(!document.querySelector('.ask')){
+      buildAsk();
+    }else if(!document.querySelector('.acts')){
+      buildActs();
+    }else if(!document.querySelector('.donate')){
+      buildClose();
+    }
+    /* se tudo já foi revelado, não há próximo ato — nada a fazer (sem travar). */
+  });
+
 })();
 </script>
 </body>
