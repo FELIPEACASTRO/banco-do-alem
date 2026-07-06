@@ -365,13 +365,16 @@
      A CONTA QUE FICA — Declaração de Bens Sentimentais (#carta-ov)
      Overlay próprio, estética VIDA/luminosa. Não colide com #reveal.
      ========================================================== */
-  #carta-ov{position:fixed;inset:0;z-index:120;display:none;overflow-y:auto;background:var(--luz);-webkit-overflow-scrolling:touch}
-  #carta-ov.on{display:block}
+  #carta-ov{position:fixed;inset:0;z-index:120;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;background:linear-gradient(180deg,rgba(255,158,125,.16) 0%,rgba(255,182,39,.10) 26%,rgba(252,250,245,0) 68%) no-repeat,var(--luz);background-size:100% 380px,auto}
+  #carta-ov.on{display:flex;flex-direction:column}
   /* gradiente amanhecer só no topo, aplicado à coluna (evita borda dura full-bleed) */
-  #carta-ov .cwrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;max-width:560px;margin:0 auto;padding:clamp(1.2rem,5vw,2.4rem) clamp(1.2rem,5vw,1.8rem) 2.4rem}
-  #carta-ov .cwrap::before{content:"";position:absolute;top:0;left:0;right:0;height:320px;background:var(--amanhecer);opacity:.26;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent);z-index:-1}
+  #carta-ov .chead{flex:0 0 auto;width:100%}
+  #carta-ov .cwrap{position:relative;z-index:1;flex:1 0 auto;display:flex;flex-direction:column;width:100%;max-width:560px;margin:0 auto;padding:clamp(.6rem,2vw,1.2rem) clamp(1.2rem,5vw,1.8rem) 2.4rem}
+  #carta-ov .cfoot{flex:0 0 auto;width:100%;border-top:1px solid var(--linha);margin-top:2rem}
+  #carta-ov .cfoot-in{max-width:1000px;margin:0 auto;padding:1rem clamp(1.2rem,5vw,2rem);display:flex;align-items:center;justify-content:space-between;gap:.5rem 1.2rem;flex-wrap:wrap;font-size:.76rem;color:var(--suave);line-height:1.4}
+  #carta-ov .cfoot-mk{font-family:var(--serif);font-weight:600;color:var(--tinta);font-size:.9rem}
   /* topo do overlay: marca discreta + sair */
-  #carta-ov .cbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:44px;margin-bottom:clamp(1.4rem,5vw,2.6rem)}
+  #carta-ov .cbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px;max-width:1000px;margin:0 auto;padding:.3rem clamp(1.2rem,5vw,2rem)}
   #carta-ov .cbar .cmk{display:flex;align-items:center;gap:.5rem;font-family:var(--serif);font-weight:600;font-size:.98rem;color:var(--tinta);letter-spacing:-.01em}
   #carta-ov .cbar .cmk svg{width:20px;height:23px;flex:0 0 auto}
   #carta-ov .cbar .cclose{background:none;border:0;cursor:pointer;color:var(--suave);font-family:var(--sans);font-size:.86rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center;padding:0 .3rem}
@@ -898,14 +901,22 @@
 
   <!-- A CONTA QUE FICA · Declaração de Bens Sentimentais -->
   <div id="carta-ov" role="dialog" aria-modal="true" aria-labelledby="carta-title" tabindex="-1">
-    <div class="cwrap">
+    <header class="chead">
       <div class="cbar">
         <span class="cmk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg>A Conta que Fica</span>
         <button class="cclose" id="carta-close" type="button">Agora não</button>
       </div>
+    </header>
+    <div class="cwrap">
       <div class="cstage" id="carta-stage"></div>
       <p id="carta-live" class="sr-only" aria-live="polite"></p>
     </div>
+    <footer class="cfoot">
+      <div class="cfoot-in">
+        <span class="cfoot-mk">Banco do Além</span>
+        <span>Nada do que você escreve sai do seu aparelho. É só seu.</span>
+      </div>
+    </footer>
   </div>
 
 <script>
