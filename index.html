@@ -120,6 +120,8 @@
   .loaded .hero h1 .verdade::after{transform:scaleX(1)}
   .hero .lead{font-size:1.2rem;line-height:1.55;margin-top:1.6rem;max-width:38ch;color:var(--corpo)}
   .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
+  .hero-tag{margin:1.6rem 0 0;font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.4;color:rgba(38,49,43,.7)}
+  .hero-tag .ht-sub{display:block;font-family:var(--sans);font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin-top:.35rem}
 
   /* Cartão de conta (a prova) */
   .acct{background:var(--sup);border-radius:var(--r);box-shadow:var(--shadow-hi);padding:1.5rem 1.5rem 1.2rem;border:1px solid var(--linha);transform:rotate(-.4deg);position:relative}
@@ -199,6 +201,10 @@
   .cert .stamp{position:absolute;top:1.4rem;right:1.2rem;transform:rotate(-4deg)}
   .cert .stamp .box{border:2px solid var(--sol-forte);border-radius:6px;padding:.35rem .7rem;color:var(--sol-forte);font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-align:center;line-height:1.15;opacity:.9}
   .cert .ponte{margin:1.4rem 0 0;font-size:.86rem;color:var(--suave);font-style:italic}
+  .seg-patr{margin-top:clamp(2.4rem,6vw,3.6rem);padding-top:clamp(2rem,5vw,2.8rem);border-top:1px solid var(--linha);max-width:60ch}
+  .seg-patr h3{font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,2rem);font-weight:500;color:var(--tinta);letter-spacing:-.01em;margin:0 0 .8rem}
+  .seg-patr p{font-size:1.02rem;line-height:1.6;color:var(--corpo)}
+  .seg-patr .btn-declarar{margin-top:1.2rem}
 
   /* V · NÚMEROS */
   .nums{background:var(--luz);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
@@ -333,7 +339,7 @@
   #reveal .ask label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin:1.8rem 0 .6rem}
   #reveal .ask input{width:100%;max-width:28rem;background:var(--sup);border:1.5px solid var(--linha);border-radius:var(--ri);color:var(--tinta);font-family:var(--serif);font-size:1.3rem;text-align:center;padding:.75rem;outline:none}
   #reveal .ask input:focus{border-color:var(--afeto)}
-  .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:46rem;margin:0 auto;width:100%}
+  .acts{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:46rem;margin:0 auto;width:100%}
   .ac{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.4rem;text-align:left;display:flex;flex-direction:column}
   .ac.love{border-color:var(--afeto-luz);background:linear-gradient(180deg,#fff,var(--afeto-luz))}
   .ac h4{font-family:var(--serif);font-size:1.2rem;color:var(--tinta);margin:0 0 .5rem;font-weight:500}
@@ -354,6 +360,117 @@
   /* Botão de som */
   .snd{position:fixed;top:16px;right:16px;z-index:110;background:var(--sup);border:1px solid var(--linha);color:var(--vida-profundo);border-radius:50%;width:44px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:1.1rem}
   #reveal.on ~ .snd{display:flex}
+
+  /* ==========================================================
+     A CONTA QUE FICA — Declaração de Bens Sentimentais (#carta-ov)
+     Overlay próprio, estética VIDA/luminosa. Não colide com #reveal.
+     ========================================================== */
+  #carta-ov{position:fixed;inset:0;z-index:120;display:none;overflow-y:auto;background:var(--luz);-webkit-overflow-scrolling:touch}
+  #carta-ov.on{display:block}
+  /* gradiente amanhecer só no topo, aplicado à coluna (evita borda dura full-bleed) */
+  #carta-ov .cwrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;max-width:560px;margin:0 auto;padding:clamp(1.2rem,5vw,2.4rem) clamp(1.2rem,5vw,1.8rem) 2.4rem}
+  #carta-ov .cwrap::before{content:"";position:absolute;top:0;left:0;right:0;height:320px;background:var(--amanhecer);opacity:.26;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent);z-index:-1}
+  /* topo do overlay: marca discreta + sair */
+  #carta-ov .cbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:44px;margin-bottom:clamp(1.4rem,5vw,2.6rem)}
+  #carta-ov .cbar .cmk{display:flex;align-items:center;gap:.5rem;font-family:var(--serif);font-weight:600;font-size:.98rem;color:var(--tinta);letter-spacing:-.01em}
+  #carta-ov .cbar .cmk svg{width:20px;height:23px;flex:0 0 auto}
+  #carta-ov .cbar .cclose{background:none;border:0;cursor:pointer;color:var(--suave);font-family:var(--sans);font-size:.86rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center;padding:0 .3rem}
+  #carta-ov .cbar .cclose:hover{color:var(--tinta)}
+  /* pílula de nome da jornada */
+  #carta-ov .cbadge{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin-bottom:.4rem}
+  #carta-ov .cbadge::before{content:"";width:22px;height:1px;background:var(--sol-forte);opacity:.6}
+  /* palco de cada passo */
+  #carta-ov .cstage{flex:1;display:flex;flex-direction:column}
+  .cstep{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease-vida),transform .7s var(--ease-vida)}
+  .cstep.show{opacity:1;transform:none}
+  .cstep .fade-seq{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease-vida),transform .6s var(--ease-vida)}
+  .cstep .fade-seq.lit{opacity:1;transform:none}
+  /* tipografia interna */
+  #carta-ov h2.ctitle{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,6vw,2.4rem);line-height:1.1;letter-spacing:-.02em;color:var(--tinta);margin:0 0 .2rem}
+  #carta-ov .clead{font-size:clamp(1.02rem,3.4vw,1.16rem);line-height:1.55;color:var(--corpo);margin:0 0 1rem}
+  #carta-ov .clead.big{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.24rem,4.6vw,1.6rem);line-height:1.32;color:var(--vida-profundo)}
+  #carta-ov .csmall{font-size:.92rem;color:var(--suave);line-height:1.5}
+  #carta-ov .chint{font-size:.9rem;color:var(--suave);line-height:1.5;margin:.2rem 0 1rem;font-style:italic}
+  /* campos */
+  #carta-ov label.clab{display:block;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin:0 0 .5rem}
+  #carta-ov input.cin,#carta-ov textarea.cta{width:100%;background:var(--sup);border:1.5px solid var(--linha);border-radius:var(--ri);color:var(--tinta);font-family:var(--sans);font-size:1.05rem;line-height:1.5;padding:.85rem .95rem;outline:none;transition:border-color .2s,box-shadow .2s}
+  #carta-ov input.cin{font-size:1.15rem}
+  #carta-ov textarea.cta{min-height:7.5em;resize:vertical}
+  #carta-ov input.cin:focus,#carta-ov textarea.cta:focus{border-color:var(--sol-forte);box-shadow:0 0 0 3px rgba(245,158,11,.14)}
+  #carta-ov input.cin::placeholder,#carta-ov textarea.cta::placeholder{color:#B4B0A4}
+  #carta-ov .cex{font-size:.86rem;color:var(--suave);margin:.55rem 0 0;line-height:1.5}
+  /* relação: chips de rádio */
+  #carta-ov .crel{display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .3rem}
+  #carta-ov .crel .rc{position:relative}
+  #carta-ov .crel input{position:absolute;opacity:0;width:1px;height:1px}
+  #carta-ov .crel label{display:inline-flex;align-items:center;min-height:44px;padding:.5rem .95rem;border:1.5px solid var(--linha);border-radius:999px;background:var(--sup);color:var(--corpo);font-size:.92rem;font-weight:500;cursor:pointer;transition:all .18s}
+  #carta-ov .crel label:hover{border-color:var(--sol-forte);color:var(--tinta)}
+  #carta-ov .crel input:checked + label{background:var(--sol-luz);border-color:var(--sol-forte);color:var(--sobre-sol);font-weight:600}
+  #carta-ov .crel input:focus-visible + label{outline:2px solid var(--sol-forte);outline-offset:2px}
+  #carta-ov .crel .other-in{display:inline-flex;align-items:center;min-height:44px}
+  #carta-ov .crel .other-in input{position:static;opacity:1;width:auto;max-width:9rem;height:auto;background:var(--sup);border:1.5px solid var(--linha);border-radius:999px;padding:.5rem .9rem;font-family:var(--sans);font-size:.92rem;color:var(--tinta);outline:none}
+  #carta-ov .crel .other-in input:focus{border-color:var(--sol-forte)}
+  /* selo "última pergunta" */
+  #carta-ov .cseal{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--afeto-forte);margin:0 0 .7rem}
+  #carta-ov .cseal svg{width:14px;height:14px}
+  /* ações / navegação por passo */
+  #carta-ov .cactions{margin-top:auto;padding-top:1.6rem}
+  #carta-ov .cactions .row{display:flex;flex-direction:column;gap:.7rem}
+  #carta-ov .cactions .btn{width:100%}
+  #carta-ov .csecondary{display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1rem}
+  #carta-ov .clink{background:none;border:0;cursor:pointer;color:var(--corpo);font-family:var(--sans);font-size:.9rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:44px;padding:0 .3rem}
+  #carta-ov .clink:hover{color:var(--tinta)}
+  #carta-ov .clink.quiet{color:var(--suave);font-weight:500}
+  /* pontos de progresso (âmbar) */
+  #carta-ov .cdots{display:flex;gap:.5rem;justify-content:center;margin:0 0 1.6rem}
+  #carta-ov .cdots i{width:8px;height:8px;border-radius:50%;background:var(--cinza-lixao);transition:background .3s var(--ease-vida),transform .3s var(--ease-vida)}
+  #carta-ov .cdots i.on{background:var(--sol-forte);transform:scale(1.15)}
+  /* apresentação discreta */
+  #carta-ov .cintro{font-size:.9rem;color:var(--suave);font-style:italic;line-height:1.5;margin:1.2rem 0 0}
+  /* ---- CARTA MONTADA (textarea rico) ---- */
+  #carta-ov .cletter{width:100%;background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);color:var(--tinta);font-family:var(--serif);font-size:1.06rem;line-height:1.62;padding:1.4rem 1.3rem;outline:none;box-shadow:var(--shadow);min-height:20rem;resize:vertical;background-image:repeating-linear-gradient(-.3deg,rgba(233,229,219,.4) 0,rgba(233,229,219,.4) 1px,transparent 1px,transparent 30px)}
+  #carta-ov .cletter:focus{border-color:var(--sol-forte);box-shadow:var(--shadow),0 0 0 3px rgba(245,158,11,.12)}
+  #carta-ov .csign-field{margin-top:1rem}
+  /* ---- COMPROVANTE (recibo premium) ---- */
+  .cvoucher{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin:0 0 1.4rem;background-image:repeating-linear-gradient(-.3deg,rgba(233,229,219,.3) 0,rgba(233,229,219,.3) 1px,transparent 1px,transparent 28px)}
+  .cvoucher .vtop{height:4px;background:var(--sol)}
+  .cvoucher .vin{padding:1.4rem 1.5rem}
+  .cvoucher .vlbl{font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sol-forte);margin:0 0 1rem}
+  .cvoucher .vrow{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;padding:.4rem 0;border-bottom:1px dotted var(--linha)}
+  .cvoucher .vrow .vk{color:var(--corpo)}
+  .cvoucher .vrow .vv{color:var(--tinta);font-weight:600;text-align:right}
+  .cvoucher .vrow.hi .vv{font-family:var(--serif);font-style:italic;color:var(--vida-profundo)}
+  .cvoucher .vnote{font-size:.92rem;color:var(--corpo);line-height:1.55;margin:1rem 0 0}
+  .cvoucher .vnote b{color:var(--tinta)}
+  .cvoucher .vslogan{font-family:var(--serif);font-style:italic;color:var(--tinta);font-size:1.02rem;line-height:1.45;margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--linha)}
+  .cvoucher .vslogan b{font-style:normal;font-weight:600;color:var(--vida-profundo)}
+  .cvoucher.settle{animation:vsettle .8s var(--ease-vida)}
+  @keyframes vsettle{0%{opacity:0;transform:translateY(10px) scale(.99)}100%{opacity:1;transform:none}}
+  /* privacidade */
+  #carta-ov .cpriv{display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:start;font-size:.86rem;color:var(--vida-profundo);line-height:1.5;background:var(--vida-fundo);border-radius:var(--rb);padding:.9rem 1rem;margin:0 0 .4rem}
+  #carta-ov .cpriv svg{width:16px;height:16px;margin-top:.15rem;stroke:var(--vida-profundo)}
+  #carta-ov .ctoast{font-size:.9rem;color:var(--vida-profundo);font-weight:600;text-align:center;min-height:1.4em;margin:.6rem 0 0;opacity:0;transition:opacity .3s}
+  #carta-ov .ctoast.show{opacity:1}
+  /* ---- destinatário opcional (pré-preenchimento discreto) ---- */
+  #carta-ov .cdest{margin:0 0 1.1rem;padding:1.1rem 1.2rem;border:1px solid var(--linha);border-radius:var(--rb);background:rgba(252,250,245,.6)}
+  #carta-ov .cdest .clab{margin-bottom:.4rem}
+  /* ---- botões de envio (empilhados, toque 48px) ---- */
+  #carta-ov .csend{display:flex;flex-direction:column;gap:.75rem;margin:0 0 1rem}
+  #carta-ov .csend .btn{width:100%;min-height:48px}
+  #carta-ov .csend .btn svg{width:18px;height:18px;flex:0 0 auto}
+  /* ---- tela de saída ---- */
+  #carta-ov .cexit{text-align:left}
+  #carta-ov .cexit .ctitle{margin-bottom:.6rem}
+
+  @media(prefers-reduced-motion:reduce){
+    .cstep,.cstep .fade-seq{transition:none;opacity:1;transform:none}
+    .cvoucher.settle{animation:none}
+    #carta-ov .cdots i{transition:none}
+  }
+  @media(max-width:420px){
+    #carta-ov .cwrap{padding-left:1.1rem;padding-right:1.1rem}
+    .cvoucher .vin{padding:1.2rem 1.15rem}
+  }
 
   /* ---------- Responsivo ---------- */
   @media(max-width:860px){
@@ -428,7 +545,7 @@
     </div>
     <div class="nav-right">
       <a class="nav-enter" href="#transferir">Entrar</a>
-      <a href="#transferir" class="btn btn-p btn-sm">Abrir conta</a>
+      <a href="#transferir" class="btn btn-p btn-sm" data-carta="B">Abrir conta</a>
     </div>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mpanel">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -447,7 +564,7 @@
     <a href="#planos" class="m-link">Planos</a>
     <a href="#seguranca" class="m-link">Segurança</a>
     <a href="filosofia.html" class="m-link">Instituição</a>
-    <div class="m-cta"><a href="#transferir" class="btn btn-p" style="width:100%">Abrir conta</a></div>
+    <div class="m-cta"><a href="#transferir" class="btn btn-p" style="width:100%" data-carta="B">Abrir conta</a></div>
   </div>
 
   <!-- I · HERO -->
@@ -457,9 +574,10 @@
       <h1>Cuidamos do que você leva<br><span class="verdade">de verdade.</span></h1>
       <p class="lead">O primeiro banco privado dedicado à transferência do seu patrimônio para o Além. Deposite em vida, receba na eternidade — com o cuidado de quem cuida do que é seu há mais de um século.</p>
       <div class="hero-cta">
-        <a href="#transferir" class="btn btn-p">Abrir minha conta</a>
+        <a href="#transferir" class="btn btn-p" data-carta="B">Abrir minha conta</a>
         <a href="#planos" class="btn btn-ghost">Consultar planos</a>
       </div>
+      <p class="hero-tag" aria-label="Posicionamento institucional">O único banco que guarda o que não tem preço.<span class="ht-sub">Patrimônio Sentimental · protegido pela sua memória</span></p>
     </div>
 
     <div class="acct" aria-label="Resumo da conta">
@@ -572,6 +690,14 @@
         <p class="cs">Registramos, por este instrumento, a titularidade perpétua sobre o patrimônio confiado à instituição — válida em todas as dimensões, sem termo.</p>
         <p class="ponte">Nada que você digita sai do seu aparelho.</p>
       </div>
+    </div>
+
+    <!-- Paródia séria: o patrimônio que nenhum banco sabe precificar -->
+    <div class="seg-patr">
+      <h3>Seu patrimônio, protegido.</h3>
+      <p>Não guardamos seu dinheiro — outros bancos fazem isso melhor. Guardamos o que eles não sabem precificar: o que você sente.</p>
+      <p>Esse ativo não é taxado, não é penhorável, não entra em inventário e não some numa crise. Ele corre um único risco: o de nunca ser declarado. É desse risco que a gente cuida.</p>
+      <button class="btn btn-sol btn-declarar" type="button" data-carta="A">Declarar meu patrimônio sentimental</button>
     </div>
   </div></section>
 
@@ -769,6 +895,18 @@
     <button class="skip" id="skip" type="button">Avançar &rarr;</button>
   </div>
   <button class="snd" id="snd" type="button" aria-label="Ativar som" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 9l4 6M21 9l-4 6"/></svg></button>
+
+  <!-- A CONTA QUE FICA · Declaração de Bens Sentimentais -->
+  <div id="carta-ov" role="dialog" aria-modal="true" aria-labelledby="carta-title" tabindex="-1">
+    <div class="cwrap">
+      <div class="cbar">
+        <span class="cmk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg>A Conta que Fica</span>
+        <button class="cclose" id="carta-close" type="button">Agora não</button>
+      </div>
+      <div class="cstage" id="carta-stage"></div>
+      <p id="carta-live" class="sr-only" aria-live="polite"></p>
+    </div>
+  </div>
 
 <script>
 (function(){
@@ -980,11 +1118,22 @@
     var safe=esc(rawName);
     var w=el('div','rv');w.style.marginTop='2.4rem';
     w.innerHTML='<div class="acts">'
-      +'<div class="ac love"><h4>Ligue hoje</h4><p>Pegue o telefone e ligue para '+safe+'. Não precisa de motivo. A vida é agora.</p><button class="btn btn-afeto" id="callb" type="button">Ligue para quem você ama</button></div>'
+      +'<div class="ac love"><h4>Escreva agora</h4><p>Guarde numa carta o que você diria a '+safe+'. Fica só entre vocês dois.</p><button class="btn btn-afeto" id="writeb" type="button">Fazer meu primeiro depósito</button></div>'
+      +'<div class="ac"><h4>Ligue hoje</h4><p>Pegue o telefone e ligue para '+safe+'. Não precisa de motivo. A vida é agora.</p><button class="btn btn-afeto" id="callb" type="button">Ligue para quem você ama</button></div>'
       +'<div class="ac"><h4>Deixe em vida</h4><p>Um gesto, um perdão, um abraço a quem precisa hoje. O depósito que rende para sempre.</p><a class="btn btn-ghost" href="https://doar.org.br/" target="_blank" rel="noopener">Como fazer</a></div>'
       +'<div class="ac"><h4>Convide alguém</h4><p>Não para assustar — para caminhar junto. Alguém que você ama merece sentir isto.</p><button class="btn btn-ghost" id="shareb" type="button">Compartilhar</button></div>'
       +'</div>';
     stage.appendChild(w);show(w);
+    /* Escrever agora: leva à Declaração (reenquadramento C), pré-preenchendo o nome.
+       Fecha o overlay da revelação antes, para não sobrepor dois modais (foco/Esc/scroll). */
+    var writeb=w.querySelector('#writeb');
+    if(writeb){writeb.addEventListener('click',function(){
+      var belEl2=document.getElementById('bel');
+      var nm2=(belEl2&&belEl2.value.trim())||'';
+      var backTo=lastFocus; /* botão que abriu a revelação (ex.: "Escolher plano" / "Abrir conta") */
+      leave();              /* fecha a revelação, reseta scroll e foco */
+      openCarta('C',{nome:nm2,trigEl:backTo});
+    });}
     /* Ligar: sem discador vazio — reforça o gesto */
     var callb=w.querySelector('#callb');
     if(callb){callb.addEventListener('click',function(){callb.textContent='Agora. Não depois.';callb.disabled=true;});}
@@ -1046,6 +1195,437 @@
     }
     /* se tudo já foi revelado, não há próximo ato — nada a fazer (sem travar). */
   });
+
+  /* ============================================================
+     A CONTA QUE FICA — Declaração de Bens Sentimentais
+     Overlay independente do #reveal. Máquina de estados linear.
+     100% client-side. Nada sai do aparelho.
+     ============================================================ */
+  var cOv=document.getElementById('carta-ov'),
+      cStage=document.getElementById('carta-stage'),
+      cClose=document.getElementById('carta-close'),
+      cLive=document.getElementById('carta-live');
+  var cLastFocus=null, cState={}, cReduce=reduce;
+
+  /* Reenquadramento por gatilho (seção 2 da spec) */
+  var OPEN_LINES={
+    A:'Antes de escolher seu plano, uma pergunta que nenhum banco faz.',
+    B:'Antes de abrir sua conta, uma pergunta que nenhum banco faz.',
+    C:'Você já entendeu. Então vamos ao que importa.'
+  };
+
+  function cAnnounce(msg){if(cLive){cLive.textContent='';setTimeout(function(){cLive.textContent=msg;},60);}}
+
+  /* --- foco preso dentro do overlay da carta --- */
+  function cTrap(e){
+    if(e.key!=='Tab')return;
+    var f=cOv.querySelectorAll('a[href],button:not([disabled]),input:not([type=hidden]),textarea,[tabindex]:not([tabindex="-1"])');
+    f=Array.prototype.filter.call(f,function(x){return x.offsetParent!==null;});
+    if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+  /* Esc NÃO descarta às cegas: leva à saída gentil (spec §10) */
+  function cKey(e){if(e.key==='Escape'){e.preventDefault();gotoExit();}else{cTrap(e);}}
+
+  /* --- abrir / fechar --- */
+  function openCarta(trigger,opts){
+    opts=opts||{};
+    /* movimento da Declaração: própria checagem, lida no momento de abrir —
+       imune ao 'reduce' global que o skipBtn da revelação torna permanente */
+    cReduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    cLastFocus=opts.trigEl||document.activeElement;
+    cState={trigger:(OPEN_LINES[trigger]?trigger:'B'),answers:{},nome:opts.nome||'',rel:'',relOther:'',assinou:'',sent:false};
+    cOv.classList.add('on');cOv.scrollTop=0;
+    document.body.style.overflow='hidden';
+    /* inertiza o fundo (espelha o menu mobile): leitor de tela/Tab não vazam.
+       #carta-ov e #reveal não estão no conjunto mBg, então permanecem ativos */
+    setBgInert(true);
+    document.addEventListener('keydown',cKey);
+    cOv.focus();
+    renderOpening();
+  }
+  function closeCarta(){
+    cOv.classList.remove('on');
+    document.body.style.overflow='';
+    setBgInert(false);
+    document.removeEventListener('keydown',cKey);
+    cStage.innerHTML='';
+    cLetterEl=null;
+    if(cLastFocus&&cLastFocus.focus){try{cLastFocus.focus();}catch(e){}}
+  }
+  cClose.addEventListener('click',function(){gotoExit();});
+
+  /* --- helpers de render --- */
+  function mount(node,titleId){
+    cStage.innerHTML='';
+    cStage.appendChild(node);
+    requestAnimationFrame(function(){node.classList.add('show');});
+    cOv.scrollTop=0;
+    /* foco no título de cada estado (ou primeiro campo quando fizer sentido) */
+    var t=titleId?document.getElementById(titleId):null;
+    if(t){t.setAttribute('tabindex','-1');t.focus();}
+  }
+  function dotsHtml(active){/* active: 1..4, 0 = nenhum */
+    var s='<div class="cdots" aria-hidden="true">';
+    for(var i=1;i<=4;i++){s+='<i class="'+(i<=active?'on':'')+'"></i>';}
+    return s+'</div>';
+  }
+  function seqReveal(node){
+    if(cReduce){Array.prototype.forEach.call(node.querySelectorAll('.fade-seq'),function(x){x.classList.add('lit');});return;}
+    var items=node.querySelectorAll('.fade-seq');
+    Array.prototype.forEach.call(items,function(x,i){timers.push(setTimeout(function(){x.classList.add('lit');},i*400+120));});
+  }
+
+  /* ---------------- [0] ABERTURA ---------------- */
+  function renderOpening(){
+    var s=el('div','cstep cexit');
+    s.innerHTML='<p class="cbadge">A Conta que Fica</p>'
+      +'<h2 class="ctitle" id="carta-title">'+esc(OPEN_LINES[cState.trigger])+'</h2>'
+      +'<div class="fade-seq"><p class="clead">Todo banco pergunta quanto você tem.<br>Este pergunta uma coisa diferente.</p></div>'
+      +'<div class="fade-seq"><p class="clead big">Se amanhã você não pudesse falar — quem precisaria ter ouvido você?</p></div>'
+      +'<div class="fade-seq"><p class="clead">Pense em uma pessoa. Só uma, por enquanto.</p></div>'
+      +'<div class="fade-seq"><p class="csmall">O saldo mais alto que existe não está em nenhuma conta. Está numa frase que você ainda não disse.</p>'
+      +'<p class="csmall" style="margin-top:.7rem">Vamos guardar essa frase agora. Leva três minutos, e fica só entre você e essa pessoa.</p></div>'
+      +'<div class="cactions"><div class="row">'
+      +'<button class="btn btn-sol" id="c-begin" type="button">Começar a escrever</button>'
+      +'</div><div class="csecondary"><button class="clink quiet" id="c-not-now" type="button">Agora não</button></div></div>';
+    mount(s,'carta-title');
+    seqReveal(s);
+    cAnnounce('A Conta que Fica. '+OPEN_LINES[cState.trigger]);
+    s.querySelector('#c-begin').addEventListener('click',renderRecipient);
+    s.querySelector('#c-not-now').addEventListener('click',gotoExit);
+  }
+
+  /* ---------------- [1] PARA QUEM ---------------- */
+  var REL_OPTS=[['mae','mãe'],['pai','pai'],['filho','filho(a)'],['comp','companheiro(a)'],['amigo','amigo(a)']];
+  function renderRecipient(){
+    var s=el('div','cstep');
+    var relHtml='';
+    REL_OPTS.forEach(function(o){
+      relHtml+='<span class="rc"><input type="radio" name="crel" id="rel-'+o[0]+'" value="'+o[1]+'"'+(cState.rel===o[1]?' checked':'')+'><label for="rel-'+o[0]+'">'+o[1]+'</label></span>';
+    });
+    relHtml+='<span class="rc"><input type="radio" name="crel" id="rel-outra" value="__outra"'+(cState.rel==='__outra'?' checked':'')+'><label for="rel-outra">outra pessoa</label></span>'
+      +'<span class="other-in"><input type="text" id="rel-outra-in" placeholder="qual?" value="'+esc(cState.relOther)+'" aria-label="Outra relação, qual?" autocomplete="off"></span>';
+    s.innerHTML='<h2 class="ctitle" id="carta-title">Para quem é este depósito?</h2>'
+      +'<div class="field-block">'
+      +'<label class="clab" for="c-nome">o nome, o apelido, o jeito que só você chama</label>'
+      +'<input class="cin" id="c-nome" type="text" value="'+esc(cState.nome)+'" autocomplete="off">'
+      +'<p class="cex">ex.: “minha mãe” · “Pedro” · “vó Alzira” · “meu velho” · “Bê”</p>'
+      +'</div>'
+      +'<div class="field-block" style="margin-top:1.6rem">'
+      +'<label class="clab">E quem essa pessoa é pra você?</label>'
+      +'<div class="crel" role="radiogroup" aria-label="Relação com a pessoa">'+relHtml+'</div>'
+      +'</div>'
+      +'<p class="cintro">A gente ajuda com as palavras. Você traz a verdade — ninguém diz isso melhor que você.</p>'
+      +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-cont" type="button">Continuar</button></div>'
+      +'<div class="csecondary"><button class="clink quiet" id="c-exit" type="button">Agora não</button></div></div>';
+    mount(s);
+    var nomeIn=s.querySelector('#c-nome');
+    nomeIn.focus();
+    cAnnounce('Para quem é este depósito?');
+    /* Enter no campo de nome avança */
+    nomeIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();proceed();}});
+    var outraIn=s.querySelector('#rel-outra-in');
+    outraIn.addEventListener('focus',function(){var r=s.querySelector('#rel-outra');if(r)r.checked=true;});
+    function proceed(){
+      cState.nome=nomeIn.value.trim();
+      var sel=s.querySelector('input[name=crel]:checked');
+      cState.rel=sel?sel.value:'';
+      cState.relOther=outraIn.value.trim();
+      renderQuestion(0);
+    }
+    s.querySelector('#c-cont').addEventListener('click',proceed);
+    s.querySelector('#c-exit').addEventListener('click',gotoExit);
+  }
+
+  /* ---------------- [2..5] PERGUNTAS ---------------- */
+  function whoName(){var n=(cState.nome||'').trim();return n||'essa pessoa';}
+  var QS=[
+    {key:'cena',dot:1,
+      title:function(n){return 'A primeira lembrança com '+n+' que vem à sua cabeça agora. Qual é?';},
+      hint:'Não precisa ser a mais importante. Às vezes a mais boba é a mais verdadeira. Não explique por que importa — só descreva: o lugar, a luz, o que essa pessoa disse.',
+      ph:'A cozinha às seis da manhã, você de camisola fazendo café, o rádio ligado baixinho. Eu tinha uns oito anos.',
+      next:'Continuar'},
+    {key:'divida',dot:2,
+      title:function(n){return 'Tem alguma coisa que '+n+' fez por você e que você nunca agradeceu direito?';},
+      hint:'Pode ser grande. Pode ser um gesto de terça-feira qualquer. Às vezes o maior cuidado veio disfarçado de coisa banal.',
+      ph:'Você trabalhou dobrado dois anos pra eu não trancar a faculdade. Nunca reclamou. Eu só entendi o que aquilo custou quando virei pai.',
+      next:'Continuar'},
+    {key:'espelho',dot:3,
+      title:function(n){return 'O que você queria que '+n+' finalmente acreditasse sobre si?';},
+      hint:'Se ajudar, complete: “Eu queria que você soubesse que você é ______.”',
+      ph:'Que você é forte. Você acha que só aguentou porque não tinha escolha. Não é verdade — muita gente teve escolha e desistiu. Você ficou.',
+      next:'Continuar'},
+    {key:'frase',dot:4,last:true,
+      title:function(n){return 'Se '+n+' estivesse na sua frente agora, e você tivesse toda a coragem do mundo — o que você diria?';},
+      hint:'Pode ser simples. “Eu te amo” também é uma resposta inteira.',
+      ph:'Que eu te amo. Que eu tenho orgulho de ser seu filho. Que se eu presto pra alguma coisa, foi você.',
+      next:'Montar minha carta'}
+  ];
+  function renderQuestion(i){
+    var q=QS[i],n=whoName();
+    var s=el('div','cstep');
+    var sealHtml=q.last?'<p class="cseal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8L3.5 9.7l5.9-.9z"/></svg>última — e é a que mais importa</p>':'';
+    s.innerHTML=dotsHtml(q.dot)
+      +sealHtml
+      +'<h2 class="ctitle" id="carta-title" style="font-size:clamp(1.4rem,5vw,2rem)">'+esc(q.title(n))+'</h2>'
+      +'<p class="chint">'+esc(q.hint)+'</p>'
+      +'<label class="sr-only" for="c-ans">Sua resposta</label>'
+      +'<textarea class="cta" id="c-ans" rows="4" placeholder="'+esc(q.ph)+'">'+esc(cState.answers[q.key]||'')+'</textarea>'
+      +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-cont" type="button">'+esc(q.next)+'</button></div>'
+      +'<div class="csecondary"><button class="clink" id="c-skip" type="button">Pular esta</button><button class="clink quiet" id="c-exit" type="button">Guardar comigo</button></div></div>';
+    mount(s,'carta-title');
+    cAnnounce('Pergunta '+q.dot+' de 4');
+    var ta=s.querySelector('#c-ans');
+    function save(){cState.answers[q.key]=ta.value.trim();}
+    function advance(){save();if(i<QS.length-1)renderQuestion(i+1);else renderLetter();}
+    s.querySelector('#c-cont').addEventListener('click',advance);
+    s.querySelector('#c-skip').addEventListener('click',function(){cState.answers[q.key]='';if(i<QS.length-1)renderQuestion(i+1);else renderLetter();});
+    s.querySelector('#c-exit').addEventListener('click',function(){save();gotoExit();});
+  }
+
+  /* ---------------- MONTAGEM DA CARTA (§5) ---------------- */
+  function vocative(){
+    var n=(cState.nome||'').trim();
+    if(!n)return 'Você';
+    /* Capitaliza a primeira letra do vocativo */
+    return n.charAt(0).toLocaleUpperCase('pt-BR')+n.slice(1);
+  }
+  function isDistante(){
+    /* variação do conector de abertura (§5.2): "não sou muito de dizer essas coisas".
+       O exemplo canônico (mãe, §5.3) usa a abertura padrão, então só amigo(a)
+       — a relação em que "não sou de dizer isso" soa natural — dispara a variação. */
+    return cState.rel==='amigo(a)';
+  }
+  /* Emenda invisível: a resposta segue um conector terminado em ":" — minusculiza
+     só a primeira letra para não abrir maiúscula no meio da frase (o resto é intocado). */
+  function joinAfterColon(conn,ans){
+    var a=(ans||'').trim();if(!a)return conn;
+    var first=a.charAt(0),lower=first.toLocaleLowerCase('pt-BR');
+    /* preserva nomes próprios/siglas: só rebaixa se não for uma sequência de maiúsculas */
+    if(first!==lower && !/^[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ]{2}/.test(a)){a=lower+a.slice(1);}
+    return conn+' '+a;
+  }
+  var CONNECTORS={
+    aberturaA:'Sentei pra te escrever uma coisa que eu já devia ter dito faz tempo.',
+    aberturaB:'Não sou muito de dizer essas coisas, então resolvi escrever.',
+    cena:'Sempre que penso em você, volto pra um lugar:',
+    divida:'E tem uma coisa que eu nunca te agradeci direito:',
+    espelho:'Se tem uma coisa que eu queria que você soubesse, é essa:',
+    fecho:'Então deixa eu dizer, agora, sem rodeio:'
+  };
+  var FECHO_FIXO='Não é dinheiro. Mas é o que eu tenho de mais valioso.\nE é seu.';
+
+  function buildLetterText(bare){
+    var a=cState.answers;
+    var parts=[];
+    var has=a.cena||a.divida||a.espelho||a.frase;
+    if(!has){
+      /* sem nenhuma resposta: carta mínima honesta */
+      var min=[];
+      if(!bare){min.push(vocative()+',');min.push(CONNECTORS.aberturaA);}
+      min.push(FECHO_FIXO);
+      min.push(signatureBlock());
+      return min.join('\n\n');
+    }
+    if(bare){
+      /* "palavras exatas": só respostas + fecho + assinatura, sem timbre/conectores/vocativo */
+      if(a.cena)parts.push(a.cena);
+      if(a.divida)parts.push(a.divida);
+      if(a.espelho)parts.push(a.espelho);
+      if(a.frase)parts.push(a.frase);
+      parts.push(FECHO_FIXO);
+      parts.push(signatureBlock());
+      return parts.join('\n\n');
+    }
+    parts.push(vocative()+',');
+    parts.push(isDistante()?CONNECTORS.aberturaB:CONNECTORS.aberturaA);
+    if(a.cena)parts.push(joinAfterColon(CONNECTORS.cena,a.cena));
+    if(a.divida)parts.push(joinAfterColon(CONNECTORS.divida,a.divida));
+    if(a.espelho)parts.push(joinAfterColon(CONNECTORS.espelho,a.espelho));
+    if(a.frase)parts.push(joinAfterColon(CONNECTORS.fecho,a.frase));
+    parts.push(FECHO_FIXO);
+    parts.push(signatureBlock());
+    return parts.join('\n\n');
+  }
+  function signatureBlock(){
+    var who=(cState.assinou||'').trim();
+    return 'Com amor,\n'+(who||'');
+  }
+  /* Texto para envio: timbre + corpo (o timbre vive no documento, não na jornada) */
+  function letterForSend(){
+    var head='Declaração de Bens Sentimentais\n— o que não cabe em nenhuma conta —\n\n';
+    var body=(cLetterEl?cLetterEl.value:buildLetterText(false));
+    return head+body;
+  }
+
+  var cLetterEl=null, cBareMode=false;
+  /* ---------------- [6] CARTA EDITÁVEL ---------------- */
+  function renderLetter(){
+    cBareMode=false;
+    var s=el('div','cstep');
+    s.innerHTML='<h2 class="ctitle" id="carta-title">Sua declaração está pronta.</h2>'
+      +'<p class="clead">Leia com calma. Mude o que quiser — cada palavra é sua.</p>'
+      +'<label class="sr-only" for="c-letter">Sua declaração, editável</label>'
+      +'<textarea class="cletter" id="c-letter" spellcheck="true"></textarea>'
+      +'<div class="csign-field"><label class="clab" for="c-sign">Como você assina</label>'
+      +'<input class="cin" id="c-sign" type="text" placeholder="seu nome ou como essa pessoa te chama" value="'+esc(cState.assinou)+'" autocomplete="off"></div>'
+      +'<div class="cactions"><div class="row">'
+      +'<button class="btn btn-sol" id="c-deliver" type="button">Está pronta — entregar</button>'
+      +'<button class="btn btn-ghost" id="c-bare" type="button">Deixar com minhas palavras exatas</button>'
+      +'</div><div class="csecondary"><button class="clink quiet" id="c-exit" type="button">Guardar comigo</button></div></div>';
+    mount(s,'carta-title');
+    cLetterEl=s.querySelector('#c-letter');
+    cLetterEl.value=buildLetterText(false);
+    autoGrow(cLetterEl);
+    cAnnounce('Sua declaração está pronta. Leia e edite se quiser.');
+    var signIn=s.querySelector('#c-sign');
+    signIn.addEventListener('input',function(){
+      var prev=cState.assinou;cState.assinou=signIn.value;
+      /* Atualiza a assinatura na carta só se o usuário ainda não editou manualmente o bloco final */
+      if(!cLetterEl.dataset.touched){cLetterEl.value=buildLetterText(cBareMode);autoGrow(cLetterEl);}
+    });
+    cLetterEl.addEventListener('input',function(){cLetterEl.dataset.touched='1';autoGrow(cLetterEl);});
+    s.querySelector('#c-bare').addEventListener('click',function(){
+      cBareMode=!cBareMode;
+      var btn=this;
+      cLetterEl.removeAttribute('data-touched');
+      cLetterEl.value=buildLetterText(cBareMode);autoGrow(cLetterEl);
+      btn.textContent=cBareMode?'Trazer as palavras de apoio de volta':'Deixar com minhas palavras exatas';
+    });
+    s.querySelector('#c-deliver').addEventListener('click',renderSend);
+    s.querySelector('#c-exit').addEventListener('click',gotoExit);
+  }
+  function autoGrow(t){t.style.height='auto';t.style.height=Math.max(t.scrollHeight,t===cLetterEl?320:0)+'px';}
+
+  /* ---------------- [7] ENVIAR ---------------- */
+  function renderSend(){
+    var s=el('div','cstep');
+    var benef=esc(cState.nome.trim()||'quem você ama');
+    s.innerHTML='<div class="cvoucher'+(cReduce?'':' settle')+'"><div class="vtop"></div><div class="vin">'
+      +'<p class="vlbl">Comprovante de depósito</p>'
+      +'<div class="vrow"><span class="vk">Instrumento</span><span class="vv" style="font-style:italic;font-weight:500">Declaração de Bens Sentimentais</span></div>'
+      +'<div class="vrow"><span class="vk">Beneficiário(a)</span><span class="vv">'+benef+'</span></div>'
+      +'<div class="vrow hi"><span class="vk">Valor depositado</span><span class="vv">impossível de calcular</span></div>'
+      +'<p class="vnote">Este é o único depósito que rende sozinho, todos os dias, e que ninguém pode sacar de você. Enquanto o dinheiro é a coisa mais importante entre as menos importantes, isto aqui é <b>a menos importante entre as mais importantes.</b></p>'
+      +'<p class="vslogan">A verdadeira riqueza é fazer o que você sente tocar o coração de alguém e tirar um simples sorriso de um rosto.</p>'
+      +'</div></div>'
+      +'<h2 class="ctitle sr-only" id="carta-title">Entregar sua declaração</h2>'
+      +'<div class="cdest">'
+      +'<label class="clab" for="c-wa-num">WhatsApp de '+benef+' <span style="font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>'
+      +'<input class="cin" id="c-wa-num" type="tel" inputmode="tel" placeholder="(DDD) 9 0000-0000" autocomplete="off">'
+      +'<label class="clab" for="c-mail-to" style="margin-top:1rem">E-mail de '+benef+' <span style="font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>'
+      +'<input class="cin" id="c-mail-to" type="email" inputmode="email" placeholder="nome@exemplo.com" autocomplete="off">'
+      +'<p class="chint" style="margin-bottom:0">Se preencher, já abrimos na conversa certa — é só revisar e enviar. Nada disso sai do seu aparelho.</p>'
+      +'</div>'
+      +'<div class="csend">'
+      +'<button class="btn btn-vida" id="c-wa" type="button" aria-label="Enviar pelo WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.2-4.6-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.3c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.4.1.2.1.9-.1 1.6Z"/></svg>Enviar pelo WhatsApp</button>'
+      +'<button class="btn btn-ghost" id="c-mail" type="button" aria-label="Enviar por e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Enviar por e-mail</button>'
+      +'<button class="btn btn-ghost" id="c-copy" type="button" aria-label="Copiar a carta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>Copiar a carta</button>'
+      +'</div>'
+      +'<div class="cpriv"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Nada do que você escreveu passou pela gente. A carta foi montada aqui no seu aparelho e sai direto pra pessoa — o banco nunca vê, nunca guarda, nunca lê.</span></div>'
+      +'<p class="ctoast" id="c-toast" role="status"></p>'
+      +'<div class="cactions"><div class="csecondary"><button class="clink" id="c-back" type="button">&larr; Voltar pra carta</button><button class="clink quiet" id="c-exit" type="button">Guardar comigo</button></div></div>';
+    mount(s);
+    cAnnounce('Sua declaração está pronta para entregar.');
+    var toast=s.querySelector('#c-toast');
+    var waNumEl=s.querySelector('#c-wa-num'),mailToEl=s.querySelector('#c-mail-to');
+    function markSent(){cState.sent=true;}
+    /* normaliza número BR: só dígitos; 10/11 dígitos (DDD sem país) recebem 55 */
+    function waNumber(raw){
+      var d=(raw||'').replace(/\D/g,'');
+      if(!d)return '';
+      if(d.length===10||d.length===11)return '55'+d;
+      return d;
+    }
+    s.querySelector('#c-wa').addEventListener('click',function(){
+      markSent();
+      var num=waNumber(waNumEl?waNumEl.value:'');
+      var base=num?('https://wa.me/'+num+'?text='):'https://wa.me/?text=';
+      window.open(base+encodeURIComponent(letterForSend()),'_blank','noopener');
+    });
+    s.querySelector('#c-mail').addEventListener('click',function(){
+      markSent();
+      var to=(mailToEl?mailToEl.value:'').trim();
+      window.location.href='mailto:'+to+'?subject='+encodeURIComponent('Uma coisa que eu precisava te dizer')+'&body='+encodeURIComponent(letterForSend());
+    });
+    s.querySelector('#c-copy').addEventListener('click',function(){
+      copyText(letterForSend(),function(ok){
+        toast.textContent=ok?'Guardado na sua área de transferência. Agora é só colar onde quiser.':'Não consegui copiar. Selecione o texto da carta e copie manualmente.';
+        toast.classList.add('show');
+        cAnnounce(toast.textContent);
+      });
+    });
+    s.querySelector('#c-back').addEventListener('click',renderLetter);
+    s.querySelector('#c-exit').addEventListener('click',gotoExit);
+  }
+
+  /* copiar com fallback execCommand */
+  function copyText(txt,cb){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){cb(true);}).catch(function(){cb(fallbackCopy(txt));});
+    }else{cb(fallbackCopy(txt));}
+  }
+  function fallbackCopy(txt){
+    try{
+      var ta=document.createElement('textarea');
+      ta.value=txt;ta.setAttribute('readonly','');
+      ta.style.position='fixed';ta.style.top='-1000px';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,txt.length);
+      var ok=document.execCommand('copy');document.body.removeChild(ta);return ok;
+    }catch(e){return false;}
+  }
+
+  /* ---------------- [8] SAÍDA SEM CULPA ---------------- */
+  function gotoExit(){
+    clearT();
+    var s=el('div','cstep cexit');
+    if(cState.sent){
+      s.innerHTML='<h2 class="ctitle" id="carta-title">Entregue.</h2>'
+        +'<p class="clead">Pronto. Você disse. O que ela faz com isso é dela — o seu trabalho, o mais difícil, você já fez.</p>'
+        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div></div>';
+    }else{
+      s.innerHTML='<h2 class="ctitle" id="carta-title">Sua declaração está guardada com você.</h2>'
+        +'<p class="clead">Não tem prazo. Não tem cobrança. Esse saldo não expira — é o único que não expira mesmo. Quando você sentir que é a hora, ele vai estar aqui, do mesmo jeito.</p>'
+        +'<p class="csmall">Coisa importante não tem pressa. Só não pode ser esquecida.</p>'
+        +'<div class="cactions"><div class="row"><button class="btn btn-sol" id="c-return" type="button">'+returnLabel()+'</button></div></div>';
+    }
+    mount(s,'carta-title');
+    cAnnounce(cState.sent?'Entregue.':'Sua declaração está guardada com você.');
+    s.querySelector('#c-return').addEventListener('click',closeCarta);
+  }
+  function returnLabel(){return cState.trigger==='C'?'Voltar':'Voltar pro meu plano';}
+
+  /* ---------------- GATILHOS ---------------- */
+  /* A: "Escolher [plano]" (tabela + cards) e o botão da seção Segurança.
+     B: "Abrir conta" / CTA principal.
+     C: já ligado dentro da revelação (buildActs). */
+  function wireTriggers(){
+    /* Escolher plano — todos os botões dentro de #planos que começam com "Escolher" */
+    var planBtns=document.querySelectorAll('#planos a.btn, #planos button.btn');
+    Array.prototype.forEach.call(planBtns,function(b){
+      var txt=(b.textContent||'').trim();
+      if(/^Escolher/i.test(txt)){
+        b.addEventListener('click',function(e){e.preventDefault();openCarta('A',{trigEl:b});});
+      }
+    });
+    /* Botão da seção Segurança (data-carta="A") */
+    /* Abrir conta / CTA principal (data-carta="B") — nav + hero + painel mobile */
+    var declared=document.querySelectorAll('[data-carta]');
+    Array.prototype.forEach.call(declared,function(b){
+      var trig=b.getAttribute('data-carta');
+      if(trig!=='A'&&trig!=='B')return;
+      var inPanel=mpanel.contains(b);
+      b.addEventListener('click',function(e){e.preventDefault();
+        /* fecha o menu mobile se estiver aberto, sem roubar o foco de retorno */
+        if(mpanel.classList.contains('open')){mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');setBgInert(false);document.removeEventListener('keydown',mTrap);}
+        /* retorno para o burger quando o gatilho veio do painel mobile (fica invisível fechado) */
+        openCarta(trig,{trigEl:inPanel?burger:b});
+      });
+    });
+  }
+  wireTriggers();
 
 })();
 </script>
