@@ -4,107 +4,477 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="O Cofre de Vidro — a prestação de contas pública e radical do Banco do Além. Cada centavo à vista.">
+<meta name="description" content="O Cofre de Vidro — a prestação de contas pública e radical do Banco do Além. Cada centavo à luz, sem letra miúda.">
 <meta name="theme-color" content="#FCFAF5">
 <title>Banco do Além — Transparência</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --luz:#FCFAF5;--luz-2:#F5F0E6;--sup:#FFFFFF;
-    --sol:#FFB627;--sol-forte:#F59E0B;--sol-luz:#FFE7B0;
-    --vida:#2FBF71;--vida-profundo:#127A48;--vida-fundo:#E3F6EA;
-    --afeto:#FF7A66;
-    --tinta:#26312B;--corpo:#495049;--suave:#7C877F;--linha:#E9E5DB;
-    --amanhecer:linear-gradient(135deg,#FFE7B0 0%,#FFD08A 30%,#FF9E7D 65%,#FF7A66 100%);
-    --serif:"Fraunces",Georgia,serif;--sans:"Inter",-apple-system,"Segoe UI",system-ui,sans-serif;--mono:ui-monospace,Menlo,Consolas,monospace;
-    --shadow:0 12px 40px rgba(245,158,11,.10),0 2px 8px rgba(38,49,43,.04);--r:22px;--rb:14px;
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;text-wrap:balance}
-  p{margin:0 0 1rem;color:var(--corpo)}
-  a{color:var(--vida-profundo);text-decoration:none}
-  .wrap{max-width:52rem;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte)}
-  nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
-  nav .wrap{display:flex;align-items:center;gap:1.4rem;height:66px;max-width:60rem}
-  .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--tinta);margin-right:auto}
-  .logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .logo .mk svg{width:26px;height:30px}
-  nav a.lnk{color:var(--corpo);font-size:.9rem;font-weight:500}
-  nav a.lnk:hover{color:var(--vida-profundo)}
-  .btn{display:inline-flex;border:0;border-radius:var(--rb);font-weight:600;font-size:.92rem;text-decoration:none;padding:.75rem 1.5rem;background:var(--vida);color:#fff;transition:transform .18s,box-shadow .2s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(47,191,113,.3)}
-  header.hero{padding:4.5rem 0 2rem;position:relative;overflow:hidden}
-  header.hero::before{content:"";position:absolute;top:-40%;right:-5%;width:55%;height:130%;background:radial-gradient(circle,rgba(47,191,113,.12),transparent 60%);pointer-events:none}
-  header.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--tinta);position:relative}
-  header.hero .sub{font-size:1.2rem;margin-top:1rem;max-width:36ch;position:relative}
-  .ledger{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);box-shadow:var(--shadow);margin:2.5rem 0;overflow:hidden}
-  .ledger .lh{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.6rem;border-bottom:1px solid var(--linha);background:var(--vida-fundo)}
-  .ledger .lh b{font-family:var(--serif);color:var(--tinta);font-weight:600}
-  .ledger .lh span{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--vida-profundo);font-weight:600}
-  .ledger .row{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 1.6rem;border-bottom:1px solid var(--linha);font-size:.98rem}
-  .ledger .row:last-child{border-bottom:0}
-  .ledger .row .v{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--suave)}
-  .ledger .row.big{background:var(--sol-luz)}
-  .ledger .row.big span:first-child{color:var(--tinta);font-family:var(--serif);font-size:1.1rem;font-weight:600}
-  .ledger .row.big .v{color:#4A3610;font-size:1.1rem;font-weight:700}
-  section{padding:2.5rem 0;border-top:1px solid var(--linha)}
-  h2{font-size:clamp(1.5rem,3.5vw,2.2rem);color:var(--tinta);margin-bottom:1rem}
-  ul{list-style:none;padding:0;margin:1.2rem 0}
-  ul li{padding:.7rem 0 .7rem 2rem;position:relative;border-bottom:1px solid var(--linha);color:var(--corpo)}
-  ul li:before{content:"";position:absolute;left:0;top:.95rem;width:16px;height:16px;border-radius:50%;background:var(--vida-fundo);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-6' stroke='%23127A48' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
-  ul li b{color:var(--tinta);font-weight:600}
-  .oath{background:linear-gradient(135deg,var(--vida-fundo),var(--sup));border:1px solid #CDEBD8;border-left:4px solid var(--vida);border-radius:var(--r);padding:1.5rem 1.8rem;margin:2rem 0}
-  .oath p{font-family:var(--serif);font-size:1.15rem;color:var(--vida-profundo);margin:0;font-weight:500}
-  footer{background:var(--tinta);color:#C9CFC9;padding:2.5rem 0;text-align:center}
-  footer .disc{font-size:.78rem;color:#8A928A;max-width:44rem;margin:0 auto;line-height:1.6}
+:root{
+  /* Luz / superfícies */
+  --luz:#FCFAF5; --luz-2:#F5F0E6; --sup:#FFFFFF; --cinza-lixao:#E7E4DB;
+  /* Tinta / texto */
+  --tinta:#26312B; --corpo:#495049; --suave:#5F6A62; --linha:#E9E5DB;
+  /* Sol (marca) */
+  --sol:#FFB627; --sol-forte:#F59E0B; --sol-luz:#FFE7B0;
+  /* Vida (verde) */
+  --vida:#2FBF71; --vida-profundo:#127A48; --vida-fundo:#E3F6EA;
+  /* Afeto (coral) */
+  --afeto:#FF7A66; --afeto-forte:#F2593F; --afeto-luz:#FFE0D8;
+  /* Sobre amarelo (contraste AA) */
+  --sobre-sol:#4A3610;
+  /* Rodapé escuro */
+  --rodape-txt:#C9CFC9; --rodape-tit:#8A928A; --rodape-linha:#3A443C;
+  /* Gradiente amanhecer (revelação — uso ÚNICO) */
+  --amanhecer:linear-gradient(135deg,#FFE7B0 0%,#FFD08A 30%,#FF9E7D 65%,#FF7A66 100%);
+  /* Fontes */
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  /* Raios */
+  --r:22px; --rb:14px; --ri:12px;
+  /* Sombras (coloridas, nunca pretas) */
+  --shadow:0 12px 40px rgba(245,158,11,.10),0 2px 8px rgba(38,49,43,.04);
+  --shadow-v:0 12px 40px rgba(47,191,113,.12);
+  --shadow-hi:0 20px 60px rgba(245,158,11,.16),0 4px 12px rgba(38,49,43,.06);
+  /* Motion */
+  --ease-vida:cubic-bezier(0.16,1,0.3,1);
+  /* Espaçamento base-8 fluido */
+  --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.4rem; --s5:2rem; --s6:3rem; --s7:4rem; --s8:6rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+h1,h2,h3,h4{font-family:var(--serif);margin:0;text-wrap:balance}
+h1,h2,h3{line-height:1.06;letter-spacing:-.02em}
+p{margin:0 0 1rem;color:var(--corpo)}
+a{color:var(--sol-forte)}
+img,svg{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin:0}
+.tnum{font-variant-numeric:tabular-nums}
+.italic{font-style:italic}
+:focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Grão global (§2.6) ---------- */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.035}
+.grain svg{width:100%;height:100%}
+
+/* ---------- Fólio romano (§4) ---------- */
+.folio{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1.6rem;font-family:var(--serif);color:var(--suave)}
+.folio .n{font-size:.9rem;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.folio .t{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+.folio::before{content:"";flex:0 0 34px;height:1px;background:var(--sol-forte);opacity:.5;align-self:center}
+
+/* ---------- Botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:var(--rb);font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.01em;cursor:pointer;text-decoration:none;height:52px;padding:0 1.5rem;transition:transform .2s var(--ease-vida),box-shadow .22s var(--ease-vida),filter .2s,border-color .2s,color .2s}
+.btn-sm{height:auto;padding:.55rem 1rem;font-size:.84rem}
+.btn-p{background:var(--tinta);color:var(--luz)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(38,49,43,.20);filter:brightness(1.08)}
+.btn-sol{background:var(--sol);color:var(--sobre-sol)}
+.btn-sol:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 10px 28px rgba(245,158,11,.28)}
+.btn-vida{background:var(--vida);color:#fff}
+.btn-vida:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(47,191,113,.3)}
+.btn-afeto{background:var(--afeto);color:#fff}
+.btn-afeto:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,122,102,.34)}
+.btn-ghost{background:transparent;color:var(--tinta);border:1px solid var(--linha)}
+.btn-ghost:hover{border-color:var(--sol-forte);color:var(--sol-forte);transform:translateY(-2px)}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+nav.scrolled{border-bottom-color:var(--linha);box-shadow:0 2px 20px rgba(38,49,43,.04)}
+nav .wrap{display:flex;align-items:center;gap:1.5rem;height:68px}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--tinta);margin-right:auto;letter-spacing:-.01em;text-decoration:none}
+.logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.logo .mk svg{width:26px;height:30px}
+.logo .mk .spark{transform-origin:24px 9px;animation:twinkle 5.5s var(--ease-vida) infinite}
+@keyframes twinkle{0%,88%,100%{opacity:1}92%{opacity:.55}}
+.navlinks{display:flex;gap:1.6rem;align-items:center}
+.navlinks a{color:var(--corpo);text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;position:relative;padding:.2rem 0}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--sol-forte);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-vida)}
+.navlinks a:hover::after,.navlinks a:focus-visible::after{transform:scaleX(1)}
+.navlinks a[aria-current="page"]::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:1.1rem}
+.nav-enter{color:var(--corpo);text-decoration:none;font-size:.84rem;font-weight:600}
+.nav-enter:hover{color:var(--tinta)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:.4rem;color:var(--tinta)}
+.burger svg{display:block}
+
+/* Painel mobile */
+.m-panel{position:fixed;inset:0;z-index:60;background:var(--luz);transform:translateX(100%);transition:transform .35s var(--ease-vida);display:flex;flex-direction:column;padding:1.4rem clamp(1.2rem,6vw,2rem)}
+.m-panel.open{transform:translateX(0)}
+.m-panel .m-top{display:flex;align-items:center;justify-content:space-between;height:44px}
+.m-panel a{display:block;font-family:var(--serif);font-size:1.6rem;color:var(--tinta);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--linha)}
+.m-panel .m-top .logo{border-bottom:none;padding:0;font-size:1.1rem}
+.m-panel .m-cta{margin-top:auto;padding:1.4rem 0}
+.m-panel a.btn-p{color:var(--luz);border-bottom:none;text-align:center}
+
+/* ---------- HERO ---------- */
+.hero{padding:var(--s8) 0 var(--s6);position:relative;overflow:hidden;z-index:2}
+.hero::before{content:"";position:absolute;top:-30%;right:-8%;width:52%;height:130%;background:radial-gradient(circle,rgba(47,191,113,.10),transparent 62%);pointer-events:none}
+.hero .lede{max-width:20ch;position:relative}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:400;color:var(--tinta);margin-top:1rem}
+.hero h1 .glass{font-style:italic;position:relative;white-space:nowrap}
+.hero .sub{position:relative;max-width:44ch;margin-top:1.4rem;font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--corpo)}
+.hero .stamp-updated{position:relative;display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--vida-profundo)}
+.hero .stamp-updated .dot{width:8px;height:8px;border-radius:50%;background:var(--vida);flex:0 0 auto;box-shadow:0 0 0 4px var(--vida-fundo)}
+
+/* ---------- Seções ---------- */
+section{padding:var(--s7) 0;position:relative;z-index:2}
+.sec-head{max-width:52ch;margin-bottom:var(--s5)}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;color:var(--tinta)}
+.sec-head p{margin-top:.7rem;font-size:1.08rem}
+
+/* ---------- Razão contábil (o extrato) ---------- */
+.ledger-shell{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(1.4rem,3vw,3rem);align-items:start}
+.ledger{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);box-shadow:var(--shadow-hi);overflow:hidden;position:relative}
+.ledger .lh{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;padding:1.3rem 1.7rem;border-bottom:1px solid var(--linha);background:var(--vida-fundo)}
+.ledger .lh .lt{font-family:var(--serif);color:var(--tinta);font-weight:600;font-size:1.15rem;line-height:1.1}
+.ledger .lh .ls{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--vida-profundo);font-weight:700;margin:.35rem 0 0}
+.ledger .lh .balance{text-align:right;flex:0 0 auto}
+.ledger .lh .balance .bl{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vida-profundo);font-weight:700}
+.ledger .lh .balance .bn{font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--tinta);line-height:1}
+.ltable{width:100%;border-collapse:collapse;font-size:.98rem}
+.ltable caption{text-align:left;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--suave);font-weight:700;padding:1.1rem 1.7rem .3rem}
+.ltable th{text-align:left;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:700;padding:.5rem 1.7rem;border-bottom:1px solid var(--linha)}
+.ltable th.num{text-align:right}
+.ltable td{padding:.85rem 1.7rem;border-bottom:1px solid var(--linha);color:var(--corpo);vertical-align:baseline}
+.ltable tr:last-child td{border-bottom:0}
+.ltable .lbl{color:var(--tinta);font-weight:500}
+.ltable .note{display:block;color:var(--suave);font-size:.82rem;margin-top:.15rem}
+.ltable .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--suave);white-space:nowrap;font-weight:500}
+.ltable tr.total td{background:var(--sol-luz);border-bottom:1px solid var(--sol-luz)}
+.ltable tr.total .lbl{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--sobre-sol)}
+.ltable tr.total .val{color:var(--sobre-sol);font-size:1.1rem;font-weight:700}
+.ltable tr.total .note{color:#7A5A1E}
+
+/* Lateral do razão — leitura do extrato */
+.ledger-aside{position:sticky;top:92px}
+.ledger-aside .read{font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1.35;color:var(--tinta);margin:0 0 1rem}
+.ledger-aside .read .hl{font-style:normal;color:var(--vida-profundo)}
+.ledger-aside .cite{font-size:.95rem;color:var(--suave);margin:0}
+.ledger-aside .rule{width:44px;height:2px;background:var(--sol-forte);opacity:.6;margin:1.4rem 0}
+
+/* ---------- Juramento (lista de princípios) ---------- */
+.vault{background:var(--luz-2);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.oaths{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.oaths li{padding:1.8rem 0;position:relative;border-bottom:1px solid var(--linha)}
+.oaths li:nth-child(odd){padding-right:2.4rem;border-right:1px solid var(--linha)}
+.oaths li:nth-child(even){padding-left:2.4rem}
+.oaths li:nth-last-child(1),.oaths li:nth-last-child(2){border-bottom:0}
+.oaths .idx{font-family:var(--serif);font-variant-numeric:tabular-nums;font-size:.86rem;letter-spacing:.14em;color:var(--sol-forte);font-weight:600;display:block;margin-bottom:.6rem}
+.oaths h3{font-family:var(--serif);font-size:1.28rem;font-weight:600;color:var(--tinta);line-height:1.15;margin:0 0 .5rem}
+.oaths p{margin:0;color:var(--corpo);font-size:1rem}
+
+/* ---------- O juramento (peça de voz) ---------- */
+.oath-piece{position:relative;z-index:2;padding:var(--s8) 0}
+.oath-piece .inner{max-width:34ch;margin-left:auto;margin-right:0;text-align:right;position:relative}
+.oath-piece blockquote{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.2;color:var(--tinta);letter-spacing:-.01em}
+.oath-piece .mark{font-family:var(--serif);font-size:6rem;line-height:.4;color:var(--sol);opacity:.35;display:block;height:2.4rem}
+.oath-piece cite{display:block;font-style:normal;font-family:var(--sans);font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--suave);margin-top:1.6rem}
+.oath-piece .coda{max-width:40ch;margin:2.2rem 0 0 auto;text-align:right;font-size:1.05rem;color:var(--corpo)}
+
+/* ---------- Fecho ---------- */
+.closer{text-align:center;padding:var(--s7) 0}
+.closer .q{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.7rem);color:var(--vida-profundo);max-width:26ch;margin:0 auto 1.8rem;line-height:1.25}
+
+/* ---------- Scroll reveal ---------- */
+.sr{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-vida),transform .7s var(--ease-vida)}
+.sr.in{opacity:1;transform:none}
+
+/* ---------- RODAPÉ (XI) ---------- */
+footer{background:var(--tinta);color:var(--rodape-txt);padding:var(--s7) 0 var(--s5);position:relative;z-index:2}
+footer a{color:var(--rodape-txt)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.4rem}
+.fbrand{display:flex;align-items:flex-start;gap:1rem}
+.fbrand .fmk svg{width:32px;height:38px;display:block}
+.fbrand .ft{font-family:var(--serif);font-size:1.3rem;color:var(--luz);font-weight:600;letter-spacing:-.01em}
+.fbrand .fs{color:var(--rodape-tit);font-size:.86rem;margin:.4rem 0 0;max-width:26ch;line-height:1.5}
+.fcol h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rodape-tit);margin:0 0 .9rem;font-weight:700}
+.fcol a{display:block;font-size:.9rem;text-decoration:none;margin-bottom:.55rem;opacity:.85;transition:opacity .2s,color .2s}
+.fcol a:hover{opacity:1;color:var(--sol-luz)}
+.disc{border-top:1px solid var(--rodape-linha);padding-top:1.6rem;font-size:.78rem;color:var(--rodape-tit);line-height:1.65;max-width:88ch}
+.disc b{color:var(--rodape-txt)}
+.disc em{font-style:italic}
+.ffolio{margin-top:1.4rem;font-family:var(--serif);font-size:.78rem;letter-spacing:.16em;color:var(--rodape-tit);font-variant-numeric:tabular-nums}
+
+/* ---------- Responsivo ---------- */
+@media(max-width:920px){
+  .ledger-shell{grid-template-columns:1fr}
+  .ledger-aside{position:static}
+  .ledger-aside .read{max-width:34ch}
+}
+@media(max-width:860px){
+  .navlinks,.nav-enter{display:none}
+  .burger{display:block}
+  .oath-piece .inner,.oath-piece .coda{margin-left:0;margin-right:auto;text-align:left}
+  .fgrid{grid-template-columns:1fr 1fr;gap:2rem}
+  .fbrand{grid-column:1 / -1}
+}
+@media(max-width:640px){
+  .oaths{grid-template-columns:1fr}
+  .oaths li:nth-child(odd){padding-right:0;border-right:0}
+  .oaths li:nth-child(even){padding-left:0}
+  .oaths li:nth-last-child(2){border-bottom:1px solid var(--linha)}
+  .ledger .lh{flex-direction:column;align-items:flex-start}
+  .ledger .lh .balance{text-align:left}
+  .fgrid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sr{transition:none;opacity:1;transform:none}
+  .btn:hover{transform:none}
+  .logo .mk .spark{animation:none}
+  nav{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
 </style>
 </head>
-<body>
-  <nav><div class="wrap">
-    <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
-    <a class="lnk" href="index.html">Início</a><a class="lnk" href="filosofia.html">Sobre nós</a>
-  </div></nav>
+<body id="top">
 
-  <header class="hero"><div class="wrap">
-    <p class="eyebrow">Prestação de contas radical</p>
-    <h1>O Cofre de Vidro</h1>
-    <p class="sub">Um banco que fala de desapego não pode ter segredos sobre dinheiro. Aqui, cada centavo fica à luz.</p>
-  </div></header>
+<!-- Grão global (§2.6) -->
+<div class="grain" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg"><filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+</div>
 
-  <div class="wrap">
-    <div class="ledger" aria-label="Prestação de contas">
-      <div class="lh"><b>Banco do Além</b><span>Contas abertas · atualizado a cada movimentação</span></div>
-      <div class="row big"><span>Total arrecadado até hoje</span><span class="v">R$ 0,00</span></div>
-      <div class="row"><span>Gasto com hospedagem</span><span class="v">R$ 0,00 (gratuito)</span></div>
-      <div class="row"><span>Gasto com domínio</span><span class="v">R$ 0,00</span></div>
-      <div class="row"><span>Retirado por qualquer pessoa</span><span class="v">R$ 0,00</span></div>
-      <div class="row"><span>Lucro de alguém</span><span class="v">R$ 0,00 — e sempre será</span></div>
-      <div class="row"><span>Saldo em caixa</span><span class="v">R$ 0,00</span></div>
-    </div>
+<!-- NAV -->
+<nav id="nav"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Banco do Além — início">
+    <span class="mk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path class="spark" d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>
+    Banco do Além
+  </a>
+  <div class="navlinks">
+    <a href="index.html#produtos">Produtos</a>
+    <a href="index.html#planos">Planos</a>
+    <a href="index.html#seguranca">Segurança</a>
+    <a href="filosofia.html">Instituição</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-enter" href="index.html#transferir">Entrar</a>
+    <a href="index.html#transferir" class="btn btn-p btn-sm">Abrir conta</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mpanel">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</div></nav>
+
+<!-- Painel mobile -->
+<div class="m-panel" id="mpanel" aria-hidden="true">
+  <div class="m-top">
+    <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
+    <button class="burger" id="mclose" aria-label="Fechar menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a href="index.html#produtos" class="m-link">Produtos</a>
+  <a href="index.html#planos" class="m-link">Planos</a>
+  <a href="index.html#seguranca" class="m-link">Segurança</a>
+  <a href="filosofia.html" class="m-link">Instituição</a>
+  <div class="m-cta"><a href="index.html#transferir" class="btn btn-p" style="width:100%">Abrir conta</a></div>
+</div>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap sr">
+  <p class="eyebrow lede">Prestação de contas radical</p>
+  <h1>O <span class="glass">Cofre de Vidro</span></h1>
+  <p class="sub">Um banco que fala de desapego não pode ter segredos sobre dinheiro. Aqui, cada centavo fica à luz — sem letra miúda, sem porta dos fundos.</p>
+  <span class="stamp-updated"><span class="dot" aria-hidden="true"></span>Contas abertas · atualizado a cada movimentação</span>
+</div></header>
+
+<!-- I · O RAZÃO -->
+<section id="razao"><div class="wrap sr">
+  <div class="folio"><span class="n">I</span><span class="t">O Razão</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">Extrato integral</p>
+    <h2>O extrato que você pode conferir até o fim</h2>
+    <p>Nenhuma linha escondida. Toda entrada e toda saída deste projeto cabem em uma única página — porque a conta, de propósito, sempre fecha em zero.</p>
   </div>
 
-  <section><div class="wrap">
+  <div class="ledger-shell">
+    <div class="ledger">
+      <div class="lh">
+        <div>
+          <p class="lt">Banco do Além</p>
+          <p class="ls">Livro-caixa · MMXVII — MMXXVI</p>
+        </div>
+        <div class="balance">
+          <div class="bl">Saldo em caixa</div>
+          <div class="bn tnum">R$ 0,00</div>
+        </div>
+      </div>
+
+      <table class="ltable">
+        <caption>Movimentação acumulada até hoje</caption>
+        <thead>
+          <tr><th scope="col">Lançamento</th><th scope="col" class="num">Valor</th></tr>
+        </thead>
+        <tbody>
+          <tr class="total">
+            <td class="lbl">Total arrecadado até hoje<span class="note">Toda contribuição já recebida</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+          <tr>
+            <td class="lbl">Gasto com hospedagem<span class="note">Servido em plano gratuito</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+          <tr>
+            <td class="lbl">Gasto com domínio<span class="note">Sem custo de registro</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+          <tr>
+            <td class="lbl">Retirado por qualquer pessoa<span class="note">Ninguém sacou nada, nunca</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+          <tr>
+            <td class="lbl">Lucro de alguém<span class="note">E sempre será assim</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+          <tr>
+            <td class="lbl">Saldo em caixa<span class="note">Conferido nesta data</span></td>
+            <td class="val">R$ 0,00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="ledger-aside">
+      <p class="read">Seis linhas. Uma soma: <span class="hl">zero de ponta a ponta.</span> Não é um número que buscamos maquiar — é o número que prova o ponto.</p>
+      <div class="rule" aria-hidden="true"></div>
+      <p class="cite">Um banco de verdade esconde a margem. Este mostra que não existe nenhuma. O único patrimônio guardado aqui é a sua confiança.</p>
+    </aside>
+  </div>
+</div></section>
+
+<!-- II · O JURAMENTO (princípios) -->
+<section id="juramento" class="vault"><div class="wrap sr">
+  <div class="folio"><span class="n">II</span><span class="t">O Juramento</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">Cinco compromissos</p>
     <h2>O nosso juramento</h2>
-    <ul>
-      <li><b>Nenhum lucro, para ninguém.</b> Nem para o criador, nem para investidor. Este projeto não existe para ganhar dinheiro — existe para lembrar que ele não é tudo.</li>
-      <li><b>Cada centavo, à vista.</b> Toda contribuição e toda despesa aparecem aqui, com data. Sem letra miúda.</li>
-      <li><b>Só o custo, nada além.</b> As doações cobrem apenas o que mantém a obra viva. O que sobrar vai, integralmente, para uma causa votada pela comunidade.</li>
-      <li><b>Nunca vendemos você.</b> Nada que você digita sai do seu aparelho. Sem cadastro, sem rastreio, sem venda de dados.</li>
-      <li><b>Código aberto.</b> Qualquer pessoa pode ver como isto foi feito — e criar a sua própria versão.</li>
-    </ul>
-    <div class="oath"><p>"Você não é dono da fortuna. É apenas seu depositário — e dela prestará contas." Se acreditamos nisso, temos de viver isso.</p></div>
-  </div></section>
+    <p>Não são termos de uso. São promessas que, se descumpridas, esvaziam a razão de este projeto existir.</p>
+  </div>
 
-  <section style="text-align:center"><div class="wrap">
-    <p style="font-family:var(--serif);font-style:italic;color:var(--vida-profundo);font-size:1.15rem;margin-bottom:1.4rem">A confiança é o único patrimônio que um banco de verdade não consegue comprar.</p>
-    <a class="btn" href="index.html">Voltar ao início</a>
-  </div></section>
+  <ol class="oaths">
+    <li>
+      <span class="idx tnum">I</span>
+      <h3>Nenhum lucro, para ninguém</h3>
+      <p>Nem para o criador, nem para investidor. Este projeto não existe para ganhar dinheiro — existe para lembrar que ele não é tudo.</p>
+    </li>
+    <li>
+      <span class="idx tnum">II</span>
+      <h3>Cada centavo, à vista</h3>
+      <p>Toda contribuição e toda despesa aparecem aqui, com data. Sem letra miúda, sem rodapé que desmente o título.</p>
+    </li>
+    <li>
+      <span class="idx tnum">III</span>
+      <h3>Só o custo, nada além</h3>
+      <p>As doações cobrem apenas o que mantém a obra viva. O que sobrar vai, integralmente, para uma causa votada pela comunidade.</p>
+    </li>
+    <li>
+      <span class="idx tnum">IV</span>
+      <h3>Nunca vendemos você</h3>
+      <p>Nada que você digita sai do seu aparelho. Sem cadastro, sem rastreio, sem venda de dados.</p>
+    </li>
+    <li>
+      <span class="idx tnum">V</span>
+      <h3>Código aberto</h3>
+      <p>Qualquer pessoa pode ver como isto foi feito — e criar a sua própria versão.</p>
+    </li>
+  </ol>
+</div></section>
 
-  <footer><div class="wrap"><p class="disc"><strong style="color:#C9CFC9">Banco do Além</strong> é uma obra de arte conceitual e reflexão, sem fins lucrativos. Não é uma instituição financeira. Nenhum valor é ou pode ser transferido para "o Além".</p></div></footer>
+<!-- III · A PROMESSA (peça de voz) -->
+<section id="promessa" class="oath-piece"><div class="wrap sr">
+  <div class="folio"><span class="n">III</span><span class="t">A Promessa</span></div>
+  <div class="inner">
+    <span class="mark" aria-hidden="true">&rdquo;</span>
+    <blockquote>Você não é dono da fortuna. É apenas seu depositário — e dela prestará contas.</blockquote>
+    <cite>O princípio do Cofre de Vidro</cite>
+  </div>
+  <p class="coda">Se acreditamos nisso, temos de viver isso. Esta página é a nossa parte do trato: prestar contas antes que alguém precise pedir.</p>
+</div></section>
+
+<!-- IV · Fecho -->
+<section class="closer"><div class="wrap sr">
+  <p class="q">A confiança é o único patrimônio que um banco de verdade não consegue comprar.</p>
+  <a class="btn btn-vida" href="index.html">Voltar ao início</a>
+</div></section>
+
+<!-- RODAPÉ -->
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand">
+      <span class="fmk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#FCFAF5" fill-rule="evenodd"/></svg></span>
+      <div>
+        <div class="ft">Banco do Além</div>
+        <p class="fs">Cuidando do que realmente atravessa a vida, desde 1917.</p>
+      </div>
+    </div>
+    <div class="fcol"><h4>Serviços</h4>
+      <a href="index.html#produtos">Transferência ao Além</a>
+      <a href="index.html#produtos">Consultoria patrimonial</a>
+      <a href="index.html#produtos">Herança afetiva</a>
+    </div>
+    <div class="fcol"><h4>Institucional</h4>
+      <a href="filosofia.html">Sobre nós</a>
+      <a href="transparencia.html">Transparência</a>
+      <a href="index.html#planos">Planos</a>
+    </div>
+    <div class="fcol"><h4>Ajuda</h4>
+      <a href="index.html#planos">Ouvidoria do Além</a>
+      <a href="tel:188">CVV — 188</a>
+      <a href="transparencia.html">Cofre de Vidro</a>
+    </div>
+  </div>
+  <p class="disc"><b>Banco do Além</b> cuida do que realmente atravessa a vida, desde 1917. · Este é um projeto independente, sem fins lucrativos. Não é uma instituição financeira autorizada pelo Banco Central, não capta recursos, não realiza operações financeiras e não transfere valores a terceiros. Nenhum dado digitado sai do seu aparelho. · <em>O dinheiro é a coisa mais importante entre as menos importantes.</em></p>
+  <div class="ffolio tnum">MCMXVII — MMXXVI</div>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- NAV scroll + mobile ---------- */
+  var nav=document.getElementById('nav');
+  function onScroll(){if(window.scrollY>8)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mpanel=document.getElementById('mpanel'),mclose=document.getElementById('mclose');
+  var mBg=[document.getElementById('nav'),document.querySelector('.hero'),document.querySelector('footer')];
+  Array.prototype.push.apply(mBg,Array.prototype.slice.call(document.querySelectorAll('section')));
+  function setBgInert(on){mBg.forEach(function(n){if(!n)return;if(on){n.setAttribute('aria-hidden','true');try{n.inert=true;}catch(e){}}else{n.removeAttribute('aria-hidden');try{n.inert=false;}catch(e){}}});}
+  function mFocusables(){return Array.prototype.filter.call(mpanel.querySelectorAll('a[href],button:not([disabled])'),function(x){return x.offsetParent!==null;});}
+  function mTrap(e){
+    if(e.key==='Escape'){e.preventDefault();closeM();return;}
+    if(e.key!=='Tab')return;
+    var f=mFocusables();if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+  function openM(){
+    mpanel.classList.add('open');mpanel.setAttribute('aria-hidden','false');burger.setAttribute('aria-expanded','true');
+    setBgInert(true);document.addEventListener('keydown',mTrap);
+    var f=mFocusables();if(f.length)f[0].focus();
+  }
+  function closeM(){
+    mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');
+    setBgInert(false);document.removeEventListener('keydown',mTrap);
+    if(burger&&burger.focus)burger.focus();
+  }
+  burger.addEventListener('click',openM);mclose.addEventListener('click',closeM);
+  Array.prototype.forEach.call(mpanel.querySelectorAll('a'),function(a){a.addEventListener('click',closeM);});
+
+  /* ---------- Scroll reveal das seções ---------- */
+  var srs=document.querySelectorAll('.sr');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    srs.forEach(function(s){io.observe(s);});
+  }else{srs.forEach(function(s){s.classList.add('in');});}
+})();
+</script>
 </body>
 </html>

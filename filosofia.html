@@ -10,151 +10,462 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --luz:#FCFAF5;--luz-2:#F5F0E6;--sup:#FFFFFF;
-    --sol:#FFB627;--sol-forte:#F59E0B;--sol-luz:#FFE7B0;
-    --vida:#2FBF71;--vida-profundo:#127A48;--vida-fundo:#E3F6EA;
-    --afeto:#FF7A66;--afeto-luz:#FFE0D8;
-    --tinta:#26312B;--corpo:#495049;--suave:#7C877F;--linha:#E9E5DB;
-    --amanhecer:linear-gradient(135deg,#FFE7B0 0%,#FFD08A 30%,#FF9E7D 65%,#FF7A66 100%);
-    --serif:"Fraunces",Georgia,serif;--sans:"Inter",-apple-system,"Segoe UI",system-ui,sans-serif;
-    --shadow:0 12px 40px rgba(245,158,11,.10),0 2px 8px rgba(38,49,43,.04);--r:22px;--rb:14px;
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
-  p{margin:0 0 1rem;color:var(--corpo)}
-  a{color:var(--vida-profundo);text-decoration:none}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-  .read{max-width:44rem}
-  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte)}
-  :focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
-  nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
-  nav .wrap{display:flex;align-items:center;gap:1.4rem;height:66px}
-  .logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--tinta);margin-right:auto}
-  .logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .logo .mk svg{width:26px;height:30px}
-  nav a.lnk{color:var(--corpo);font-size:.9rem;font-weight:500}
-  nav a.lnk:hover{color:var(--vida-profundo)}
-  .btn{display:inline-flex;align-items:center;gap:.5rem;border:0;border-radius:var(--rb);font-weight:600;font-size:.92rem;cursor:pointer;text-decoration:none;padding:.7rem 1.3rem;transition:transform .18s,box-shadow .2s}
-  .btn-vida{background:var(--vida);color:#fff}.btn-vida:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(47,191,113,.3)}
-  header.hero{padding:4.5rem 0 3rem;position:relative;overflow:hidden}
-  header.hero::before{content:"";position:absolute;top:-40%;right:-5%;width:55%;height:130%;background:radial-gradient(circle,rgba(255,182,39,.13),transparent 60%);pointer-events:none}
-  header.hero h1{font-size:clamp(2.4rem,6vw,4rem);color:var(--tinta);position:relative}
-  header.hero h1 em{font-style:italic;color:var(--vida-profundo)}
-  header.hero .sub{font-size:1.2rem;margin-top:1.2rem;max-width:38ch;position:relative}
-  section{padding:3.5rem 0;border-top:1px solid var(--linha)}
-  .part{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin-bottom:.5rem}
-  h2{font-size:clamp(1.8rem,4vw,2.7rem);color:var(--tinta);margin-bottom:.8rem}
-  .lede{font-size:1.12rem;color:var(--corpo);max-width:52ch}
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2rem 0;border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;max-width:40rem;box-shadow:var(--shadow)}
-  .duo .c{padding:1.4rem 1.6rem}
-  .duo .c.left{background:var(--luz-2)}.duo .c.right{background:var(--vida-fundo)}
-  .duo h4{margin:0 0 .8rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-family:var(--sans)}
-  .duo .left h4{color:var(--suave)}.duo .right h4{color:var(--vida-profundo)}
-  .duo .row{padding:.4rem 0;font-weight:600;color:var(--tinta)}
-  .duo .right .row{color:var(--vida-profundo)}
-  @media(max-width:560px){.duo{grid-template-columns:1fr}}
-  blockquote{font-family:var(--serif);font-size:clamp(1.5rem,3.6vw,2.1rem);color:var(--tinta);line-height:1.24;margin:2rem 0;padding:1.4rem 1.6rem;background:var(--sup);border-radius:var(--r);border-left:4px solid var(--sol);box-shadow:var(--shadow);text-wrap:balance;font-weight:500}
-  .mosaico{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:1rem;margin-top:2.2rem}
-  .trad{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.4rem;transition:transform .22s,box-shadow .22s}
-  .trad:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .trad .name{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--vida-profundo);font-weight:700;background:var(--vida-fundo);padding:.25rem .6rem;border-radius:999px;margin-bottom:.7rem}
-  .trad .say{font-family:var(--serif);font-size:1.1rem;color:var(--tinta);line-height:1.32;margin:0 0 .5rem;font-weight:500}
-  .trad .who{font-size:.78rem;color:var(--suave);margin:0}
-  .sci{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin-top:2rem}
-  .scard{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.3rem}
-  .scard .ic{width:38px;height:38px;border-radius:11px;background:var(--sol-luz);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem;font-size:1.1rem}
-  .scard b{font-family:var(--serif);color:var(--tinta);font-size:1.05rem;font-weight:600}
-  .scard p{font-size:.88rem;margin:.4rem 0 0}
-  .scard .src{font-size:.74rem;color:var(--suave);margin-top:.6rem}
-  .frases{columns:2;column-gap:2rem;margin-top:1.6rem}
-  .frases p{break-inside:avoid;font-family:var(--serif);font-size:1.05rem;color:var(--tinta);padding-left:1rem;border-left:2px solid var(--sol);margin-bottom:1rem;line-height:1.34}
-  @media(max-width:600px){.frases{columns:1}}
-  .backcta{text-align:center;padding:4rem 0;background:linear-gradient(180deg,var(--luz),var(--vida-fundo))}
-  footer{background:var(--tinta);color:#C9CFC9;padding:2.5rem 0;text-align:center}
-  footer .disc{font-size:.78rem;color:#8A928A;max-width:44rem;margin:0 auto;line-height:1.6}
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}.reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.trad:hover,.btn:hover{transform:none}}
+:root{
+  /* Luz / superfícies */
+  --luz:#FCFAF5; --luz-2:#F5F0E6; --sup:#FFFFFF; --cinza-lixao:#E7E4DB;
+  /* Tinta / texto */
+  --tinta:#26312B; --corpo:#495049; --suave:#5F6A62; --linha:#E9E5DB;
+  /* Sol (marca) */
+  --sol:#FFB627; --sol-forte:#F59E0B; --sol-luz:#FFE7B0;
+  /* Vida (verde) */
+  --vida:#2FBF71; --vida-profundo:#127A48; --vida-fundo:#E3F6EA;
+  /* Afeto (coral) */
+  --afeto:#FF7A66; --afeto-forte:#F2593F; --afeto-luz:#FFE0D8;
+  /* Sobre amarelo (contraste AA) */
+  --sobre-sol:#4A3610;
+  /* Rodapé escuro */
+  --rodape-txt:#C9CFC9; --rodape-tit:#8A928A; --rodape-linha:#3A443C;
+  /* Gradiente amanhecer (revelação — uso ÚNICO) */
+  --amanhecer:linear-gradient(135deg,#FFE7B0 0%,#FFD08A 30%,#FF9E7D 65%,#FF7A66 100%);
+  /* Fontes */
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  /* Raios */
+  --r:22px; --rb:14px; --ri:12px;
+  /* Sombras (coloridas, nunca pretas) */
+  --shadow:0 12px 40px rgba(245,158,11,.10),0 2px 8px rgba(38,49,43,.04);
+  --shadow-v:0 12px 40px rgba(47,191,113,.12);
+  --shadow-hi:0 20px 60px rgba(245,158,11,.16),0 4px 12px rgba(38,49,43,.06);
+  /* Motion */
+  --ease-vida:cubic-bezier(0.16,1,0.3,1);
+  /* Espaçamento base-8 fluido */
+  --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.4rem; --s5:2rem; --s6:3rem; --s7:4rem; --s8:6rem;
+}
+
+/* ---------- Resets / base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+h1,h2,h3,h4{font-family:var(--serif);margin:0;text-wrap:balance}
+h1,h2,h3{line-height:1.06;letter-spacing:-.02em}
+p{margin:0 0 1rem;color:var(--corpo)}
+a{color:var(--sol-forte)}
+img,svg{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin:0}
+.tnum{font-variant-numeric:tabular-nums}
+.italic{font-style:italic}
+:focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- Grão global (§2.6) ---------- */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.035}
+.grain svg{width:100%;height:100%}
+
+/* ---------- Fólio romano (§4) ---------- */
+.folio{display:flex;align-items:baseline;gap:.7rem;margin-bottom:1.6rem;font-family:var(--serif);color:var(--suave)}
+.folio .n{font-size:.9rem;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.folio .t{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+.folio::before{content:"";flex:0 0 34px;height:1px;background:var(--sol-forte);opacity:.5;align-self:center}
+
+/* ---------- Botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:var(--rb);font-family:var(--sans);font-weight:600;font-size:.92rem;letter-spacing:.01em;cursor:pointer;text-decoration:none;height:52px;padding:0 1.5rem;transition:transform .2s var(--ease-vida),box-shadow .22s var(--ease-vida),filter .2s,border-color .2s,color .2s}
+.btn-sm{height:auto;padding:.55rem 1rem;font-size:.84rem}
+.btn-p{background:var(--tinta);color:var(--luz)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(38,49,43,.20);filter:brightness(1.08)}
+.btn-sol{background:var(--sol);color:var(--sobre-sol)}
+.btn-sol:hover{transform:translateY(-2px);filter:brightness(1.04);box-shadow:0 10px 28px rgba(245,158,11,.28)}
+.btn-vida{background:var(--vida);color:#fff}
+.btn-vida:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(47,191,113,.3)}
+.btn-afeto{background:var(--afeto);color:#fff}
+.btn-afeto:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,122,102,.34)}
+.btn-ghost{background:transparent;color:var(--tinta);border:1px solid var(--linha)}
+.btn-ghost:hover{border-color:var(--sol-forte);color:var(--sol-forte);transform:translateY(-2px)}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:40;background:rgba(252,250,245,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+nav.scrolled{border-bottom-color:var(--linha);box-shadow:0 2px 20px rgba(38,49,43,.04)}
+nav .wrap{display:flex;align-items:center;gap:1.5rem;height:68px}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--tinta);margin-right:auto;letter-spacing:-.01em;text-decoration:none}
+.logo .mk{width:28px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.logo .mk svg{width:26px;height:30px}
+.logo .mk .spark{transform-origin:24px 9px;animation:twinkle 5.5s var(--ease-vida) infinite}
+@keyframes twinkle{0%,88%,100%{opacity:1}92%{opacity:.55}}
+.navlinks{display:flex;gap:1.6rem;align-items:center}
+.navlinks a{color:var(--corpo);text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;position:relative;padding:.2rem 0}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--sol-forte);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease-vida)}
+.navlinks a:hover::after,.navlinks a:focus-visible::after{transform:scaleX(1)}
+.navlinks a[aria-current="page"]::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:center;gap:1.1rem}
+.nav-enter{color:var(--corpo);text-decoration:none;font-size:.84rem;font-weight:600}
+.nav-enter:hover{color:var(--tinta)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:.4rem;color:var(--tinta)}
+.burger svg{display:block}
+
+/* Painel mobile */
+.m-panel{position:fixed;inset:0;z-index:60;background:var(--luz);transform:translateX(100%);transition:transform .35s var(--ease-vida);display:flex;flex-direction:column;padding:1.4rem clamp(1.2rem,6vw,2rem)}
+.m-panel.open{transform:translateX(0)}
+.m-panel .m-top{display:flex;align-items:center;justify-content:space-between;height:44px}
+.m-panel a{display:block;font-family:var(--serif);font-size:1.6rem;color:var(--tinta);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--linha)}
+.m-panel .m-cta{margin-top:auto;padding:1.4rem 0}
+.m-panel a.btn-p{color:var(--luz);border-bottom:none;text-align:center}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(3.5rem,8vw,6rem) 0 clamp(2.5rem,5vw,3.5rem);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-40%;right:-8%;width:56%;height:130%;background:radial-gradient(circle,rgba(255,182,39,.13),transparent 62%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero .lead{max-width:24ch}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:400;color:var(--tinta);margin:1.1rem 0 0}
+.hero h1 em{font-style:italic;color:var(--vida-profundo)}
+.hero .sub{font-size:clamp(1.08rem,2vw,1.28rem);margin-top:1.4rem;max-width:44ch;color:var(--corpo)}
+.hero .sub strong{color:var(--tinta);font-weight:600}
+
+/* ---------- SEÇÕES ---------- */
+section{padding:var(--s8) 0;position:relative;z-index:2;border-top:1px solid var(--linha)}
+.sec-head{max-width:52ch;margin-bottom:var(--s5)}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:500;color:var(--tinta)}
+.sec-head h2 em{font-style:italic;color:var(--vida-profundo)}
+.sec-head p{margin-top:.7rem;font-size:1.08rem;color:var(--corpo)}
+.read{max-width:46rem}
+
+/* ---------- Tese: as quatro distinções (assimétrico) ---------- */
+.tese{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+.tese .arg p{font-size:1.1rem;color:var(--corpo)}
+.tese .arg p em{font-style:italic;color:var(--vida-profundo)}
+.distincoes{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.distincoes .dhead{display:grid;grid-template-columns:1fr 1fr;font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.distincoes .dhead .h{padding:1rem 1.3rem}
+.distincoes .dhead .h.a{color:var(--suave);background:var(--luz-2)}
+.distincoes .dhead .h.b{color:var(--vida-profundo);background:var(--vida-fundo)}
+.distincoes .drow{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linha)}
+.distincoes .drow .cell{padding:.85rem 1.3rem;font-weight:600;font-size:1rem;display:flex;align-items:center}
+.distincoes .drow .cell.a{color:var(--tinta);background:var(--luz-2)}
+.distincoes .drow .cell.b{color:var(--vida-profundo);background:var(--vida-fundo)}
+.distincoes .drow .cell.b::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--vida);margin-right:.6rem;flex:0 0 auto}
+@media(max-width:820px){.tese{grid-template-columns:1fr}}
+
+/* ---------- Citação com voz ---------- */
+.pull{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.6rem,3.6vw,2.4rem);line-height:1.2;color:var(--tinta);max-width:24ch;margin:0;padding-left:1.4rem;border-left:3px solid var(--sol);text-wrap:balance}
+.pull.mt{margin-top:var(--s6)}
+.pull cite{display:block;font-style:normal;font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin-top:1rem;padding-left:0}
+
+/* ---------- Mosaico das tradições (ritmo editorial, não grade uniforme) ---------- */
+.mosaico{columns:3 17rem;column-gap:1.4rem;margin-top:var(--s2)}
+.trad{break-inside:avoid;display:block;background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.5rem;margin:0 0 1.4rem;box-shadow:0 2px 8px rgba(38,49,43,.03);transition:transform .22s var(--ease-vida),box-shadow .22s var(--ease-vida)}
+.trad:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.trad .name{display:inline-block;font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;color:var(--vida-profundo);font-weight:700;background:var(--vida-fundo);padding:.28rem .65rem;border-radius:999px;margin-bottom:.85rem}
+.trad .say{font-family:var(--serif);font-size:1.16rem;color:var(--tinta);line-height:1.3;margin:0 0 .6rem;font-weight:500}
+.trad .say em{font-style:italic;color:var(--vida-profundo)}
+.trad .who{font-size:.8rem;color:var(--suave);margin:0}
+/* variação de peso — dá ritmo, evita cara de "12 cards iguais" */
+.trad.big{border-color:var(--sol-luz);box-shadow:var(--shadow)}
+.trad.big .name{background:var(--sol-luz);color:var(--sobre-sol)}
+.trad.big .say{font-size:1.42rem}
+
+/* ---------- Ciência ---------- */
+.sci{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.2rem;margin-top:var(--s2)}
+.scard{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:1.5rem;box-shadow:0 2px 8px rgba(38,49,43,.03)}
+.scard .ic{width:42px;height:42px;border-radius:12px;background:var(--sol-luz);color:var(--sol-forte);display:flex;align-items:center;justify-content:center;margin-bottom:.9rem}
+.scard .ic svg{width:22px;height:22px}
+.scard b{font-family:var(--serif);color:var(--tinta);font-size:1.12rem;font-weight:600;display:block}
+.scard p{font-size:.9rem;margin:.5rem 0 0;color:var(--corpo)}
+.scard p em{font-style:italic;color:var(--vida-profundo)}
+.scard .src{font-size:.74rem;color:var(--suave);margin-top:.75rem;font-variant-numeric:tabular-nums}
+
+/* ---------- Frases que atravessam ---------- */
+.frases{columns:2 20rem;column-gap:2.4rem;margin-top:var(--s3)}
+.frases p{break-inside:avoid;font-family:var(--serif);font-size:1.14rem;font-weight:500;color:var(--tinta);padding-left:1.2rem;border-left:2px solid var(--sol);margin:0 0 1.4rem;line-height:1.34}
+.frases p span{display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--suave);margin-top:.5rem}
+
+/* ---------- CTA final ---------- */
+.finale{padding:clamp(3.5rem,7vw,5.5rem) 0;text-align:left;background:linear-gradient(180deg,var(--luz),var(--vida-fundo))}
+.finale .wrap{max-width:46rem}
+.finale p.k{font-family:var(--serif);font-style:italic;color:var(--vida-profundo);font-size:clamp(1.4rem,3vw,2rem);line-height:1.24;margin:0 0 1.8rem;max-width:22ch}
+.finale .acts{display:flex;flex-wrap:wrap;gap:.9rem}
+
+/* ---------- RODAPÉ (XI) ---------- */
+footer{background:var(--tinta);color:var(--rodape-txt);padding:var(--s7) 0 var(--s5);position:relative;z-index:2}
+footer a{color:var(--rodape-txt)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.4rem}
+.fbrand{display:flex;align-items:flex-start;gap:1rem}
+.fbrand .fmk svg{width:32px;height:38px;display:block}
+.fbrand .ft{font-family:var(--serif);font-size:1.3rem;color:var(--luz);font-weight:600;letter-spacing:-.01em}
+.fbrand .fs{color:var(--rodape-tit);font-size:.86rem;margin:.4rem 0 0;max-width:26ch;line-height:1.5}
+.fcol h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rodape-tit);margin:0 0 .9rem;font-weight:700}
+.fcol a{display:block;font-size:.9rem;text-decoration:none;margin-bottom:.55rem;opacity:.85;transition:opacity .2s,color .2s}
+.fcol a:hover{opacity:1;color:var(--sol-luz)}
+.disc{border-top:1px solid var(--rodape-linha);padding-top:1.6rem;font-size:.78rem;color:var(--rodape-tit);line-height:1.65;max-width:88ch}
+.disc b{color:var(--rodape-txt)}
+.disc em{font-style:italic}
+.ffolio{margin-top:1.4rem;font-family:var(--serif);font-size:.78rem;letter-spacing:.16em;color:var(--rodape-tit);font-variant-numeric:tabular-nums}
+
+/* ---------- Scroll reveal ---------- */
+.sr{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease-vida),transform .7s var(--ease-vida)}
+.sr.in{opacity:1;transform:none}
+
+/* ---------- Responsivo ---------- */
+@media(max-width:860px){
+  .navlinks,.nav-enter{display:none}
+  .burger{display:block}
+  .fgrid{grid-template-columns:1fr 1fr;gap:2rem}
+  .fbrand{grid-column:1 / -1}
+}
+@media(max-width:640px){
+  .fgrid{grid-template-columns:1fr}
+  .mosaico{columns:1}
+  .frases{columns:1}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sr{transition:none;opacity:1;transform:none}
+  .btn:hover,.trad:hover{transform:none}
+  .logo .mk .spark{animation:none}
+  nav{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
 </style>
 </head>
-<body>
-  <nav><div class="wrap">
-    <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
-    <a class="lnk" href="index.html">Início</a><a class="lnk" href="transparencia.html">Transparência</a>
-  </div></nav>
+<body id="top">
 
-  <header class="hero"><div class="wrap read">
-    <p class="eyebrow reveal">Sobre nós · a nossa filosofia</p>
-    <h1 class="reveal">Dez povos.<br>Uma só <em>verdade sobre a vida.</em></h1>
-    <p class="sub reveal">Ao longo de três mil anos, culturas que nunca se falaram chegaram à mesma conclusão sobre o dinheiro e o que importa. Isto não é opinião. É uma constante da experiência humana.</p>
-  </div></header>
+<!-- Grão global (§2.6) -->
+<div class="grain" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg"><filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+</div>
 
-  <section><div class="wrap read">
-    <p class="part reveal">A nossa tese</p>
-    <h2 class="reveal">O dinheiro importa — só não é o sentido</h2>
-    <p class="lede reveal">Ele é importantíssimo para proteger a vida. Mas é pequeno demais para ser o <em>propósito</em> dela. O que realmente atravessa não é o que se acumula — é o que se vive e se dá. Cabe em quatro distinções.</p>
-    <div class="duo reveal" aria-label="As quatro distinções">
-      <div class="c left"><h4>O que o mundo confunde</h4><div class="row">TER</div><div class="row">CASA</div><div class="row">PREÇO</div><div class="row">DINHEIRO-SENHOR</div></div>
-      <div class="c right"><h4>O que atravessa a vida</h4><div class="row">SER</div><div class="row">LAR</div><div class="row">VALOR &amp; dignidade</div><div class="row">DINHEIRO-SERVO</div></div>
-    </div>
-    <blockquote class="reveal">O dinheiro é a coisa mais importante entre as menos importantes.</blockquote>
-  </div></section>
-
-  <section><div class="wrap">
-    <p class="part reveal">O mosaico</p>
-    <h2 class="reveal">O que cada tradição diz</h2>
-    <p class="lede reveal">Cada uma na sua língua. Todas apontando para o mesmo lugar: a vida vivida, não a guardada.</p>
-    <div class="mosaico">
-      <div class="trad reveal"><span class="name">Budismo</span><p class="say">"Do desejo nasce a tristeza; do desejo nasce o medo."</p><p class="who">Dhammapada 216 — a sede que nunca sacia bebendo</p></div>
-      <div class="trad reveal"><span class="name">Cristianismo</span><p class="say">"Não podeis servir a Deus e a Mamon."</p><p class="who">Mateus 6:24 — a viúva deu duas moedas; Judas vendeu por trinta</p></div>
-      <div class="trad reveal"><span class="name">Espiritismo</span><p class="say">"O homem é apenas o depositário da fortuna, da qual prestará contas."</p><p class="who">Allan Kardec</p></div>
-      <div class="trad reveal"><span class="name">Matriz africana</span><p class="say">"O caráter é a beleza." <em>(Ìwà l'ẹwà)</em></p><p class="who">Sabedoria iorubá — o axé só vive quando circula</p></div>
-      <div class="trad reveal"><span class="name">Cultura nórdica</span><p class="say">"O gado morre — mas o bom nome nunca morre."</p><p class="who">Hávamál, os Ditos de Odin</p></div>
-      <div class="trad reveal"><span class="name">Grécia antiga</span><p class="say">"A ninguém chame feliz antes de morrer."</p><p class="who">Sólon a Creso, o homem mais rico do mundo</p></div>
-      <div class="trad reveal"><span class="name">Povos indígenas</span><p class="say">"Eles são o povo da mercadoria. O ouro os enlouquece."</p><p class="who">Davi Kopenawa, xamã yanomami</p></div>
-      <div class="trad reveal"><span class="name">México</span><p class="say">"Nem que seja ouro, se rompe."</p><p class="who">Nezahualcóyotl, o rei-poeta asteca — e La Catrina</p></div>
-      <div class="trad reveal"><span class="name">Hinduísmo</span><p class="say">"Você tem direito à ação, nunca aos seus frutos."</p><p class="who">Bhagavad Gita 2.47</p></div>
-      <div class="trad reveal"><span class="name">Filosofia</span><p class="say">"Sai da frente do meu sol."</p><p class="who">Diógenes ao imperador Alexandre</p></div>
-      <div class="trad reveal"><span class="name">Estoicismo</span><p class="say">"Não é pobre quem tem pouco, mas quem deseja mais."</p><p class="who">Sêneca, Cartas a Lucílio</p></div>
-      <div class="trad reveal"><span class="name">Rap / a rua</span><p class="say">"Em São Paulo, Deus é uma nota de cem."</p><p class="who">Racionais MC's — o diagnóstico dito de dentro</p></div>
-    </div>
-  </div></section>
-
-  <section><div class="wrap">
-    <p class="part reveal">A ciência</p>
-    <h2 class="reveal">E o laboratório confirmou</h2>
-    <p class="lede reveal">O que os sábios intuíram, a neurociência mediu.</p>
-    <div class="sci">
-      <div class="scard reveal"><div class="ic">🔁</div><b>A sede nunca sacia</b><p>A dopamina governa o <em>querer</em>, não o <em>gostar</em>. Chegar na meta prevista gera sinal zero no cérebro.</p><p class="src">Berridge; Schultz, Science</p></div>
-      <div class="scard reveal"><div class="ic">📈</div><b>Sempre há alguém acima</b><p>O centro de recompensa responde ao ganho comparado ao do outro. Não há teto — a satisfação é impossível por design.</p><p class="src">Fliessbach et al., Science 2007</p></div>
-      <div class="scard reveal"><div class="ic">👁️</div><b>A cegueira é real</b><p>Diante de um morador de rua, o córtex que processa "outra pessoa" muitas vezes não acende.</p><p class="src">Harris &amp; Fiske, Princeton</p></div>
-      <div class="scard reveal"><div class="ic">🌱</div><b>Mas dá para florescer</b><p>14 dias de treino de compaixão quase dobraram a generosidade — com mudança neural real.</p><p class="src">Weng &amp; Davidson, 2013</p></div>
-    </div>
-  </div></section>
-
-  <section><div class="wrap">
-    <p class="part reveal">Para viver (não para guardar)</p>
-    <h2 class="reveal">As frases que atravessam</h2>
-    <div class="frases reveal">
-      <p>"O essencial é invisível aos olhos." — Saint-Exupéry</p>
-      <p>"Bons relacionamentos nos mantêm mais felizes e saudáveis. Ponto final." — Estudo de Harvard, 85 anos</p>
-      <p>"Até no lixão nasce flor."</p>
-      <p>"Contentamento é a maior riqueza." — Buda, Dhammapada 204</p>
-      <p>"Quem tem casas possui paredes; quem tem lar possui vínculos."</p>
-      <p>"Nenhum caixão tem gaveta — mas todo amor tem raiz."</p>
-    </div>
-  </div></section>
-
-  <div class="backcta">
-    <p style="font-family:var(--serif);font-style:italic;color:var(--vida-profundo);font-size:1.25rem;margin-bottom:1.4rem">Agora que você sabe — abra sua conta.</p>
-    <a class="btn btn-vida" href="index.html">Voltar ao início</a>
+<!-- NAV -->
+<nav id="nav"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Banco do Além — início">
+    <span class="mk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path class="spark" d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>
+    Banco do Além
+  </a>
+  <div class="navlinks">
+    <a href="index.html#produtos">Produtos</a>
+    <a href="index.html#planos">Planos</a>
+    <a href="index.html#seguranca">Segurança</a>
+    <a href="filosofia.html" aria-current="page">Instituição</a>
   </div>
+  <div class="nav-right">
+    <a class="nav-enter" href="index.html#transferir">Entrar</a>
+    <a href="index.html#transferir" class="btn btn-p btn-sm">Abrir conta</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mpanel">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</div></nav>
 
-  <footer><div class="wrap"><p class="disc"><strong style="color:#C9CFC9">Banco do Além</strong> é uma obra de arte conceitual e reflexão, sem fins lucrativos. Não é uma instituição financeira. Todas as citações são verificadas em fonte primária.</p></div></footer>
+<!-- Painel mobile -->
+<div class="m-panel" id="mpanel" aria-hidden="true">
+  <div class="m-top">
+    <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
+    <button class="burger" id="mclose" aria-label="Fechar menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <a href="index.html#produtos" class="m-link">Produtos</a>
+  <a href="index.html#planos" class="m-link">Planos</a>
+  <a href="index.html#seguranca" class="m-link">Segurança</a>
+  <a href="filosofia.html" class="m-link" aria-current="page">Instituição</a>
+  <div class="m-cta"><a href="index.html#transferir" class="btn btn-p" style="width:100%">Abrir conta</a></div>
+</div>
 
-  <script>(function(){var e=document.querySelectorAll('.reveal');if(!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){e.forEach(function(x){x.classList.add('in')});return;}var o=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target);}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});e.forEach(function(x){o.observe(x)});})();</script>
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <div class="lead sr">
+    <p class="eyebrow">Sobre nós · a nossa filosofia</p>
+    <h1>Dez povos.<br>Uma só <em>verdade sobre a vida.</em></h1>
+  </div>
+  <p class="sub sr">Ao longo de três mil anos, culturas que nunca se falaram chegaram à mesma conclusão sobre o dinheiro e o que importa. <strong>Isto não é opinião.</strong> É uma constante da experiência humana.</p>
+</div></header>
+
+<!-- I · A TESE -->
+<section><div class="wrap sr">
+  <div class="folio"><span class="n">I</span><span class="t">A nossa tese</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">O ponto de partida</p>
+    <h2>O dinheiro importa — só não é o <em>sentido</em></h2>
+  </div>
+  <div class="tese">
+    <div class="arg">
+      <p>Ele é importantíssimo para proteger a vida. Mas é pequeno demais para ser o <em>propósito</em> dela. O que realmente atravessa não é o que se acumula — é o que se vive e se dá.</p>
+      <p>Toda a filosofia desta instituição cabe em quatro distinções. À esquerda, o que o mundo confunde. À direita, o que atravessa a vida.</p>
+      <blockquote class="pull mt">O dinheiro é a coisa mais importante entre as menos importantes.
+        <cite>O nosso primeiro princípio</cite>
+      </blockquote>
+    </div>
+    <div class="distincoes" role="table" aria-label="As quatro distinções">
+      <div class="dhead" role="row">
+        <span class="h a" role="columnheader">O que o mundo confunde</span>
+        <span class="h b" role="columnheader">O que atravessa a vida</span>
+      </div>
+      <div class="drow" role="row"><span class="cell a" role="cell">Ter</span><span class="cell b" role="cell">Ser</span></div>
+      <div class="drow" role="row"><span class="cell a" role="cell">Casa</span><span class="cell b" role="cell">Lar</span></div>
+      <div class="drow" role="row"><span class="cell a" role="cell">Preço</span><span class="cell b" role="cell">Valor &amp; dignidade</span></div>
+      <div class="drow" role="row"><span class="cell a" role="cell">Dinheiro-senhor</span><span class="cell b" role="cell">Dinheiro-servo</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- II · O MOSAICO -->
+<section><div class="wrap sr">
+  <div class="folio"><span class="n">II</span><span class="t">O mosaico</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">Dez povos, uma voz</p>
+    <h2>O que cada tradição diz</h2>
+    <p>Cada uma na sua língua. Todas apontando para o mesmo lugar: a vida vivida, não a guardada.</p>
+  </div>
+  <div class="mosaico">
+    <article class="trad big"><span class="name">Cristianismo</span><p class="say">"Não podeis servir a Deus e a Mamon."</p><p class="who">Mateus 6:24 — a viúva deu duas moedas; Judas vendeu por trinta</p></article>
+    <article class="trad"><span class="name">Budismo</span><p class="say">"Do desejo nasce a tristeza; do desejo nasce o medo."</p><p class="who">Dhammapada 216 — a sede que nunca sacia bebendo</p></article>
+    <article class="trad"><span class="name">Espiritismo</span><p class="say">"O homem é apenas o depositário da fortuna, da qual prestará contas."</p><p class="who">Allan Kardec</p></article>
+    <article class="trad"><span class="name">Matriz africana</span><p class="say">"O caráter é a beleza." <em>(Ìwà l'ẹwà)</em></p><p class="who">Sabedoria iorubá — o axé só vive quando circula</p></article>
+    <article class="trad big"><span class="name">Estoicismo</span><p class="say">"Não é pobre quem tem pouco, mas quem deseja mais."</p><p class="who">Sêneca, Cartas a Lucílio</p></article>
+    <article class="trad"><span class="name">Cultura nórdica</span><p class="say">"O gado morre — mas o bom nome nunca morre."</p><p class="who">Hávamál, os Ditos de Odin</p></article>
+    <article class="trad"><span class="name">Grécia antiga</span><p class="say">"A ninguém chame feliz antes de morrer."</p><p class="who">Sólon a Creso, o homem mais rico do mundo</p></article>
+    <article class="trad"><span class="name">Povos indígenas</span><p class="say">"Eles são o povo da mercadoria. O ouro os enlouquece."</p><p class="who">Davi Kopenawa, xamã yanomami</p></article>
+    <article class="trad"><span class="name">México</span><p class="say">"Nem que seja ouro, se rompe."</p><p class="who">Nezahualcóyotl, o rei-poeta asteca — e La Catrina</p></article>
+    <article class="trad"><span class="name">Hinduísmo</span><p class="say">"Você tem direito à ação, nunca aos seus frutos."</p><p class="who">Bhagavad Gita 2.47</p></article>
+    <article class="trad"><span class="name">Filosofia</span><p class="say">"Sai da frente do meu sol."</p><p class="who">Diógenes ao imperador Alexandre</p></article>
+    <article class="trad big"><span class="name">Rap · a rua</span><p class="say">"Em São Paulo, Deus é uma nota de cem."</p><p class="who">Racionais MC's — o diagnóstico dito de dentro</p></article>
+  </div>
+</div></section>
+
+<!-- III · A CIÊNCIA -->
+<section><div class="wrap sr">
+  <div class="folio"><span class="n">III</span><span class="t">A ciência</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">E o laboratório confirmou</p>
+    <h2>O que os sábios intuíram, a neurociência <em>mediu</em></h2>
+  </div>
+  <div class="sci">
+    <article class="scard">
+      <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div>
+      <b>A sede nunca sacia</b>
+      <p>A dopamina governa o <em>querer</em>, não o <em>gostar</em>. Chegar na meta prevista gera sinal zero no cérebro.</p>
+      <p class="src">Berridge; Schultz, Science</p>
+    </article>
+    <article class="scard">
+      <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v4h-4"/></svg></div>
+      <b>Sempre há alguém acima</b>
+      <p>O centro de recompensa responde ao ganho comparado ao do outro. Não há teto — a satisfação é impossível <em>por design</em>.</p>
+      <p class="src">Fliessbach et al., Science 2007</p>
+    </article>
+    <article class="scard">
+      <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg></div>
+      <b>A cegueira é real</b>
+      <p>Diante de um morador de rua, o córtex que processa "outra pessoa" muitas vezes não acende.</p>
+      <p class="src">Harris &amp; Fiske, Princeton</p>
+    </article>
+    <article class="scard">
+      <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-3 7-7 7-11a7 7 0 0 0-14 0c0 4 3 8 7 11z"/><path d="M12 22V9"/><path d="M12 13c-2 0-3.5-1.5-3.5-3.5"/><path d="M12 11c2 0 3.5-1.5 3.5-3.5"/></svg></div>
+      <b>Mas dá para florescer</b>
+      <p>14 dias de treino de compaixão quase dobraram a generosidade — com mudança neural real.</p>
+      <p class="src">Weng &amp; Davidson, 2013</p>
+    </article>
+  </div>
+</div></section>
+
+<!-- IV · AS FRASES -->
+<section><div class="wrap sr">
+  <div class="folio"><span class="n">IV</span><span class="t">Para viver, não para guardar</span></div>
+  <div class="sec-head">
+    <p class="eyebrow">As frases-arma</p>
+    <h2>O que atravessa</h2>
+  </div>
+  <div class="frases">
+    <p>"O essencial é invisível aos olhos."<span>Saint-Exupéry</span></p>
+    <p>"Bons relacionamentos nos mantêm mais felizes e saudáveis. Ponto final."<span>Estudo de Harvard, 85 anos</span></p>
+    <p>"Até no lixão nasce flor."</p>
+    <p>"Contentamento é a maior riqueza."<span>Buda, Dhammapada 204</span></p>
+    <p>"Quem tem casas possui paredes; quem tem lar possui vínculos."</p>
+    <p>"Nenhum caixão tem gaveta — mas todo amor tem raiz."</p>
+  </div>
+</div></section>
+
+<!-- CTA FINAL -->
+<div class="finale"><div class="wrap sr">
+  <p class="k">Agora que você sabe — abra sua conta.</p>
+  <div class="acts">
+    <a class="btn btn-vida" href="index.html#transferir">Abrir conta</a>
+    <a class="btn btn-ghost" href="index.html">Voltar ao início</a>
+  </div>
+</div></div>
+
+<!-- RODAPÉ -->
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand">
+      <span class="fmk"><svg viewBox="0 0 48 56" fill="none" role="img" aria-label="Banco do Além"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#FCFAF5" fill-rule="evenodd"/></svg></span>
+      <div>
+        <div class="ft">Banco do Além</div>
+        <p class="fs">Cuidando do que realmente atravessa a vida, desde 1917.</p>
+      </div>
+    </div>
+    <div class="fcol"><h4>Serviços</h4>
+      <a href="index.html#produtos">Transferência ao Além</a>
+      <a href="index.html#produtos">Consultoria patrimonial</a>
+      <a href="index.html#produtos">Herança afetiva</a>
+    </div>
+    <div class="fcol"><h4>Institucional</h4>
+      <a href="filosofia.html">Sobre nós</a>
+      <a href="transparencia.html">Transparência</a>
+      <a href="index.html#planos">Planos</a>
+    </div>
+    <div class="fcol"><h4>Ajuda</h4>
+      <a href="index.html#planos">Ouvidoria do Além</a>
+      <a href="tel:188">CVV — 188</a>
+      <a href="transparencia.html">Cofre de Vidro</a>
+    </div>
+  </div>
+  <p class="disc"><b>Banco do Além</b> cuida do que realmente atravessa a vida, desde 1917. · Este é um projeto independente, sem fins lucrativos. Não é uma instituição financeira autorizada pelo Banco Central, não capta recursos, não realiza operações financeiras e não transfere valores a terceiros. Todas as citações são verificadas em fonte primária. Nenhum dado digitado sai do seu aparelho. · <em>O dinheiro é a coisa mais importante entre as menos importantes.</em></p>
+  <div class="ffolio tnum">MCMXVII — MMXXVI</div>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- NAV scroll + mobile ---------- */
+  var nav=document.getElementById('nav');
+  function onScroll(){if(window.scrollY>8)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mpanel=document.getElementById('mpanel'),mclose=document.getElementById('mclose');
+  var mBg=[document.getElementById('nav'),document.querySelector('.hero'),document.querySelector('footer'),document.querySelector('.finale')];
+  Array.prototype.push.apply(mBg,Array.prototype.slice.call(document.querySelectorAll('section')));
+  function setBgInert(on){mBg.forEach(function(n){if(!n)return;if(on){n.setAttribute('aria-hidden','true');try{n.inert=true;}catch(e){}}else{n.removeAttribute('aria-hidden');try{n.inert=false;}catch(e){}}});}
+  function mFocusables(){return Array.prototype.filter.call(mpanel.querySelectorAll('a[href],button:not([disabled])'),function(x){return x.offsetParent!==null;});}
+  function mTrap(e){
+    if(e.key==='Escape'){e.preventDefault();closeM();return;}
+    if(e.key!=='Tab')return;
+    var f=mFocusables();if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }
+  function openM(){
+    mpanel.classList.add('open');mpanel.setAttribute('aria-hidden','false');burger.setAttribute('aria-expanded','true');
+    setBgInert(true);document.addEventListener('keydown',mTrap);
+    var f=mFocusables();if(f.length)f[0].focus();
+  }
+  function closeM(){
+    mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');
+    setBgInert(false);document.removeEventListener('keydown',mTrap);
+    if(burger&&burger.focus)burger.focus();
+  }
+  burger.addEventListener('click',openM);mclose.addEventListener('click',closeM);
+  Array.prototype.forEach.call(mpanel.querySelectorAll('a'),function(a){a.addEventListener('click',closeM);});
+
+  /* ---------- Scroll reveal das seções ---------- */
+  var srs=document.querySelectorAll('.sr');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    srs.forEach(function(s){io.observe(s);});
+  }else{srs.forEach(function(s){s.classList.add('in');});}
+})();
+</script>
 </body>
 </html>
