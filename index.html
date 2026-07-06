@@ -921,6 +921,7 @@
     </footer>
   </div>
 
+<script>if(/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)){var _s=document.createElement('script');_s.src='ai-config.local.js';_s.onerror=function(){};document.head.appendChild(_s);}</script>
 <script>
 (function(){
   "use strict";
@@ -1248,7 +1249,7 @@
        imune ao 'reduce' global que o skipBtn da revelação torna permanente */
     cReduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
     cLastFocus=opts.trigEl||document.activeElement;
-    cState={trigger:(OPEN_LINES[trigger]?trigger:'B'),answers:{},nome:opts.nome||'',rel:'',relOther:'',assinou:'',sent:false};
+    cState={trigger:(OPEN_LINES[trigger]?trigger:'B'),answers:{},nome:opts.nome||'',rel:'',relOther:'',assinou:'',sent:false,seed:Math.floor(Math.random()*1e9)};
     cOv.classList.add('on');cOv.scrollTop=0;
     document.body.style.overflow='hidden';
     /* inertiza o fundo (espelha o menu mobile): leitor de tela/Tab não vazam.
@@ -1420,15 +1421,63 @@
     if(first!==lower && !/^[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ]{2}/.test(a)){a=lower+a.slice(1);}
     return conn+' '+a;
   }
-  var CONNECTORS={
-    aberturaA:'Sentei pra te escrever uma coisa que eu já devia ter dito faz tempo.',
-    aberturaB:'Não sou muito de dizer essas coisas, então resolvi escrever.',
-    cena:'Sempre que penso em você, volto pra um lugar:',
-    divida:'E tem uma coisa que eu nunca te agradeci direito:',
-    espelho:'Se tem uma coisa que eu queria que você soubesse, é essa:',
-    fecho:'Então deixa eu dizer, agora, sem rodeio:'
+  /* Bancos de variação: cada carta sai única (nada de frase hardcode).
+     A escolha é semeada por sessão (cState.seed) — estável na sessão, diferente a cada pessoa. */
+  var BANKS={
+    aberturaP:[
+      'Sentei pra te escrever uma coisa que eu já devia ter dito faz tempo.',
+      'Faz tempo que eu queria te dizer isto, e nunca achava a hora. Achei agora.',
+      'Tem coisas que a gente adia a vida inteira. Esta eu não vou adiar mais.',
+      'Parei tudo pra te dizer o que eu sinto e quase nunca falo em voz alta.',
+      'Você merece ouvir isto, e eu merecia ter dito antes. Então vai agora.'
+    ],
+    aberturaD:[
+      'Não sou muito de dizer essas coisas, então resolvi escrever.',
+      'Isso vai soar estranho vindo de mim, que quase nunca falo assim. Mas é verdade.',
+      'A gente não costuma falar dessas coisas, né? Hoje eu quis quebrar essa.'
+    ],
+    cena:[
+      'Sempre que penso em você, volto pra um lugar:',
+      'Tem uma lembrança que mora em mim quando lembro de você:',
+      'Se eu fecho os olhos e penso na gente, aparece isto:',
+      'Uma cena não sai da minha cabeça quando o assunto é você:'
+    ],
+    divida:[
+      'E tem uma coisa que eu nunca te agradeci direito:',
+      'Tem um obrigado que ficou preso na minha garganta esse tempo todo:',
+      'Nunca te disse isto em voz alta, e devia ter dito mil vezes:',
+      'Se eu pudesse quitar uma dívida, seria esta:'
+    ],
+    espelho:[
+      'Se tem uma coisa que eu queria que você soubesse, é essa:',
+      'Tem algo que você não acredita sobre si, e eu preciso que acredite:',
+      'Queria que você se enxergasse como eu te enxergo:',
+      'Se você pudesse ver o que eu vejo em você, veria isto:'
+    ],
+    fecho:[
+      'Então deixa eu dizer, agora, sem rodeio:',
+      'Então vai, sem meia palavra:',
+      'E é isto, do fundo do peito:',
+      'Então fica registrado, pra você nunca duvidar:'
+    ]
   };
+  function pick(arr,salt){if(!arr||!arr.length)return '';var s=(cState&&cState.seed)||0;return arr[((s+salt*97)%arr.length+arr.length)%arr.length];}
   var FECHO_FIXO='Não é dinheiro. Mas é o que eu tenho de mais valioso.\nE é seu.';
+
+  /* Adaptador de IA — OPCIONAL. Só liga se existir chave em window.__ALEM_AI
+     (definida em ai-config.local.js, gitignorado, carregado só em localhost).
+     Em produção a chave NUNCA fica aqui: fica num backend. Fallback sempre disponível. */
+  var alemAI={
+    on:function(){return !!(window.__ALEM_AI && window.__ALEM_AI.key);},
+    write:function(system,user){
+      var c=window.__ALEM_AI||{}, model=c.model||'gemini-2.5-flash';
+      var url='https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+encodeURIComponent(c.key);
+      var ctrl=new AbortController(), to=setTimeout(function(){ctrl.abort();},12000);
+      return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,body:JSON.stringify({system_instruction:{parts:[{text:system}]},contents:[{role:'user',parts:[{text:user}]}],generationConfig:{temperature:1.05,maxOutputTokens:900}})})
+        .then(function(r){clearTimeout(to);if(!r.ok)throw new Error('IA '+r.status);return r.json();})
+        .then(function(j){var t=j&&j.candidates&&j.candidates[0]&&j.candidates[0].content&&j.candidates[0].content.parts&&j.candidates[0].content.parts[0]&&j.candidates[0].content.parts[0].text;if(!t)throw new Error('IA vazia');return t.trim();});
+    }
+  };
 
   function buildLetterText(bare){
     var a=cState.answers;
@@ -1437,7 +1486,7 @@
     if(!has){
       /* sem nenhuma resposta: carta mínima honesta */
       var min=[];
-      if(!bare){min.push(vocative()+',');min.push(CONNECTORS.aberturaA);}
+      if(!bare){min.push(vocative()+',');min.push(pick(BANKS.aberturaP,2));}
       min.push(FECHO_FIXO);
       min.push(signatureBlock());
       return min.join('\n\n');
@@ -1453,11 +1502,11 @@
       return parts.join('\n\n');
     }
     parts.push(vocative()+',');
-    parts.push(isDistante()?CONNECTORS.aberturaB:CONNECTORS.aberturaA);
-    if(a.cena)parts.push(joinAfterColon(CONNECTORS.cena,a.cena));
-    if(a.divida)parts.push(joinAfterColon(CONNECTORS.divida,a.divida));
-    if(a.espelho)parts.push(joinAfterColon(CONNECTORS.espelho,a.espelho));
-    if(a.frase)parts.push(joinAfterColon(CONNECTORS.fecho,a.frase));
+    parts.push(isDistante()?pick(BANKS.aberturaD,1):pick(BANKS.aberturaP,2));
+    if(a.cena)parts.push(joinAfterColon(pick(BANKS.cena,3),a.cena));
+    if(a.divida)parts.push(joinAfterColon(pick(BANKS.divida,4),a.divida));
+    if(a.espelho)parts.push(joinAfterColon(pick(BANKS.espelho,5),a.espelho));
+    if(a.frase)parts.push(joinAfterColon(pick(BANKS.fecho,6),a.frase));
     parts.push(FECHO_FIXO);
     parts.push(signatureBlock());
     return parts.join('\n\n');
@@ -1493,6 +1542,22 @@
     cLetterEl.value=buildLetterText(false);
     autoGrow(cLetterEl);
     cAnnounce('Sua declaração está pronta. Leia e edite se quiser.');
+    if(alemAI.on()){
+      var _row=s.querySelector('.cactions .row');
+      var aiBtn=document.createElement('button');
+      aiBtn.type='button';aiBtn.className='btn btn-ghost';aiBtn.id='c-ai';aiBtn.textContent='Deixar mais pessoal';
+      _row.appendChild(aiBtn);
+      var aiNote=document.createElement('p');aiNote.className='chint';aiNote.style.margin='.5rem 0 0';
+      aiNote.textContent='Usa a IA que você configurou (local). Sua carta é enviada só para esse modelo.';
+      _row.parentNode.insertBefore(aiNote,_row.nextSibling);
+      aiBtn.addEventListener('click',function(){
+        var old=aiBtn.textContent;aiBtn.disabled=true;aiBtn.textContent='Escrevendo…';
+        var sys='Você é um escritor sensível. Reescreva a carta a seguir em português do Brasil, tornando-a mais fluida, calorosa e única, mantendo TODOS os fatos, nomes e lembranças que a pessoa trouxe, sem inventar nada novo, sem clichê de cartão, sem exagero. Preserve o fecho e a assinatura. Devolva só a carta.';
+        alemAI.write(sys,buildLetterText(cBareMode)).then(function(txt){
+          cLetterEl.value=txt;cLetterEl.dataset.touched='1';autoGrow(cLetterEl);aiBtn.textContent='Reescrever de novo';aiBtn.disabled=false;
+        }).catch(function(){aiBtn.textContent=old;aiBtn.disabled=false;cAnnounce('Não consegui falar com a IA agora — sua carta continua aqui, intacta.');});
+      });
+    }
     var signIn=s.querySelector('#c-sign');
     signIn.addEventListener('input',function(){
       var prev=cState.assinou;cState.assinou=signIn.value;

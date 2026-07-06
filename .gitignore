@@ -1,0 +1,7 @@
+# Chaves / segredos — NUNCA commitar
+ai-config.local.js
+*.local.js
+.env
+.env.*
+CHAVE.txt
+*.key
