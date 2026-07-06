@@ -1,20 +1,4 @@
-<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Banco do Além">
-  <defs>
-    <linearGradient id="dawn" x1="0" y1="48" x2="48" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FF7A66"/>
-      <stop offset="0.55" stop-color="#F59E0B"/>
-      <stop offset="1" stop-color="#FFD37A"/>
-    </linearGradient>
-  </defs>
-  <rect width="48" height="48" rx="13" fill="url(#dawn)"/>
-  <circle cx="24" cy="21" r="8.5" fill="#FFFFFF" fill-opacity="0.96"/>
-  <g fill="#2A2113">
-    <path d="M11 26.5 L24 16.5 L37 26.5 Z"/>
-    <rect x="10.5" y="26.2" width="27" height="2.6" rx="0.6"/>
-    <rect x="14.6" y="29.5" width="2.7" height="7.5" rx="0.5"/>
-    <rect x="19.9" y="29.5" width="2.7" height="7.5" rx="0.5"/>
-    <rect x="25.4" y="29.5" width="2.7" height="7.5" rx="0.5"/>
-    <rect x="30.7" y="29.5" width="2.7" height="7.5" rx="0.5"/>
-    <rect x="10.5" y="37" width="27" height="2.8" rx="0.8"/>
-  </g>
+<svg width="48" height="56" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Banco do Além">
+  <path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/>
+  <path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/>
 </svg>
