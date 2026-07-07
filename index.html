@@ -7,8 +7,15 @@
 <meta name="description" content="Banco do Além — patrimônio privado dedicado à sua transferência ao Além. Deposite em vida, receba na eternidade, com o cuidado de quem cuida do que é seu há mais de um século.">
 <meta name="theme-color" content="#FCFAF5">
 <title>Banco do Além</title>
+<!-- Open Graph / Twitter — TODO: adicionar og:image (og.png) como tarefa futura -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Banco do Além">
+<meta property="og:description" content="Banco do Além — patrimônio privado dedicado à sua transferência ao Além. Deposite em vida, receba na eternidade, com o cuidado de quem cuida do que é seu há mais de um século.">
+<meta property="og:url" content="https://bancodoalem.com.br/">
+<meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="fonts.css">
+<noscript><style>.sr{opacity:1!important;transform:none!important}</style></noscript>
 <style>
   :root{
     /* Luz / superfícies */
@@ -17,6 +24,8 @@
     --tinta:#26312B; --corpo:#495049; --suave:#5F6A62; --linha:#E9E5DB;
     /* Sol (marca) */
     --sol:#FFB627; --sol-forte:#F59E0B; --sol-luz:#FFE7B0;
+    /* Sol como TEXTO/LINK (contraste AA sobre marfim ~4.6:1) */
+    --sol-txt:#B45309;
     /* Vida (verde) */
     --vida:#2FBF71; --vida-profundo:#127A48; --vida-fundo:#E3F6EA;
     /* Afeto (coral) */
@@ -47,14 +56,15 @@
   h1,h2,h3,h4{font-family:var(--serif);margin:0;text-wrap:balance}
   h1,h2,h3{line-height:1.06;letter-spacing:-.02em}
   p{margin:0 0 1rem;color:var(--corpo)}
-  a{color:var(--sol-forte)}
+  a{color:var(--sol-txt)}
   img,svg{max-width:100%}
   .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin:0}
+  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-txt);margin:0}
   .tnum{font-variant-numeric:tabular-nums}
   .italic{font-style:italic}
   :focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
   .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;clip:auto;background:var(--tinta);color:var(--luz);padding:.6rem 1rem;border-radius:8px;z-index:200}
 
   /* ---------- Grão global (§2.6) ---------- */
   .grain{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.035}
@@ -130,7 +140,7 @@
   .acct .op{display:flex;align-items:center;gap:.35rem;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--vida-profundo);font-weight:600}
   .acct .op .dot{width:7px;height:7px;border-radius:50%;background:var(--vida);animation:pulse 2.4s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(47,191,113,.5)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(47,191,113,0)}}
-  .acct .a-out{margin-top:.35rem;font-size:.68rem;color:var(--suave);text-decoration:none;display:block;text-align:right}
+  .acct .a-out{margin-top:.35rem;font-size:.68rem;color:var(--suave);text-decoration:none;display:flex;align-items:center;justify-content:flex-end;min-height:44px}
   .acct .a-out:hover{color:var(--tinta)}
   .acct .bal-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave)}
   .acct .bal-v{font-family:var(--serif);font-size:clamp(2rem,3.2vw,2.6rem);font-weight:500;color:var(--tinta);line-height:1;letter-spacing:-.01em;margin:.35rem 0 .15rem;cursor:default}
@@ -139,7 +149,7 @@
   .acct .spark svg{display:block;width:100%;height:44px}
   .acct .spark .line{fill:none;stroke:var(--sol-forte);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .acct .spark-lbl{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
-  .acct .consult{display:inline-block;margin-top:.7rem;font-size:.8rem;font-weight:600;color:var(--sol-forte);text-decoration:none}
+  .acct .consult{display:inline-block;margin-top:.7rem;font-size:.8rem;font-weight:600;color:var(--sol-txt);text-decoration:none}
   .acct .consult:hover{text-decoration:underline;text-underline-offset:3px}
   .acct .chips-row{display:flex;gap:.5rem;margin-top:1.1rem}
   .acct .qchip{flex:1;display:flex;flex-direction:column;align-items:center;gap:.35rem;background:var(--luz);border:1px solid var(--linha);border-radius:var(--rb);padding:.7rem .3rem;font-size:.68rem;color:var(--corpo);font-weight:500}
@@ -165,7 +175,7 @@
   .carta{background:var(--luz)}
   .carta .col{max-width:36rem;margin-left:clamp(0px,6vw,4rem)}
   .carta .body{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.42;color:var(--tinta);font-weight:400;letter-spacing:-.01em}
-  .carta .body .cap{float:left;font-family:var(--serif);font-size:4.4rem;line-height:.72;font-weight:400;color:var(--sol-forte);margin:.28rem .55rem 0 0}
+  .carta .body .cap{float:left;font-family:var(--serif);font-size:4.4rem;line-height:.72;font-weight:400;color:var(--sol-txt);margin:.28rem .55rem 0 0}
   .carta .body em{font-style:italic;color:var(--vida-profundo)}
   .carta .sig{margin-top:2rem;display:flex;flex-direction:column;gap:.4rem}
   .carta .sig svg{width:200px;height:56px}
@@ -176,11 +186,11 @@
   .prod{display:grid;grid-template-columns:auto minmax(11rem,1.1fr) 2fr auto;gap:clamp(1rem,3vw,2.4rem);align-items:baseline;padding:1.8rem 0;border-bottom:1px solid var(--linha);transition:background .25s}
   .prod:hover{background:linear-gradient(90deg,rgba(255,231,176,.16),transparent 70%)}
   .prod.afeto{border-bottom:2px solid var(--afeto)}
-  .prod .rn{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--sol-forte);font-variant-numeric:tabular-nums}
+  .prod .rn{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--sol-txt);font-variant-numeric:tabular-nums}
   .prod h3{font-size:clamp(1.25rem,2.4vw,1.6rem);font-weight:500;color:var(--tinta)}
   .prod .desc{font-size:.98rem;color:var(--corpo);margin:0;line-height:1.5}
   .prod .desc em{font-style:italic;color:var(--vida-profundo)}
-  .prod .more{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sol-forte);text-decoration:none;white-space:nowrap}
+  .prod .more{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sol-txt);text-decoration:none;white-space:nowrap}
   .prod .more:hover{text-decoration:underline;text-underline-offset:3px}
 
   /* IV · SEGURANÇA */
@@ -212,7 +222,7 @@
   .metric.b{align-self:end}
   .metric.b .fig{font-size:clamp(1.9rem,4vw,3rem)}
   .metric .fig{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;color:var(--tinta);line-height:1;letter-spacing:-.02em}
-  .metric .fig .u{color:var(--sol-forte)}
+  .metric .fig .u{color:var(--sol-txt)}
   .metric .lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:600;margin-top:.6rem}
 
   /* VI · PLANOS */
@@ -259,7 +269,10 @@
   .sim label .opt{font-weight:400;color:var(--suave)}
   .sim input{width:100%;background:var(--luz);border:1.5px solid var(--linha);border-radius:var(--ri);color:var(--tinta);font-family:var(--sans);font-size:1.12rem;font-weight:500;padding:.85rem .9rem;outline:none;transition:border-color .2s}
   .sim input:focus{border-color:var(--vida)}
+  .sim input[aria-invalid="true"]{border-color:var(--afeto-forte)}
   .sim input::placeholder{color:#B4B0A4}
+  .sim .sim-err{margin:.45rem 0 0;font-size:.82rem;font-weight:600;color:var(--afeto-forte);line-height:1.4}
+  .sim .sim-err[hidden]{display:none}
   .sim .btn{width:100%;margin-top:1.6rem;font-size:1rem}
   .sim .secure{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--suave);margin-top:1rem;text-align:center}
 
@@ -355,7 +368,7 @@
   .donate{max-width:36rem;margin:0 auto;text-align:center}
   .donate .rule{width:44px;height:3px;background:var(--afeto);border-radius:99px;margin:0 auto 1.6rem}
   .chips{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.2rem 0}
-  .chip{background:var(--sup);border:1.5px solid var(--linha);color:var(--tinta);border-radius:999px;padding:.55rem 1.1rem;font-weight:600;font-size:.92rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
+  .chip{background:var(--sup);border:1.5px solid var(--linha);color:var(--tinta);border-radius:999px;padding:.55rem 1.1rem;min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:.92rem;cursor:pointer;transition:all .2s;font-family:var(--sans)}
   .chip:hover,.chip.sel{background:var(--afeto);color:#fff;border-color:var(--afeto)}
   .exit-row{display:flex;gap:1.4rem;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:1.6rem}
   .leave{background:none;border:0;color:var(--corpo);font-family:var(--sans);font-size:.92rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;height:52px;padding:0 1.2rem}
@@ -385,7 +398,7 @@
   #carta-ov .cbar .cclose{background:none;border:0;cursor:pointer;color:var(--suave);font-family:var(--sans);font-size:.86rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center;padding:0 .3rem}
   #carta-ov .cbar .cclose:hover{color:var(--tinta)}
   /* pílula de nome da jornada */
-  #carta-ov .cbadge{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin-bottom:.4rem}
+  #carta-ov .cbadge{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-txt);margin-bottom:.4rem}
   #carta-ov .cbadge::before{content:"";width:22px;height:1px;background:var(--sol-forte);opacity:.6}
   /* palco de cada passo */
   #carta-ov .cstage{flex:1;display:flex;flex-direction:column}
@@ -443,7 +456,7 @@
   .cvoucher{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin:0 0 1.4rem;background-image:repeating-linear-gradient(-.3deg,rgba(233,229,219,.3) 0,rgba(233,229,219,.3) 1px,transparent 1px,transparent 28px)}
   .cvoucher .vtop{height:4px;background:var(--sol)}
   .cvoucher .vin{padding:1.4rem 1.5rem}
-  .cvoucher .vlbl{font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sol-forte);margin:0 0 1rem}
+  .cvoucher .vlbl{font-family:var(--serif);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sol-txt);margin:0 0 1rem}
   .cvoucher .vrow{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;padding:.4rem 0;border-bottom:1px dotted var(--linha)}
   .cvoucher .vrow .vk{color:var(--corpo)}
   .cvoucher .vrow .vv{color:var(--tinta);font-weight:600;text-align:right}
@@ -495,9 +508,9 @@
   .cxhead .cxp .cxrel{color:var(--suave);font-weight:400}
   .cxhead .cxs{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;flex:0 0 auto}
   .cxhead .cxs.entregue{color:var(--vida-profundo);background:var(--vida-fundo)}
-  .cxhead .cxs.guardada{color:var(--sol-forte);background:var(--sol-luz)}
+  .cxhead .cxs.guardada{color:var(--sol-txt);background:var(--sol-luz)}
   .cxacts{display:flex;gap:1.1rem;margin-top:.5rem}
-  .cxacts button{background:none;border:0;cursor:pointer;color:var(--corpo);font-family:var(--sans);font-size:.82rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:.2rem 0;min-height:32px}
+  .cxacts button{background:none;border:0;cursor:pointer;color:var(--corpo);font-family:var(--sans);font-size:.82rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:.2rem 0;min-height:44px;display:inline-flex;align-items:center}
   .cxacts button:hover{color:var(--tinta)}
   .cxtexto{display:none;margin:.6rem 0 0;padding:.9rem 1rem;background:var(--sup);border:1px solid var(--linha);border-radius:var(--rb);font-family:var(--serif);font-size:.94rem;line-height:1.55;color:var(--tinta);white-space:pre-wrap}
   .cxtexto.open{display:block}
@@ -570,6 +583,7 @@
 </style>
 </head>
 <body id="top">
+  <a class="skip-link sr-only" href="#produtos">Pular para o conteúdo</a>
 
   <!-- Grão global (§2.6) -->
   <div class="grain" aria-hidden="true">
@@ -598,7 +612,7 @@
   </div></nav>
 
   <!-- Painel mobile -->
-  <div class="m-panel" id="mpanel" aria-hidden="true">
+  <div class="m-panel" id="mpanel" aria-hidden="true" inert>
     <div class="m-top">
       <span class="logo"><span class="mk"><svg viewBox="0 0 48 56" fill="none" aria-hidden="true"><path d="M24 1 L25.6 8.6 L31 10 L25.6 11.4 L24 17 L22.4 11.4 L17 10 L22.4 8.6 Z" fill="#F59E0B"/><path d="M24 15 L40 52 L30 52 L28 43 L20 43 L18 52 L8 52 Z M24 25 L29 38 L19 38 Z" fill="#26312B" fill-rule="evenodd"/></svg></span>Banco do Além</span>
       <button class="burger" id="mclose" aria-label="Fechar menu">
@@ -781,11 +795,11 @@
         <div class="from">Adesão simbólica</div>
         <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,01</span></div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Transfira qualquer valor ao Além</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Comprovante digital de transferência</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Certificado de titularidade eterna</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Atendimento pós-vida: fila comum</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Ouvidoria disponível a partir da sua transição</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Transfira qualquer valor ao Além</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Comprovante digital de transferência</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Certificado de titularidade eterna</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Atendimento pós-vida: fila comum</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Ouvidoria disponível a partir da sua transição</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Essencial</a>
       </div>
@@ -794,11 +808,11 @@
         <div class="from">Adesão simbólica</div>
         <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,50</span></div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Essencial</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Consultor no Além compartilhado</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Prioridade Prata na chegada ao destino</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Extrato anual do que ficou para trás</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Sala de espera climatizada no Além</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Essencial</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Consultor no Além compartilhado</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Prioridade Prata na chegada ao destino</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Extrato anual do que ficou para trás</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Sala de espera climatizada no Além</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Preferencial</a>
       </div>
@@ -808,11 +822,11 @@
         <div class="from">Adesão simbólica</div>
         <div class="price tnum"><span class="cur">R$</span>0<span class="cts">,99</span></div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Preferencial</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Prioridade Ouro e traslado expresso</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Preferencial</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Prioridade Ouro e traslado expresso</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
         </ul>
         <a href="#transferir" class="btn btn-sol">Escolher Prime</a>
       </div>
@@ -821,11 +835,11 @@
         <div class="from">Adesão simbólica</div>
         <div class="price tnum"><span class="cur">R$</span>1<span class="cts">,99</span></div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Prime</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Transferência instantânea no momento da transição</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Suíte perpétua com vista para a eternidade</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Prime</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Transferência instantânea no momento da transição</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Suíte perpétua com vista para a eternidade</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Eterno</a>
       </div>
@@ -837,11 +851,11 @@
         <div class="ptier">Essencial</div>
         <div class="pprice tnum"><span class="cur">R$</span>0,01</div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Transfira qualquer valor ao Além</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Comprovante digital de transferência</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Certificado de titularidade eterna</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Atendimento pós-vida: fila comum</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Ouvidoria disponível a partir da sua transição</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Transfira qualquer valor ao Além</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Comprovante digital de transferência</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Certificado de titularidade eterna</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Atendimento pós-vida: fila comum</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Ouvidoria disponível a partir da sua transição</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Essencial</a>
       </div>
@@ -849,11 +863,11 @@
         <div class="ptier">Preferencial</div>
         <div class="pprice tnum"><span class="cur">R$</span>0,50</div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Essencial</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Consultor no Além compartilhado</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Prioridade Prata na chegada ao destino</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Extrato anual do que ficou para trás</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Sala de espera climatizada no Além</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Essencial</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Consultor no Além compartilhado</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Prioridade Prata na chegada ao destino</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Extrato anual do que ficou para trás</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Sala de espera climatizada no Além</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Preferencial</a>
       </div>
@@ -862,11 +876,11 @@
         <div class="ptier">Prime</div>
         <div class="pprice tnum"><span class="cur">R$</span>0,99</div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Preferencial</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Prioridade Ouro e traslado expresso</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Preferencial</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Consultor no Além <b>dedicado</b>, que o recebe pessoalmente</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Prioridade Ouro e traslado expresso</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Sala VIP e um sussurro póstumo aos vivos</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Nome inscrito no Grande Livro dos Iluminados</span></li>
         </ul>
         <a href="#transferir" class="btn btn-sol">Escolher Prime</a>
       </div>
@@ -874,11 +888,11 @@
         <div class="ptier">Eterno</div>
         <div class="pprice tnum"><span class="cur">R$</span>1,99</div>
         <ul>
-          <li class="yes"><span class="mk">✓</span><span>Tudo do Prime</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Transferência instantânea no momento da transição</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Suíte perpétua com vista para a eternidade</span></li>
-          <li class="yes"><span class="mk">✓</span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Tudo do Prime</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Comitê de consultores no Além, 24h (horário do Além)</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Transferência instantânea no momento da transição</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Suíte perpétua com vista para a eternidade</span></li>
+          <li class="yes"><span class="mk"><svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg></span><span>Ouvidoria Premium: sua reclamação registrada assim que você puder registrá-la</span></li>
         </ul>
         <a href="#transferir" class="btn btn-ghost">Escolher Eterno</a>
       </div>
@@ -895,11 +909,13 @@
       <p class="sub">Preencha os dados abaixo. Você descobrirá, em segundos, quanto do seu patrimônio realmente segue com você.</p>
       <div class="field">
         <label for="pat">Valor a transferir ao Além (R$)</label>
-        <input id="pat" type="text" inputmode="numeric" placeholder="Ex.: 500.000" autocomplete="off">
+        <input id="pat" type="text" inputmode="numeric" placeholder="Ex.: 500.000" autocomplete="off" aria-describedby="pat-err">
+        <p id="pat-err" class="sim-err" role="alert" hidden>Digite um valor maior que zero.</p>
       </div>
       <div class="field">
         <label for="idade">Sua idade hoje</label>
-        <input id="idade" type="text" inputmode="numeric" placeholder="Ex.: 42" autocomplete="off">
+        <input id="idade" type="text" inputmode="numeric" placeholder="Ex.: 42" autocomplete="off" aria-describedby="idade-err">
+        <p id="idade-err" class="sim-err" role="alert" hidden>Idade entre 1 e 119.</p>
       </div>
       <div class="field">
         <label for="nome">Nome de quem você mais ama <span class="opt">(opcional)</span></label>
@@ -1006,11 +1022,13 @@
   }
   function openM(){
     mpanel.classList.add('open');mpanel.setAttribute('aria-hidden','false');burger.setAttribute('aria-expanded','true');
+    try{mpanel.inert=false;}catch(e){}mpanel.removeAttribute('inert');
     setBgInert(true);document.addEventListener('keydown',mTrap);
     var f=mFocusables();if(f.length)f[0].focus();
   }
   function closeM(){
     mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');
+    try{mpanel.inert=true;}catch(e){}mpanel.setAttribute('inert','');
     setBgInert(false);document.removeEventListener('keydown',mTrap);
     if(burger&&burger.focus)burger.focus();
   }
@@ -1085,11 +1103,18 @@
   }
   function onKey(e){if(e.key==='Escape'){leave();}else{trapFocus(e);}}
 
-  /* ---------- Validação + disparo (preservado) ---------- */
+  /* ---------- Validação + disparo (preservado + a11y) ---------- */
+  var patErr=document.getElementById('pat-err'),ageErr=document.getElementById('idade-err');
+  function setInvalid(field,msg){field.setAttribute('aria-invalid','true');field.style.borderColor='#F2593F';if(msg){msg.hidden=false;}field.focus();}
+  function clearInvalid(field,msg){field.setAttribute('aria-invalid','false');field.style.borderColor='';if(msg){msg.hidden=true;}}
+  patEl.addEventListener('input',function(){clearInvalid(patEl,patErr);});
+  ageEl.addEventListener('input',function(){clearInvalid(ageEl,ageErr);});
   document.getElementById('go').addEventListener('click',function(){
     var pat=parseNum(patEl.value),age=parseNum(ageEl.value);
-    if(isNaN(pat)||pat<=0){patEl.focus();patEl.style.borderColor='#F2593F';return;}
-    if(isNaN(age)||age<1||age>119){ageEl.focus();ageEl.style.borderColor='#F2593F';return;}
+    if(isNaN(pat)||pat<=0){setInvalid(patEl,patErr);return;}
+    clearInvalid(patEl,patErr);
+    if(isNaN(age)||age<1||age>119){setInvalid(ageEl,ageErr);return;}
+    clearInvalid(ageEl,ageErr);
     launch(pat,age,nameEl.value.trim());
   });
 
@@ -1233,6 +1258,10 @@
     reveal.classList.remove('on','lit');
     document.body.style.overflow='';
     document.removeEventListener('keydown',onKey);
+    /* Restaura a preferência real de movimento: o skip da revelação força
+       reduce=true para colapsar os delays; sem isto, a PRÓXIMA revelação
+       nasceria sem animação. Cada nova revelação relê a preferência. */
+    reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.getElementById('top').scrollIntoView();
     if(lastFocus&&lastFocus.focus){lastFocus.focus();}
   }
@@ -1547,7 +1576,8 @@
   function redactSensitive(t){
     if(!t)return t;
     return String(t)
-      .replace(/\b\d{3}\.\d{3}\.\d{3}-?\d{2}\b/g,'[removido]')
+      .replace(/\b\d{3}\.\d{3}\.\d{3}[\s.\/-]?\d{2}\b/g,'[removido]')
+      .replace(/\b\d{11}\b/g,'[removido]')
       .replace(/(\+?55[\s]?)?\(?\d{2}\)?[\s.-]?9?\d{4}[\s.-]?\d{4}/g,'[removido]')
       .replace(/\d{10,}/g,'[removido]');
   }
@@ -1895,6 +1925,7 @@
   /* Reinicia uma nova declaração mantendo o overlay aberto */
   function restartDeclaration(){
     cState.answers={};cState.nome='';cState.rel='';cState.relOther='';cState.assinou='';cState.sent=false;cState._deposited=false;
+    cState.seed=Math.floor(Math.random()*1e9);  /* nova semente: conectores variam na próxima carta */
     cLetterEl=null;
     renderRecipient();
   }
@@ -1921,7 +1952,7 @@
       var inPanel=mpanel.contains(b);
       b.addEventListener('click',function(e){e.preventDefault();
         /* fecha o menu mobile se estiver aberto, sem roubar o foco de retorno */
-        if(mpanel.classList.contains('open')){mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');burger.setAttribute('aria-expanded','false');setBgInert(false);document.removeEventListener('keydown',mTrap);}
+        if(mpanel.classList.contains('open')){mpanel.classList.remove('open');mpanel.setAttribute('aria-hidden','true');try{mpanel.inert=true;}catch(err){}mpanel.setAttribute('inert','');burger.setAttribute('aria-expanded','false');setBgInert(false);document.removeEventListener('keydown',mTrap);}
         /* retorno para o burger quando o gatilho veio do painel mobile (fica invisível fechado) */
         openCarta(trig,{trigEl:inPanel?burger:b});
       });

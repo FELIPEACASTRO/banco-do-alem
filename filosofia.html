@@ -7,8 +7,15 @@
 <meta name="description" content="A filosofia do Banco do Além — o que dez tradições da humanidade dizem, em uma só voz, sobre o dinheiro e a vida.">
 <meta name="theme-color" content="#FCFAF5">
 <title>Banco do Além — Sobre nós</title>
+<!-- Open Graph / Twitter — TODO: adicionar og:image (og.png) como tarefa futura -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Banco do Além — Sobre nós">
+<meta property="og:description" content="A filosofia do Banco do Além — o que dez tradições da humanidade dizem, em uma só voz, sobre o dinheiro e a vida.">
+<meta property="og:url" content="https://bancodoalem.com.br/filosofia.html">
+<meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="fonts.css">
+<noscript><style>.sr{opacity:1!important;transform:none!important}</style></noscript>
 <style>
 :root{
   /* Luz / superfícies */
@@ -17,6 +24,8 @@
   --tinta:#26312B; --corpo:#495049; --suave:#5F6A62; --linha:#E9E5DB;
   /* Sol (marca) */
   --sol:#FFB627; --sol-forte:#F59E0B; --sol-luz:#FFE7B0;
+  /* Sol como TEXTO/LINK (contraste AA sobre marfim ~4.6:1) */
+  --sol-txt:#B45309;
   /* Vida (verde) */
   --vida:#2FBF71; --vida-profundo:#127A48; --vida-fundo:#E3F6EA;
   /* Afeto (coral) */
@@ -49,14 +58,15 @@ body{margin:0;background:var(--luz);color:var(--tinta);font-family:var(--sans);f
 h1,h2,h3,h4{font-family:var(--serif);margin:0;text-wrap:balance}
 h1,h2,h3{line-height:1.06;letter-spacing:-.02em}
 p{margin:0 0 1rem;color:var(--corpo)}
-a{color:var(--sol-forte)}
+a{color:var(--sol-txt)}
 img,svg{max-width:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,4vw,2.5rem)}
-.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-forte);margin:0}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sol-txt);margin:0}
 .tnum{font-variant-numeric:tabular-nums}
 .italic{font-style:italic}
 :focus-visible{outline:2px solid var(--sol-forte);outline-offset:3px;border-radius:4px}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;clip:auto;background:var(--tinta);color:var(--luz);padding:.6rem 1rem;border-radius:8px;z-index:200}
 
 /* ---------- Grão global (§2.6) ---------- */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:.035}
@@ -226,6 +236,7 @@ footer a{color:var(--rodape-txt)}
 </style>
 </head>
 <body id="top">
+<a class="skip-link sr-only" href="#conteudo">Pular para o conteúdo</a>
 
 <!-- Grão global (§2.6) -->
 <div class="grain" aria-hidden="true">
@@ -278,7 +289,7 @@ footer a{color:var(--rodape-txt)}
 </div></header>
 
 <!-- I · A TESE -->
-<section><div class="wrap sr">
+<section id="conteudo"><div class="wrap sr">
   <div class="folio"><span class="n">I</span><span class="t">A nossa tese</span></div>
   <div class="sec-head">
     <p class="eyebrow">O ponto de partida</p>
